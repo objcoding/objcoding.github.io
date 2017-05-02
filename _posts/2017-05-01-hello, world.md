@@ -3,7 +3,7 @@ layout: post
 title:  "hello, world"
 categories: 
 tags:  
-author: zchdjb
+author: zch
 ---
 
 hello, word

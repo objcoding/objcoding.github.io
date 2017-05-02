@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: zchdjb
+title: zch
 brief-intro: Full Stack Dev
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://zchdjb.github.io" # the base hostname & protocol for your site
@@ -16,7 +16,7 @@ permalink: /:year/:month/:day/:title/
 # other links
 twitter_username: 
 facebook_username: 
-github_username: zchdjb
+github_username: zch
 email: zchdjb@foxmail.com
 weibo_username: 
 zhihu_username: 
