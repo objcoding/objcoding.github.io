@@ -49,7 +49,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
 
 server.port就是你指定注册服务中心的端口号，在启动服务后，可以通过访问http://localhost:9100服务发现页面，如下：
 
-![注册服务中心]([https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/assets/images/))
+![注册服务中心](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/springcloud.png)
 
 #### 1.2 创建服务方
 
