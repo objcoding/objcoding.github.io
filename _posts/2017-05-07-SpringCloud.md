@@ -250,8 +250,74 @@ hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 
 ### 4. 服务网关---Netflix Zuul
 
+到这里我们就可以构建一个略微不足的微服务分布式系统了，前面我们通过Ribbon实现服务的消费和负载均衡，但还有些不足的地方，举个例子，服务A和服务B，他们都注册到服务注册中心，这里还有个对外提供的一个服务，这个服务通过负载均衡提供调用服务A和服务B的方法，但是这样做就破坏了服务无状态的特点，无法直接复用既有接口，当我们需要对一个即有的集群内访问接口，实现外部服务访问时，我们不得不通过在原有接口上增加校验逻辑，或增加一个代理调用来实现权限控制，无法直接复用原有的接口。
+
+最好的方法就是把所有请求都集中在最前端的地方，这地方就是zuul服务网关。
+
+服务网关是微服务架构中一个不可或缺的部分。通过服务网关统一向外系统提供REST API的过程中，除了具备服务路由、均衡负载功能之外，它还具备了权限控制等功能。Spring Cloud Netflix中的Zuul就担任了这样的一个角色，为微服务架构提供了前门保护的作用，同时将权限控制这些较重的非业务逻辑内容迁移到服务路由层面，使得服务集群主体能够具备更高的可复用性和可测试性。
+
+- 要使用zuul，就要引入它的依赖：
+
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zuul</artifactId>
+</dependency>
+```
+
+- 在spring boot主程序中加入@EnableZuulProxy注解开启zuul：
+
+```
+@EnableEurekaClient
+@EnableZuulProxy
+@EnableDiscoveryClient
+@SpringBootApplication
+public class WebGatewayApplication {
+
+	@Bean
+	@LoadBalanced
+	RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(WebGatewayApplication.class, args);
+	}
+}
+```
+
+- 在application.properties配置文件中配置zuul路由url：
+
+```
+spring.application.name=web-gateway
+server.port=9010
+```
+
+到这里，一个微服务zuul服务网关系统已经可以运行了，接下来就是如何配置访问其它微服务系统的url，zuul提供了两种配置方式，一种是通过url直接映射，另一种是利用注册到eureka server中的服务id作映射：
+
+- url直接映射：
+
+```
+zuul.routes.api-a-url.path=/api-a-url/**
+zuul.routes.api-a-url.url=http://localhost:2222/
+```
+
+所有到Zuul的中规则为：`/api-a-url/**`的访问都映射到`http://localhost:2222/`上，比如 ：`http://localhost:9010/api-a-url/add?a=1&b=2`，该请求会转发到：`http://localhost:2222/add?a=1&b=2`上。
+
+- 但是这么做必须得知道所有得微服务得地址，才能完成配置，这时我们可以利用注册到eureka server中的服务id作映射：
+
+```
+###### Zuul配置
+zuul.routes.api-integral.path=/integral/**
+zuul.routes.api-integral.serviceId=integral-server
+
+zuul.routes.api-member.path=/member/**
+zuul.routes.api-member.serviceId=member-server
+
+```
+
+integral-server和member-server是这俩微服务系统注册到微服务中心得一个serverId，我们通过配置，访问`http://localhost:9010/integual/add?a=1&b=2`，该请求就会访问integral-server系统中得add服务。
 
 
-### 5. 分布式配置---Spring Cloud Config
 
 
