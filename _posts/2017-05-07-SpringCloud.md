@@ -24,12 +24,12 @@ SpringCloud是一个庞大的分布式系统，它包含了众多模块，其中
 
 ```
 <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-eureka-server</artifactId>
 </dependency>
 ```
 
-- 并且在SpringBoot主程序中加入@EnableEurekaServer注解
+- 并且在SpringBoot主程序中加入@EnableEurekaServer注解：
 
 
 ```
@@ -71,7 +71,7 @@ server.port就是你指定注册服务中心的端口号，在启动服务后，
  </dependency>
 ```
 
-- 在SpringBoot主程序中加入@EnableDiscoveryClient注解，该注解能激活Eureka中的`DiscoveryClient`实现，才能实现Controller中对服务信息的输出。
+- 在SpringBoot主程序中加入@EnableDiscoveryClient注解，该注解能激活Eureka中的`DiscoveryClient`实现，才能实现Controller中对服务信息的输出：
 
 
 ```
