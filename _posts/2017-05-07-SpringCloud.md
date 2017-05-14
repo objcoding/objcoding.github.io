@@ -6,6 +6,9 @@ tags: Spring SpringCloud 微服务 分布式
 author: zch
 ---
 
+* content
+{:toc}
+
 > spring Cloud是一个基于**Spring Boot**实现的云应用开发工具，它为基于JVM的云应用开发中的配置管理、**服务发现**、**断路器**、**负载均衡**、**智能路由**、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。
 
 现在公司的积分联盟平台系统构建于公司内部的第4代架构中，而第四代用得就是springCloud微服务架构，趁着项目上手，花了几天研究了一下。
@@ -16,7 +19,8 @@ SpringCloud是一个庞大的分布式系统，它包含了众多模块，其中
 
 #### 1.1 创建服务注册中心
 
-在搭建SpringCloud分布式系统前我们需要创建一个注册服务中心，已便监控其余模块的状况。这里需要在pom.xml中引入：
+- 在搭建SpringCloud分布式系统前我们需要创建一个注册服务中心，已便监控其余模块的状况。这里需要在pom.xml中引入：
+
 
 ```
 <dependency>
@@ -25,7 +29,8 @@ SpringCloud是一个庞大的分布式系统，它包含了众多模块，其中
 </dependency>
 ```
 
-并且在SpringBoot主程序中加入@EnableEurekaServer注解
+- 并且在SpringBoot主程序中加入@EnableEurekaServer注解
+
 
 ```
 @EnableEurekaServer
@@ -38,7 +43,8 @@ public class EurekaServerApplication {
 }
 ```
 
-接下来在SpringBoot的属性配置文件application.properties中如下配置：
+- 接下来在SpringBoot的属性配置文件application.properties中如下配置：
+
 
 ```
 server.port=9100
@@ -55,7 +61,8 @@ server.port就是你指定注册服务中心的端口号，在启动服务后，
 
 我们可以发现其它系统在这里注册并显示在页面上了，想要注册到服务中心，需要在系统上做一些配置，步骤跟创建服务注册中心类似，这里web-gateway系统做例子：
 
-首先在pom.xml中加入：
+- 首先在pom.xml中加入：
+
 
 ```
  <dependency>
@@ -64,7 +71,8 @@ server.port就是你指定注册服务中心的端口号，在启动服务后，
  </dependency>
 ```
 
-在SpringBoot主程序中加入@EnableDiscoveryClient注解，该注解能激活Eureka中的`DiscoveryClient`实现，才能实现Controller中对服务信息的输出。
+- 在SpringBoot主程序中加入@EnableDiscoveryClient注解，该注解能激活Eureka中的`DiscoveryClient`实现，才能实现Controller中对服务信息的输出。
+
 
 ```
 @EnableDiscoveryClient
@@ -76,7 +84,8 @@ public class WebGatewayApplication {
 }
 ```
 
-在SpringBoot的属性配置文件application.properties中如下配置：
+- 在SpringBoot的属性配置文件application.properties中如下配置：
+
 
 ```
 spring.application.name=web-gateway
@@ -93,7 +102,8 @@ eureka.instance.leaseRenewalIntervalInSeconds=5
 
 下面我来简单介绍如何在SpringCloud分布式系统下使用Ribbon来实现负载均衡。
 
-首先在pom.xml中引入一下依赖：
+- 首先在pom.xml中引入一下依赖：
+
 
 ```
 <dependency>
@@ -102,7 +112,8 @@ eureka.instance.leaseRenewalIntervalInSeconds=5
 </dependency>
 ```
 
-然后在spring boot主程序中创建RestTemplate类，并为它加上@LoadBalanced注解开启负载均衡的能力：
+- 然后在spring boot主程序中创建RestTemplate类，并为它加上@LoadBalanced注解开启负载均衡的能力：
+
 
 ```
 @EnableDiscoveryClient
@@ -123,14 +134,25 @@ public class WebGatewayApplication {
 
 RestTemplate类是Spring用于构建Restful服务而提供的一种Rest服务可客户端，RestTemplate 提供了多种便捷访问远程Http服务的方法，能够大大提高客户端的编写效率，所以很多客户端比如 Android或者第三方服务商都是使用 RestTemplate 请求 restful 服务。
 
-在公司项目中正是通过RestTemplate来访问各个微服务提供的接口，比如在项目中要访问积分系统integral-server，添加积分用户：
+- 在apllication.properties配置文件中配置eureka服务，并注册到服务中心：
+
+
+```
+spring.application.name=integral-server
+server.port=9600
+eureka.client.serviceUrl.defaultZone=http://localhost:9100/eureka/
+```
+
+- 在公司项目中正是通过RestTemplate来访问各个微服务提供的接口，比如在项目中要访问积分系统integral-server，添加积分用户：
+
 
 ```
 JSONObject integralServerResult = restTemplate.postForObject("http://integral-server/shop/add", RequestHandler.getRestRawRequestEntity(integralShopJson), JSONObject.class);
 ```
 这样就可以调用integral-server系统的添加用户的接口实现在别的系统中添加用户了。
 
-我们也可以在application.properties配置文件中加入：
+- 我们也可以在application.properties配置文件中加入：
+
 
 ```
 ###### Ribbon
@@ -149,7 +171,8 @@ ribbon.ReadTimeout=60000
 
 下面来说一下Hystrix在微服务系统中的具体用法：
 
-首先还是在pom.xml中加入以下依赖：
+- 首先还是在pom.xml中加入以下依赖：
+
 
 ```
 <dependency>
@@ -158,7 +181,8 @@ ribbon.ReadTimeout=60000
 </dependency>
 ```
 
-在spring boot主程序中加入@EnableCircuitBreaker注解开启断路器模式：
+- 在spring boot主程序中加入@EnableCircuitBreaker注解开启断路器模式：
+
 
 ```
 @EnableEurekaClient
@@ -192,7 +216,8 @@ There was an unexpected error (type=Internal Server Error, status=500).
 
 断路器也就开启了。
 
-我们也可以在application.properties配置文件中加入：
+- 我们也可以在application.properties配置文件中加入：
+
 
 ```
 ## hystrix
@@ -201,7 +226,8 @@ hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 
 这个设置可以更改返回错误响应的超时时间。
 
-如果不想返回默认的错误响应信息，我们还可以通过自定义来更改错误响应信息，我们需要一个类中注入一个RestTemplate类：
+- 如果不想返回默认的错误响应信息，我们还可以通过自定义来更改错误响应信息，我们需要一个类中注入一个RestTemplate类：
+
 
 ```
  @Autowired
