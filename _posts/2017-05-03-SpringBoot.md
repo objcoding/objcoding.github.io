@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "使用spring boot构建web项目"
+title:  "SpringBoot构建web项目"
 categories: BackEnd
 tags:  Spring SpringBoot
 author: zch
