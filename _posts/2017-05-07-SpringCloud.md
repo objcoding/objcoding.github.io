@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "SpringCloud微服务分布式系统的开发"
-categories: BackEnd
+categories: Java
 tags: Spring SpringCloud 微服务 分布式
 author: zch
 ---
