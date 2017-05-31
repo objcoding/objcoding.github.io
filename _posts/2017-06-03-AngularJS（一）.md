@@ -10,14 +10,14 @@ author: zch
 {:toc}
 ### 1. 表达式
 
-AngularJS的表达式在页面中是以双大括号**{.{ expression }.}**来表示的，大括号里面可以填写文字，表达式，变量等。
+AngularJS的表达式在页面中是以双大括号**(( expression))**来表示的，大括号里面可以填写文字，表达式，变量等。
 
-*注：本文代码块中的AngularJS表达式都用了{.{}.}包围，是为了能够在页面上显示出表达式。*
+***注：由于双大括号会被网页解释导致看不到，所以本文代码块中的AngularJS表达式都用(())表示。***
 
 - 变量：
 
 ```
-<div>合计: "{{sum}}"元</div>
+<div>合计: ((sum))元</div>
 ```
 
 sum变量是从$scope作用域拿的，后面会讲到。
@@ -25,14 +25,14 @@ sum变量是从$scope作用域拿的，后面会讲到。
 - 表达式：
 
 ```
- <p>我的第一个表达式: {.{ 5 + 5 }.}</p>
+ <p>我的第一个表达式: ((5+5))</p>
 ```
 
 - 字符串：
 
 ```
 <div ng-app="" ng-init="firstName='John';lastName='Doe'">
-<p>姓名： {.{ firstName + " " + lastName }.}</p>
+<p>姓名： (( firstName + " " + lastName ))</p>
 </div>
 ```
 
@@ -44,7 +44,7 @@ AngularJS的指令可扩展html属性，AngularJS可通过指令与页面进行�
 
 ```
 <div ng-app="">
-     <p>你输入的为： `{{ 1 + 1 }}`</p>
+     <p>你输入的为： ((1 + 1))</p>
 </div>
 ```
 
@@ -61,7 +61,7 @@ angular.module('myApp', ['ngRoute'])
 
 ```
 <div ng-app="myApp">
-     <p>你输入的为： `{{ 1 + 1 }}`</p>
+     <p>你输入的为： ((1 + 1))</p>
 </div>
 ```
 
@@ -73,7 +73,7 @@ angular.module('myApp', ['ngRoute'])
 <div ng-app="" ng-init="firstName='John'">
      <p>在输入框中尝试输入：</p>
      <p>姓名：<input type="text" ng-model="firstName"></p>
-     <p>你输入的为： `{{ firstName }}`</p>
+     <p>你输入的为： ((firstName))</p>
 </div>
 ```
 
@@ -138,7 +138,7 @@ angular.module('myApp')
             </thead>
             <tbody>
             <tr ng-repeat="t in tableData">
-                <td>`{{t.name}}`</td>
+                <td>((t.name))</td>
             </tr>
             </tbody>
     </table>
@@ -152,7 +152,7 @@ angular.module('myApp')
 
 ```
 <div ng-app="myApp" ng-controller="personCtrl">
-	<p>姓名为 `{{ lastName | uppercase }}`</p>
+	<p>姓名为 ((lastName | uppercase))</p>
 </div>
 ```
 
@@ -164,7 +164,7 @@ angular.module('myApp')
 <div ng-app="myApp" ng-controller="namesCtrl">
     <ul>
       <li ng-repeat="x in names | orderBy:'country'">
-        `{{ x.name + ', ' + x.country }}`
+        ((x.name + ', ' + x.country))
       </li>
     </ul>
 </div>
@@ -189,7 +189,7 @@ angular.module('myApp')
 ```
 <tr>
     <td>积分成本费</td>
-    <td>`{{platformData.provisionsReceivables | AmountIntegralThousandsFormat}}`元</td>
+    <td>((platformData.provisionsReceivables | AmountIntegralThousandsFormat))元</td>
 </tr>
 ```
 
