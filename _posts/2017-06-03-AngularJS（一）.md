@@ -10,14 +10,14 @@ author: zch
 {:toc}
 ### 1. 表达式
 
-AngularJS的表达式在页面中是以双大括号**{{ expression }}**来表示的，大括号里面可以填写文字，表达式，变量等。
+AngularJS的表达式在页面中是以双大括号**{.{ expression }.}**来表示的，大括号里面可以填写文字，表达式，变量等。
 
-*注：本文代码块中的AngularJS表达式都用了``包围，是为了能够在页面上显示出表达式。*
+*注：本文代码块中的AngularJS表达式都用了{.{}.}包围，是为了能够在页面上显示出表达式。*
 
 - 变量：
 
 ```
-<div>合计: `{{sum}}`元</div>
+<div>合计: "{{sum}}"元</div>
 ```
 
 sum变量是从$scope作用域拿的，后面会讲到。
@@ -25,14 +25,14 @@ sum变量是从$scope作用域拿的，后面会讲到。
 - 表达式：
 
 ```
- <p>我的第一个表达式: `{{ 5 + 5 }}`</p>
+ <p>我的第一个表达式: {.{ 5 + 5 }.}</p>
 ```
 
 - 字符串：
 
 ```
 <div ng-app="" ng-init="firstName='John';lastName='Doe'">
-<p>姓名： `{{ firstName + " " + lastName }}`</p>
+<p>姓名： {.{ firstName + " " + lastName }.}</p>
 </div>
 ```
 
