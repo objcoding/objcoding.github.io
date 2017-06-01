@@ -86,7 +86,7 @@ angular.module('myApp')
         }])
 ```
 
-```HTML
+```html
 <div ng-app="myApp">
      <div class="form-group" ng-controller="AppCtrl">
      	 <input type="text" class="form-control" ng-model="shop.name">
@@ -147,9 +147,7 @@ angular.module('myApp')
 ```
 
 ### 5. 过滤器
-
-过滤器在表达式中用 “|  过滤器” 表示：
-
+过滤器在表达式中用竖杠右边加过滤器名字表示：
 ```html
 <div ng-app="myApp" ng-controller="personCtrl">
 	<p>姓名为｛｛lastName | uppercase｝｝</p>
@@ -367,7 +365,7 @@ $http({
 });
 ```
 
-截取一段在项目中的实例：
+摘取一段在项目中的实例：
 
 ```javascript
 function requestTableData() {
@@ -407,7 +405,12 @@ function requestTableData() {
 requestTableData();
 ```
 
+也可以简写成以下形式：
 
+```javascript
+$http.get('/someUrl', config).then(successCallback, errorCallback);
+$http.post('/someUrl', data, config).then(successCallback, errorCallback);
+```
 
 ### 8. 路由
 

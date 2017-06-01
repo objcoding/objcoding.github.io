@@ -59,10 +59,10 @@ package com.crm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication  ------------>开启组件扫描和自动配置
+@SpringBootApplication  // 开启组件扫描和自动配置
 public class WebGatewayApplication {
     public static void main(String[] args) {
-    	SpringApplication.run(WebGatewayApplication.class, args);---->启动引导应用程序
+    	SpringApplication.run(WebGatewayApplication.class, args);// 启动引导应用程序
     }
 }
 ```
@@ -120,7 +120,7 @@ spring.thymeleaf.template-resolver-order=
 	<name>crm</name>
 	<description>crm-system</description>
 
-	<parent> ----------->从spring-boot-starterparent继承版本号
+	<parent> <!-- 从spring-boot-starterparent继承版本号 -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
@@ -133,7 +133,7 @@ spring.thymeleaf.template-resolver-order=
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>---------------->起步依赖
+	<dependencies><!-- 起步依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -173,7 +173,7 @@ spring.thymeleaf.template-resolver-order=
 		</dependency>
 	</dependencies>
 
-	<build>-------------------->运行spring boot插件
+	<build><!-- 运行spring boot插件 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
