@@ -54,7 +54,7 @@ spring boot项目结构如图所示，整个项目结构遵循了maven项目的�
 
 程序清单：
 
-```
+```java
 package com.crm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -73,7 +73,7 @@ public class WebGatewayApplication {
 
 这是我的项目application.properties属性配置：
 
-```
+```properties
 ###### MySQL配置
 spring.datasource.name=test
 spring.datasource.url=jdbc:mysql://localhost:3306/crm?characterEncoding=UTF8
@@ -113,7 +113,7 @@ spring.thymeleaf.template-resolver-order=
 
 我的项目用的是maven作为构建工具，因此用Spring Initializr会生成pom.xml文件，这与创建普通的maven项目一样，代码清单如下：
 
-```
+```xml
 <version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 

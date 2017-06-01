@@ -22,7 +22,7 @@ SpringCloud是一个庞大的分布式系统，它包含了众多模块，其中
 - 在搭建SpringCloud分布式系统前我们需要创建一个注册服务中心，已便监控其余模块的状况。这里需要在pom.xml中引入：
 
 
-```
+```xml
 <dependency>
   <groupId>org.springframework.cloud</groupId>
   <artifactId>spring-cloud-starter-eureka-server</artifactId>
@@ -32,7 +32,7 @@ SpringCloud是一个庞大的分布式系统，它包含了众多模块，其中
 - 并且在SpringBoot主程序中加入@EnableEurekaServer注解：
 
 
-```
+```java
 @EnableEurekaServer
 @SpringCloudApplication
 public class EurekaServerApplication {
@@ -46,7 +46,7 @@ public class EurekaServerApplication {
 - 接下来在SpringBoot的属性配置文件application.properties中如下配置：
 
 
-```
+```properties
 server.port=9100
 eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
@@ -64,7 +64,7 @@ server.port就是你指定注册服务中心的端口号，在启动服务后，
 - 首先在pom.xml中加入：
 
 
-```
+```xml
  <dependency>
    <groupId>org.springframework.cloud</groupId>
    <artifactId>spring-cloud-starter-eureka</artifactId>
@@ -74,7 +74,7 @@ server.port就是你指定注册服务中心的端口号，在启动服务后，
 - 在SpringBoot主程序中加入@EnableDiscoveryClient注解，该注解能激活Eureka中的`DiscoveryClient`实现，才能实现Controller中对服务信息的输出：
 
 
-```
+```java
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WebGatewayApplication {
@@ -87,7 +87,7 @@ public class WebGatewayApplication {
 - 在SpringBoot的属性配置文件application.properties中如下配置：
 
 
-```
+```properties
 spring.application.name=web-gateway
 server.port=9010
 eureka.client.serviceUrl.defaultZone=http://localhost:9100/eureka/
@@ -105,7 +105,7 @@ eureka.instance.leaseRenewalIntervalInSeconds=5
 - 首先在pom.xml中引入一下依赖：
 
 
-```
+```xml
 <dependency>
   <groupId>org.springframework.cloud</groupId>
   <artifactId>spring-cloud-starter-ribbon</artifactId>
@@ -115,7 +115,7 @@ eureka.instance.leaseRenewalIntervalInSeconds=5
 - 然后在spring boot主程序中创建RestTemplate类，并为它加上@LoadBalanced注解开启负载均衡的能力：
 
 
-```
+```java
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WebGatewayApplication {
@@ -137,7 +137,7 @@ RestTemplate类是Spring用于构建Restful服务而提供的一种Rest服务可
 - 在apllication.properties配置文件中配置eureka服务，并注册到服务中心：
 
 
-```
+```properties
 spring.application.name=integral-server
 server.port=9600
 eureka.client.serviceUrl.defaultZone=http://localhost:9100/eureka/
@@ -146,7 +146,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:9100/eureka/
 - 在公司项目中正是通过RestTemplate来访问各个微服务提供的接口，比如在项目中要访问积分系统integral-server，添加积分用户：
 
 
-```
+```java
 JSONObject integralServerResult = restTemplate.postForObject("http://integral-server/shop/add", RequestHandler.getRestRawRequestEntity(integralShopJson), JSONObject.class);
 ```
 这样就可以调用integral-server系统的添加用户的接口实现在别的系统中添加用户了。
@@ -154,7 +154,7 @@ JSONObject integralServerResult = restTemplate.postForObject("http://integral-se
 - 我们也可以在application.properties配置文件中加入：
 
 
-```
+```properties
 ###### Ribbon
 ribbon.ReadTimeout=60000
 ```
@@ -174,7 +174,7 @@ ribbon.ReadTimeout=60000
 - 首先还是在pom.xml中加入以下依赖：
 
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-hystrix</artifactId>
@@ -184,7 +184,7 @@ ribbon.ReadTimeout=60000
 - 在spring boot主程序中加入@EnableCircuitBreaker注解开启断路器模式：
 
 
-```
+```java
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableDiscoveryClient
@@ -219,7 +219,7 @@ There was an unexpected error (type=Internal Server Error, status=500).
 - 我们也可以在application.properties配置文件中加入：
 
 
-```
+```properties
 ## hystrix
 hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 ```
@@ -229,14 +229,14 @@ hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 - 如果不想返回默认的错误响应信息，我们还可以通过自定义来更改错误响应信息，我们需要一个类中注入一个RestTemplate类：
 
 
-```
+```java
  @Autowired
  RestTemplate restTemplate;
 ```
 
 这个类在上面已经通过Spring创建好了，这里直接注入在类中即可，接下来我们在类中写一个方法：
 
-```
+```java
 @HystrixCommand(fallbackMethod = "addServiceFallback")
     public String addService() {
         return restTemplate.postForObject("http://integral-server/shop/add", RequestHandler.getRestRawRequestEntity(integralShopJson), JSONObject.class);
@@ -260,7 +260,7 @@ hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 
 - 要使用zuul，就要引入它的依赖：
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-zuul</artifactId>
@@ -269,7 +269,7 @@ hystrix.commond.default.execution.isolation.thread.timeoutInMilliseconds=60000
 
 - 在spring boot主程序中加入@EnableZuulProxy注解开启zuul：
 
-```
+```java
 @EnableEurekaClient
 @EnableZuulProxy
 @EnableDiscoveryClient
@@ -290,7 +290,7 @@ public class WebGatewayApplication {
 
 - 在application.properties配置文件中配置zuul路由url：
 
-```
+```properties
 spring.application.name=web-gateway
 server.port=9010
 ```
@@ -299,7 +299,7 @@ server.port=9010
 
 - url直接映射：
 
-```
+```properties
 zuul.routes.api-a-url.path=/api-a-url/**
 zuul.routes.api-a-url.url=http://localhost:2222/
 ```
@@ -308,14 +308,13 @@ zuul.routes.api-a-url.url=http://localhost:2222/
 
 - 但是这么做必须得知道所有得微服务得地址，才能完成配置，这时我们可以利用注册到eureka server中的服务id作映射：
 
-```
+```properties
 ###### Zuul配置
 zuul.routes.api-integral.path=/integral/**
 zuul.routes.api-integral.serviceId=integral-server
 
 zuul.routes.api-member.path=/member/**
 zuul.routes.api-member.serviceId=member-server
-
 ```
 
 integral-server和member-server是这俩微服务系统注册到微服务中心得一个serverId，我们通过配置，访问`http://localhost:9010/integual/add?a=1&b=2`，该请求就会访问integral-server系统中得add服务。
@@ -344,7 +343,7 @@ integral-server和member-server是这俩微服务系统注册到微服务中心�
 
 实例程序：
 
-```
+```java
 public class ErrFilter extends ZuulFilter {
     @Override
     public String filterType() {
@@ -380,7 +379,7 @@ public class ErrFilter extends ZuulFilter {
 
 在自定过滤器之后，我们还需要在SpringBoot主程序中加入@EnableZuulProxy注解来开启zuul路由的服务过滤：
 
-```
+```java
 @EnableZuulProxy
 @EnableEurekaClient
 @RibbonClients
