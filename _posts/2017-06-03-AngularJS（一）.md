@@ -193,7 +193,7 @@ angular.module('myApp')
 
 ### 6. 服务
 
-Angular自定义服务有很多个方法，每个方法又有区别，但他们都是＄provide的封装形式。而Angular本身也提供了很多非常优秀的服务，如＄Http，＄scope，＄routeParams，＄q等等，他们有个共同的特征，即前缀都是美元符号＄。
+服务即是可以被注入到可注入的地方的一种依赖，Angular自定义服务有很多个方法，每个方法又有区别，但他们都是＄provide的封装形式。而Angular本身也提供了很多非常优秀的服务，如＄Http，＄scope，＄routeParams，＄q等等，他们有个共同的特征，即前缀都是美元符号＄。
 
 在写自定服务之前，先来讲讲Angular的MVC设计模式，这种模式思想与后台的MVC设计思想如出一致，据说Angular是一位后台开发者为了方便操作前端页面而发明的，所以Angular也参照了后台MVC的分层思想：
 
@@ -414,5 +414,94 @@ $http.post('/someUrl', data, config).then(successCallback, errorCallback);
 
 ### 8. 路由
 
+使用Angular路由可以实现单页面多视图的web应用，它不同于普通的url，如：http://localhost:9010/index/book，我们在Angular需要写成 http://localhost:9010/index#/book的形式，#号后面都是会被浏览器所忽略的这样无论我们请求http://localhost:9010/index#/book，还是http://localhost:9010/index#/computer，访问的都是http://localhost:9010/index而已，Angular路由正是利用了这点，它会识别#号后面的视图，并绑定相应的视图和控制器。
 
+![Angular路由](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/angular1.png)
 
+/book和/computer都有相应视图和控制器，配置如下：
+
+```javascript
+angular.module('myApp', ['ngRoute'])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/book', {
+                templateUrl: '/book.html',
+                controller: 'BookCtrl'
+            })
+            .when('/computer', {
+                templateUrl: '/computer.html',
+                controller: 'ComputerCtrl'
+            })
+        	.otherwise({redirectTo:'/'});
+    }])
+	.controller('indexCtrl', ['$scope', function($scope) {
+      	$scope.title = "my route";
+	}])
+	.controller('BookCtrl', ['$scope', function($scope) {
+      	$scope.book.name = "Thinking in Java";
+      	$scope.book.price = "$19.9";
+	}])
+	.controller('ComputerCtrl', ['$scope', function($scope) {
+      	$scope.computer.name = "HP Pavilion DV4";
+      	$scope.computer.price = "$699";
+	}])
+```
+
+创建Angular应用时需要包含ngRoute路由模块，且还需要载入angular-route.js文件，在congfig程序里注入$routeProvider服务来定义路由规则，路由配置对象语法规则如下：
+
+```javascript
+$routeProvider.when(url, {
+    template: string,// 插入简单的 HTML 内容
+    templateUrl: string,// 插入 HTML 模板文件
+    controller: string,// controller名字
+    controllerAs: string,// controller别名
+    redirectTo: string, function,// 重定向地址
+    resolve: object<key, function>// 指定当前controller所依赖的其他模块。
+});
+```
+
+接下来需要写页面：
+
+- index.html
+
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" ng-app="myApp">
+<head>
+    <meta charset="utf-8" lang="zh">
+    <title>index</title>
+</head>
+<body ng-controller='indexCtrl'>
+    <h2>｛｛ title ｝｝</h2>
+    <ul>
+        <li><a href="#/book">图书资料</a></li>
+        <li><a href="#/computer">计算机资料</a></li>
+    </ul>
+
+    <div ng-view></div>
+
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+</body>
+</html>
+```
+
+- book.html
+
+```html
+<div>
+	bookName: ｛｛book.name｝｝
+	bookPrice: ｛｛book.price｝｝
+</div>
+```
+
+- computer.html
+
+```html
+<div>
+	computerName: ｛｛computer.name｝｝
+	computerPrice: ｛｛computer.price｝｝
+</div>
+```
+
+这里有个很重要的指令：**ng-view**，他会把视图模板的内容都存放在它所在的元素内，也就是说它的内容会随着模板的不同而不同。除了ng-view指令所在的区域会变化之外，index.html其余区域都不会改变，这样就实现了单页面多视图的web应用了。
