@@ -1,9 +1,12 @@
 ---
 layout: post
-title:  "hello, world"
+title: "hello, world"
 categories: 
-tags:  
+tags: 
 author: zch
 ---
+
+* content
+{:toc}
 
 hello, word

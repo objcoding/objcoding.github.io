@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "AngularJS的基本用法"
-categories: FrontEnd
-tags: AngularJS JavaScript
+categories: JavaScript
+tags: AngularJS SPAs
 author: zch
 ---
 
