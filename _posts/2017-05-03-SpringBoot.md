@@ -11,7 +11,7 @@ author: zch
 
 > Spring Boot是由Pivotal团队提供的全新框架，其设计目的是**用来简化新Spring应用的初始搭建以及开发过程**。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域（rapid application development）成为领导者的。
 
-### 1. 自动配置
+## 1. 自动配置
 
 在我们使用传统的spring开发一个web应用程序通常会想到一些基本的需要：
 
@@ -21,17 +21,17 @@ author: zch
 
 以上的这些仅仅只是进本的需求，无论是开发一个大型项目或者只是一个hello word程序，都需要配置几乎同等的配置文件，既然这些都是通用的东西，那有什么东西可以把这些给自动配置了呢？这时候springboot的自动配置功能就派上用场了，springboot会为这些常用的配置进行自动配置。这些自动配置涉及很多方面，比如：java持久化api，各种web模板，springMVC等等。
 
-### 2. 起步依赖
+## 2. 起步依赖
 
 平时我们使用maven创建一个web项目的时候，常常需要想项目需要哪些包，以及包的版本。但是在springboot创建web应用的时候，你只需你只需添加springboot的Web起步依赖（org.springframework.boot:spring-boot-starter-web）。它会根据依赖传递把其他所需依赖引入项目里突。
 
 而其它你需要的功能，你只需要引入相关的的起步依赖即可。
 
-### 3. 内嵌Servlet容器
+## 3. 内嵌Servlet容器
 
 其实springboot并不是一个应用服务器，它之所以可以运行web应用程序，是因为其内部已经内嵌了一个Servlet容器（Tomcat、Jetty或Undertow），其运行原理是把web应用直接打包成为一个jar/war，然后这个jar/war是可以直接启动的，不需要另外配置一个Web Server。相关的embed类就是它的依赖包。
 
-### 4. 使用Spring Initializr构建springboot应用程序
+## 4. 使用Spring Initializr构建springboot应用程序
 
 本文使用的是intellij idea中的Spring Initializr工具创建springboot应用程序。
 
@@ -48,7 +48,7 @@ spring boot项目结构如图所示，整个项目结构遵循了maven项目的�
 - ReadingListApplicationTests.java：一个基本的集成测试类。
 - banner.txt：spring boot应用程序启动时加载的文件。
 
-#### 4.1 启动引导Spring
+### 4.1 启动引导Spring
 
 前面我们看到的WebGatewayApplication.java在springboot应用程序中主要有两个作用：配置和启动引导。而也是Spring的主要配置类。虽然springboot的自动配置免除了很多Spring配置，但你还需要进行少量配置来启用自动配置。
 
@@ -67,7 +67,7 @@ public class WebGatewayApplication {
 }
 ```
 
-#### 4.2 配置应用程序属性
+### 4.2 配置应用程序属性
 
 用Spring Initializr生成的application.properties文件只是一个空文件，它可以删除完全不影响应用程序的运行，但是，如果你想修改应用程序的属性，你就得在里面配置相关属性了，比如你在里面配置了server.port=9010，嵌入是的tomcat服务器的监听端口就不是默认的8080了，变成了9010。而且这个属性文件是自动被加载的。
 
@@ -109,7 +109,7 @@ spring.thymeleaf.suffix=.html
 spring.thymeleaf.template-resolver-order=
 ```
 
-#### 4.3 构建过程解释
+### 4.3 构建过程解释
 
 我的项目用的是maven作为构建工具，因此用Spring Initializr会生成pom.xml文件，这与创建普通的maven项目一样，代码清单如下：
 
