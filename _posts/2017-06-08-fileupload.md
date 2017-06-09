@@ -169,3 +169,207 @@ public class UpLoadController {
 
 ![源码大致流程](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/fileupload.png)
 
+## 2.4 源码
+
+### 2.4.1 public abstract class FileUploadBase相关源码
+
+```java
+// 创建解析方法
+public List<FileItem> parseRequest(HttpServletRequest req)
+    throws FileUploadException {
+        return parseRequest(new ServletRequestContext(req));
+    }
+
+```
+
+```java
+public List<FileItem> parseRequest(RequestContext ctx)
+            throws FileUploadException {
+        List<FileItem> items = new ArrayList<FileItem>();
+        boolean successful = false;
+        try {
+            FileItemIterator iter = getItemIterator(ctx);
+            FileItemFactory fac = getFileItemFactory();//依赖表单工厂
+            if (fac == null) {
+                throw new NullPointerException("No FileItemFactory has been set.");
+            }
+            while (iter.hasNext()) {
+                final FileItemStream item = iter.next();
+                // Don't use getName() here to prevent an InvalidFileNameException.
+                final String fileName = ((FileItemIteratorImpl.FileItemStreamImpl) item).name;
+                // 使用表单工厂创建表单项
+                FileItem fileItem = fac.createItem(item.getFieldName(), item.getContentType(),
+                                                   item.isFormField(), fileName);
+                items.add(fileItem);
+                try {
+                     //把数据写在硬盘缓存区
+                    Streams.copy(item.openStream(), fileItem.getOutputStream(), true);
+                } catch (FileUploadIOException e) {
+                    throw (FileUploadException) e.getCause();
+                } catch (IOException e) {
+                    throw new IOFileUploadException(format("Processing of %s request failed. %s",
+                                                           MULTIPART_FORM_DATA, e.getMessage()), e);
+                }
+                final FileItemHeaders fih = item.getHeaders();
+                fileItem.setHeaders(fih);
+            }
+            successful = true;
+            return items;
+        } catch (FileUploadIOException e) {
+            throw (FileUploadException) e.getCause();
+        } catch (IOException e) {
+            throw new FileUploadException(e.getMessage(), e);
+        } finally {
+            if (!successful) {
+                for (FileItem fileItem : items) {
+                    try {
+                        fileItem.delete();
+                    } catch (Throwable e) {
+                        // ignore it
+                    }
+                }
+            }
+        }
+    }
+```
+
+*注：ServletFileUpload继承FileUploadBase*
+
+### 2.4.2 DiskFileItemFactory源码
+
+```java
+// 创建表单项
+public FileItem createItem(String fieldName, String contentType,
+            boolean isFormField, String fileName) {
+        DiskFileItem result = new DiskFileItem(fieldName, contentType,
+                isFormField, fileName, sizeThreshold, repository);
+        FileCleaningTracker tracker = getFileCleaningTracker();
+        if (tracker != null) {
+            tracker.track(result.getTempFile(), result);
+        }
+        return result;
+    }
+
+```
+
+### 2.4.3 DiskFileItem源码
+
+```java
+public void write(File file) throws Exception {
+        if (isInMemory()) {
+            FileOutputStream fout = null;
+            try {
+                fout = new FileOutputStream(file);
+                fout.write(get());
+            } finally {
+                if (fout != null) {
+                    fout.close();
+                }
+            }
+        } else {
+          	//获得缓存文件地址
+            File outputFile = getStoreLocation(); 
+            if (outputFile != null) {
+                // Save the length of the file
+                size = outputFile.length();
+                /*
+                 * The uploaded file is being stored on disk
+                 * in a temporary location so move it to the
+                 * desired file.
+                 */
+                if (!outputFile.renameTo(file)) {
+                    BufferedInputStream in = null;
+                    BufferedOutputStream out = null;
+                    try {
+                         //把缓存数据写到指定文件中
+                        in = new BufferedInputStream(
+                            new FileInputStream(outputFile));
+                        out = new BufferedOutputStream(
+                                new FileOutputStream(file));
+                        IOUtils.copy(in, out);
+                    } finally {
+                        if (in != null) {
+                            try {
+                                in.close();
+                            } catch (IOException e) {
+                                // ignore
+                            }
+                        }
+                        if (out != null) {
+                            try {
+                                out.close();
+                            } catch (IOException e) {
+                                // ignore
+                            }
+                        }
+                    }
+                }
+            } else {
+                /*
+                 * For whatever reason we cannot write the
+                 * file to disk.
+                 */
+                throw new FileUploadException(
+                    "Cannot write uploaded file to disk!");
+            }
+        }
+    }
+
+```
+
+```java
+ //获得把缓存数据写到硬盘的输出流
+ public OutputStream getOutputStream()
+        throws IOException {
+        if (dfos == null) {
+        	//获取临时文件地址
+            File outputFile = getTempFile(); 
+            dfos = new DeferredFileOutputStream(sizeThreshold, outputFile);
+        }
+        return dfos;
+    }
+
+```
+
+```java
+public InputStream getInputStream()
+        throws IOException {
+        if (!isInMemory()) {
+            return new FileInputStream(dfos.getFile());
+        }
+
+        if (cachedContent == null) {
+            cachedContent = dfos.getData();
+        }
+        return new ByteArrayInputStream(cachedContent);
+    }
+
+```
+
+```java
+protected File getTempFile() {
+        if (tempFile == null) {
+            File tempDir = repository;
+            if (tempDir == null) {
+                tempDir = new File(System.getProperty("java.io.tmpdir"));
+            }
+
+            String tempFileName = format("upload_%s_%s.tmp", UID, getUniqueId());
+
+            tempFile = new File(tempDir, tempFileName);
+        }
+        return tempFile;
+    }
+
+```
+
+```java
+public File getStoreLocation() {
+        if (dfos == null) {
+            return null;
+        }
+        return dfos.getFile();
+    }
+
+```
+
