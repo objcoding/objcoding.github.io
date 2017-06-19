@@ -22,3 +22,83 @@ ApplicationContextAware接口只有一个方法，如果实现了这个方法，
 
 ## 2. 配置Spring的XML配置
 
+我们需要在web项目启动的时候就启动Spring容器，所以需要在web.xml中配置Spring监听器：
+
+```xml
+<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+```
+
+只会读取默认路径下Bean的application.xml配置文件的,如果需要读取特定路径下的配置文件,需要在web.xml中自定义配置：
+
+```xml
+<context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath:config/spring/spring.xml</param-value>
+</context-param>
+```
+
+## 3. 创建AppUtil类
+
+创建AppUtil并实现ApplicationContextAware接口：
+
+```java
+public class AppUtil implements ApplicationContextAware {
+
+  private static ApplicationContext applicationContext = null;
+
+  @Override
+  public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    if (SpringBootUtil.applicationContext == null) {
+      SpringBootUtil.applicationContext = applicationContext;
+    }
+  }
+  
+  //获取applicationContext
+  public static ApplicationContext getApplicationContext() {
+    return applicationContext;
+  }
+
+  //通过name获取 Bean.
+  public static Object getBean(String name) {
+    return getApplicationContext().getBean(name);
+  }
+
+  //通过class获取Bean.
+  public static <T> T getBean(Class<T> clazz) {
+    return getApplicationContext().getBean(clazz);
+  }
+  
+  /**
+     * 同步方法注册bean到ApplicationContext中
+     *
+     * @param beanName
+     * @param clazz
+     * @param original bean的属性值
+     */
+  public static synchronized void setBean(String beanName, Class<?> clazz, Map<String,Object> original) {
+    checkApplicationContext();
+    DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getAutowireCapableBeanFactory();
+    if(beanFactory.containsBean(beanName)){
+      return;
+    }
+    //BeanDefinition beanDefinition = new RootBeanDefinition(clazz);
+    GenericBeanDefinition definition = new GenericBeanDefinition();
+    //类class
+    definition.setBeanClass(clazz);
+    //属性赋值
+    definition.setPropertyValues(new MutablePropertyValues(original));
+    //注册到spring上下文
+    beanFactory.registerBeanDefinition(beanName, definition);
+  }
+  
+}
+```
+
+最后我们需要把AppUtil作为普通的Bean注入到Spring容器中，需要在application.xml中配置：
+
+```xml
+<bean id="appUtil" class="com.util.AppUtil"/>
+```
+
