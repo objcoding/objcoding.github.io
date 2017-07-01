@@ -2,7 +2,7 @@
 layout: post
 title: "SpringMVC处理请求过程"
 categories: Java
-tags: Spring Controller MVC
+tags: Spring MVC
 author: zch
 ---
 

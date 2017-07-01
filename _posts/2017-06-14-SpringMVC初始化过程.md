@@ -2,7 +2,7 @@
 layout: post
 title: "SpringMVC初始化过程"
 categories: Java
-tags: Spring Controller MVC
+tags: Spring MVC
 author: zch
 ---
 
