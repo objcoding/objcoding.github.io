@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "hello, world"
+title: "hello, blog"
 categories: 
 tags: 
 author: zch
@@ -9,4 +9,8 @@ author: zch
 * content
 {:toc}
 
-hello, word
+hello, blog
+
+
+
+
