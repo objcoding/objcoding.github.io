@@ -10,9 +10,9 @@ layout: default
         <ul>
             {% for post in paginator.posts %}
               <li>
-                <h2>
+                <h3>
                   <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                </h2>
+                </h3>
                 <div class="label">
                     <div class="label-card">
                         <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
