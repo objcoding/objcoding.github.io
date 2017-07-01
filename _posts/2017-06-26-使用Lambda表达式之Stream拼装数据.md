@@ -12,6 +12,10 @@ author: zch
 
 这时候，我想到了Collection的Stream API，再结合Lambda表达式，解决拼装数据再完美不过了。
 
+
+
+
+
 假设有个商户实体类：
 
 ```java

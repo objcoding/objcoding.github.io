@@ -8,11 +8,17 @@ author: zch
 
 * content
 {:toc}
-## 1. commons-fileupload API
-
 这个小组件，它会帮我们解析request中的上传数据，解析后的结果是一个表单项数据封装到一个FileItem对象中。我们只需要调用FileItem的方法即可。
 
-### 1.1 Maven依赖
+
+
+
+
+
+
+
+
+## Maven依赖
 
 ```xml
 <dependency>
@@ -22,19 +28,19 @@ author: zch
 </dependency>
 ```
 
-### 1.2 相关类
+## 相关类
 
 - 工厂：DiskFileItemFactory
 - 解析器：ServletFileUpload
 - 表单项：FileItem
 
-### 1.3上传三大步
+## 上传三大步
 
 1.  创建工厂：`DiskFileItemFactory factory = new DiskFileItemFactory();`
 2.  创建解析器：`ServletFileUpload sfu = new ServletFileUpload(factory);`
 3.  使用解析器解析request：`List<FileItem> fileItemList = sfu.parseRequest(request);`
 
-### 1.4 FileItem API
+## FileItem API
 
 ```java
 boolean isFormField();// 是否为普通表单项！返回true为普通表单项，如果为false即文件表单项！
@@ -47,13 +53,13 @@ void write(File destFile);// 把上传的文件内容保存到指定的文件中
 String getContentType();
 ```
 
-### 1.5 需要注意的一些上传细节
+### 需要注意的一些上传细节
 
-#### 1.5.1 保存地址
+#### 保存地址
 
 上传到服务器的地址最好是在WEB-INF下，因为这个目录浏览器是访问不到的
 
-#### 1.5.2 文件名称相关问题
+#### 文件名称相关问题
 
 - 有的浏览器上传的文件名是绝对路径，这需要切割！C:\files\baibing.jpg
 
@@ -68,7 +74,7 @@ String filename = fi2.getName();
 - 文件名乱码或者普通表单项乱码：`request.setCharacterEncoding("utf-8");`因为fileupload内部会调用`request.getCharacterEncoding();`   > `request.setCharacterEncoding("utf-8");`//优先级低`servletFileUpload.setHeaderEncoding("utf-8");`//优先级高
 - 文件同名问题；我们需要为每个文件添加名称前缀，这个前缀要保证不能重复。uuid    > `filename = CommonUtils.uuid() + "_" + filename;`
 
-#### 1.5.3 目录打散
+#### 目录打散
 
 不能在一个目录下存放之多文件：
 
@@ -76,20 +82,20 @@ String filename = fi2.getName();
 * 时间打散：使用当前日期做为目录；
 * 哈希打散：1. 通过文件名称得到int值，即调用hashCode()；2. 它int值转换成16进制0~9, A~F；3.  获取16进制的前两位用来生成目录，目录为二层！例如：1B2C3D4E5F，/1/B/保存文件。
 
-#### 1.5.4 上传文件的大小限制
+#### 上传文件的大小限制
 
 * 单文件上传大小控制：`sfu.setFileSizeMax(100*1024)：`限制单个文件大小为100KB（必须在解析开始之前调用）
 * 整个请求大写控制：`sfu.setSizeMax(1024 * 1024);`//限制整个表单大小为1M
 
-#### 1.5.5 缓存大小与临时目录
+#### 缓存大小与临时目录
 
 * 缓存大小：超出多大，才向硬盘保存！默认为10KB;
 * 临时目录：向硬盘的什么目录保存;
 * 设置缓存大小与临时目录：`new DiskFileItemFactory(20*1024, new File("F:/temp"));`
 
-## 2. 实战演练
+## 实战演练
 
-### 2.1 请求表单
+### 请求表单
 
 ```html
 <form action="xxx" method="post" enctype="multipart/form-data">
@@ -107,7 +113,7 @@ String filename = fi2.getName();
 
 *注：request.getParametere("xxx");这个方法在表单为enctype="multipart/form-data"时，它作废了。它永远都返回null ，ServletInputStream request.getInputStream();包含整个请求的体！*
 
-### 2.2 后台处理
+### 后台处理
 
 ```java
 @Controller
@@ -165,13 +171,13 @@ public class UpLoadController {
 }
 ```
 
-## 2.3 总结
+## 总结
 
 ![源码大致流程](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/fileupload.png)
 
-## 2.4 源码
+## 源码
 
-### 2.4.1 public abstract class FileUploadBase相关源码
+### public abstract class FileUploadBase相关源码
 
 ```java
 // 创建解析方法
@@ -235,7 +241,7 @@ public List<FileItem> parseRequest(RequestContext ctx)
 
 *注：ServletFileUpload继承FileUploadBase*
 
-### 2.4.2 DiskFileItemFactory源码
+### DiskFileItemFactory源码
 
 ```java
 // 创建表单项
@@ -252,7 +258,7 @@ public FileItem createItem(String fieldName, String contentType,
 
 ```
 
-### 2.4.3 DiskFileItem源码
+### DiskFileItem源码
 
 ```java
 public void write(File file) throws Exception {
