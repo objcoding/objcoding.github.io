@@ -28,7 +28,7 @@ synchronized主要为线程提供同步功能，而volatile主要是设置参数
 public synchronized void test(int testVal);
 ```
 
-
+相当于在该方法加了把锁，一旦有有线程执行该方法，该线程就会独占这把锁，
 
 
 
