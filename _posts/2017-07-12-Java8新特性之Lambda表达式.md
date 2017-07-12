@@ -12,10 +12,10 @@ author: zch
 
 ```java
 new Thread(new Runnable(){
-             public void run(){
-                System.out.println("帅比辉");
-             }
-        };
+  public void run(){
+    System.out.println("帅比辉");
+  }
+};
 ).start();
 ```
 
@@ -23,7 +23,7 @@ new Thread(new Runnable(){
 
 ```java
 new Thread(() -> {
-		System.out.println("帅比辉");
+  System.out.println("帅比辉");
 }).start();
 ```
 
