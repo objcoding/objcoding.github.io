@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "浅谈多线程中的synchronized和volatile关键字"
-categories: JavaSE/EE
+categories: JavaSE
 tags: 多线程 synchronized volatile
 author: zch
 ---
