@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "使用Collection的Stream拼装数据"
-categories: Java
+categories: JavaSE/EE
 tags: Java8 Lambda Collection Stream
 author: zch
 ---

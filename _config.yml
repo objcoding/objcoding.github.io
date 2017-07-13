@@ -1,4 +1,4 @@
-# Welcome to Jekyll!
+﻿# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely need to edit after that.
@@ -7,7 +7,7 @@
 
 # Site settings
 title: zch
-brief-intro: Full Stack Dev
+brief-intro: 人生如逆旅，我亦是行人
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://zchdjb.github.io" # the base hostname & protocol for your site
 
@@ -23,7 +23,7 @@ zhihu_username:
 linkedIn_username: 
 dribbble_username:
 
-description_footer: 全栈之旅！
+description_footer: 
 
 # comments
 # two ways to comment, only choose one, and use your own short name

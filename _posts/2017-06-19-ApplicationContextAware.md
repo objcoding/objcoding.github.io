@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ApplicationContextAware的作用"
-categories: Java
+categories: JavaSE/EE
 tags: Spring
 author: zch
 ---

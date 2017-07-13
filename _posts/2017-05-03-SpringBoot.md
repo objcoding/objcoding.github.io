@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "SpringBoot构建web项目"
-categories: Java
+categories: JavaSE/EE
 tags:  Spring SpringBoot
 author: zch
 ---

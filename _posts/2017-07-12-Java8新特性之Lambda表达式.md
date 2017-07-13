@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Java8新特性之Lambda表达式"
-categories: Java
+categories: JavaSE/EE
 tags: Java8 Lambda
 author: zch
 ---
@@ -23,11 +23,11 @@ new Thread(new Runnable(){
 
 ```java
 new Thread(() -> {
-  System.out.println("帅比辉");
+  System.out.println("傻比罗");
 }).start();
 ```
 
-look，像上面写是不是很紧凑，是不是很喜欢，是不是看得有点懵逼？别急，接下来慢慢讲解：
+
 
 
 
@@ -136,7 +136,7 @@ public interface Consumer<T> {
 
 ```java
 Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
-greeter.accept(new Person("Luke", "Skywalker"));
+greeter.accept(new Person("傻狗", "罗小狗"));
 ```
 
 
@@ -147,7 +147,7 @@ Java8自带还有很多这样的函数式接口，这里就不一一介绍了。
 
 我们也可以自定以一个函数式接口：
 
-```
+``` java
 @FunctionalInterface
 public interface MyFunction<T> {
     T get(T t);
@@ -162,17 +162,28 @@ MyFunction<Integer> function = (t) -> 100 * t;
 
 ## 语法
 
+从上面例子中可看到，Lambda表达式的基本语法：
 
+```java
+(parameters) -> expression
+```
 
+或者是语句块：
 
+```java
+(parameters) -> { statements; }
+```
+
+lambda表达式的语法由参数列表、箭头符号`->`和函数体组成，而函数体可以是表达式也可以是语句块，其中，parameters表示接口方法的参数，如果没有指定类型，会根据上下文自动推断其类型：
+
+- 表达式：可以被执行并返回其结果值，这相当于默认是匿名方法中return的内容；
+- 语句块：按顺序执行语句块中的内容，如果有return返回值，则会交给匿名方法去调用。
+
+现在我们知道了其实Lambda表达式就是简便了我们实现接口（该接口只能有一个抽象方法）的写法而已。
 
 
 
 ## 方法引用
-
-
-
-
 
 其实把Function那个实例改成方法引用更为恰当：
 
@@ -182,3 +193,7 @@ Function<String, String> backToString = toInteger.andThen(String::valueOf);
 backToString.apply("123");
 ```
 
+方法引用又是Lambda表达式的一种简化写法，其基本写法是左边是类名称，右边是方法，主要分为：
+
+1. 方法引用：`ClassName::methodName`
+2. 构造方法引用：`Class::new`
