@@ -37,8 +37,8 @@ gitalk:
   clientID: aec27b6593196be5b9a9
   clientSecret: 5fad39e9fb1b78a28c168884acf06ced5e5575c5
   repo: Blog_comments    #仓库名称
-  owner: zch    #github用户名
-  admin: zch
+  owner: zchdjb    #github用户名
+  admin: zchdjb
   distractionFreeMode: true
 
 
