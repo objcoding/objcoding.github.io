@@ -29,7 +29,18 @@ description_footer:
 # two ways to comment, only choose one, and use your own short name
 # 两种评论插件，选一个就好了，使用自己的 short_name
 duoshuo_shortname: #zchblog
-disqus_shortname: zch
+disqus_shortname: #zch
+
+# Gitalk
+gitalk: 
+  enable: true    #用来做启用判断可以不用
+  clientID: aec27b6593196be5b9a9
+  clientSecret: 5fad39e9fb1b78a28c168884acf06ced5e5575c5
+  repo: Blog_comments    #仓库名称
+  owner: zch    #github用户名
+  admin: zch
+  distractionFreeMode: true
+
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
