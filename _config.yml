@@ -36,7 +36,7 @@ gitalk:
   enable: true    #用来做启用判断可以不用
   clientID: aec27b6593196be5b9a9
   clientSecret: 5fad39e9fb1b78a28c168884acf06ced5e5575c5
-  repo: zchdjb.github.io    #仓库名称
+  repo: Blog_comments    #仓库名称
   owner: zchdjb    #github用户名
   admin: zchdjb
   distractionFreeMode: true
