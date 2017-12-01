@@ -34,8 +34,8 @@ disqus_shortname: #zch
 # Gitalk
 gitalk: 
   enable: true    #用来做启用判断可以不用
-  clientID: aec27b6593196be5b9a9
-  clientSecret: 5fad39e9fb1b78a28c168884acf06ced5e5575c5
+  clientID: 761d4cebe16b95a29801
+  clientSecret: 35adf9ec70f6b4a11356da6b076565e7ef630681
   repo: Blog_comments    #仓库名称
   owner: zchdjb    #github用户名
   admin: zchdjb
