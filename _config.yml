@@ -21,7 +21,7 @@ email: zchdjb@foxmail.com
 weibo_username: 
 zhihu_username: 
 linkedIn_username: 
-dribbble_username:
+dribbble_username: 
 
 description_footer: 
 
@@ -41,7 +41,7 @@ google_analytics_id: UA-72449510-4 # google 分析追踪id
 # Build settings
 markdown: kramdown
 
-kramdown:
+kramdown: 
   input: GFM
   syntax_highlighter: rouge
 
