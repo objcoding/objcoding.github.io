@@ -6,14 +6,22 @@
         <p class="description">
             {% if site.description_footer %} {{site.description_footer}} {% endif %}
         </p>
+        <p class="contact">
+            Contact me at: {% if site.github_username %}
+            <a href="https://github.com/{{site.github_username}}" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> {% endif %} {% if site.email %}
+            <a href="mailto:{{site.email}}" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> {% endif %} {% if site.weibo_username %}
+            
+            <!-- <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" title="Zhihu"><i class="iconfont icon-daoruzhihu"></i></a> {% endif %} {% if site.twitter_username %} -->
+            
+        </p>
         <p>
             本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
         </p>
-        <p class="power">
+        <!-- <p class="power">
             <span>
                 <a href="https://github.com/zchdjb"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
             </span>
-        </p>
+        </p> -->
     </div>
 </footer>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
