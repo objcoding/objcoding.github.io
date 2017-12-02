@@ -9,15 +9,15 @@
 title: zch
 brief-intro: 人生如逆旅，我亦是行人
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://zchdjb.github.io" # the base hostname & protocol for your site
+url: "https://zhangchenghuidev.github.io" # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
 
 # other links
 twitter_username: 
 facebook_username: 
-github_username: zchdjb
-email: zchdjb@foxmail.com
+github_username: zhangchenghuidev
+email: zhangchenghui.dev@gmail.com
 weibo_username: 
 zhihu_username: 
 linkedIn_username: 
@@ -37,8 +37,8 @@ gitalk:
   clientID: 761d4cebe16b95a29801
   clientSecret: 35adf9ec70f6b4a11356da6b076565e7ef630681
   repo: blog-comments    #仓库名称
-  owner: zchdjb    #github用户名
-  admin: zchdjb
+  owner: zhangchenghuidev    #github用户名
+  admin: zhangchenghuidev
   distractionFreeMode: true
 
 
