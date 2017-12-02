@@ -9,7 +9,7 @@
 title: zch
 brief-intro: 人生如逆旅，我亦是行人
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://zhangchenghuidev.github.io" # the base hostname & protocol for your site
+url: "https://zhangchenghuidev.github.io"  # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
 
