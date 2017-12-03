@@ -7,7 +7,7 @@
 
 # Site settings
 title: zch
-brief-intro: 人生如逆旅，我亦是行人
+brief-intro: Back-end Dev
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://zhangchenghuidev.github.io"  # the base hostname & protocol for your site
 
