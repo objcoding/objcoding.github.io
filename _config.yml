@@ -7,7 +7,7 @@
 
 # Site settings
 title: zch
-brief-intro: Back-end Dev
+brief-intro: 每一步成长都想与你分享
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://zhangchenghuidev.github.io"  # the base hostname & protocol for your site
 
