@@ -10,13 +10,16 @@ type: page
 {:toc}
 
 
-## 工作经历
+## Experience
 
 【2017.7-至今】 广州知识圈网络科技有限公司, Java服务端工程师
 
 【2017.2-2017.7】 广州卓术信息科技有限公司, Java开发工程师
 
-【2012.9-2016.7】 华南理工大学广州学院机械工程学院, 机械工程及自动化专业
 
 
+## Contact me
 
+- Email: zhangchenghui.dev@gmail.com
+- Github: https://github.com/zhangchenghuidev/
+- 微信公众号：![后端探险之路](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/qrcode_for_gh_9705bbb4f3c1_258.jpg)
