@@ -8,3 +8,169 @@ author: zch
 
 * content
 {:toc}
+制作镜像一般有三种方法，第一种是 run 一个基础容器，在里面下载好我们需要的东西，然后通过 docker commit命令生成一个新的镜像，第二种方法是基于本地模版导入，第三种就是这篇文章说的基于 Dockerfile 创建。
+
+
+
+
+
+
+
+## 结构
+
+Dockerfile 大概可以分为四部分：基础镜像信息、维护者信息、操作指令、容器启动时执行的命令。
+
+基础镜像信息指定了 Dockerfile 生成的镜像是基于哪个基础镜像的，且第一行必须需要用 FROM 指令指定基础镜像，操作者信息是为了让使用者知道这个镜像的作者的信息，操作指令是在基础镜像的基础中添加一些新的配置和资源，需要用到 Dockerfile 的指令，容器启动时执行的命令是在容器启动完成后立即执行的命令，一般来说，这个容器的任务就是这条执行命令，结构如下所示：
+
+```dockerfile
+
+# 指定基础镜像
+FROM centos
+
+# 维护者信息
+MAINTAINER zhangchenghui zhangchenghui.dev@gmail.com
+
+# 操作指令
+RUN yum update && yum install tomcat
+
+# 容器启动时执行命令
+CMD ["sh", "/run.sh"]
+
+
+```
+
+
+
+## 指令
+
+### FROM
+
+这个命令是每个 Dockerfile 必备的，且必须在第一行，格式为：
+
+```dockerfile
+FROM <image id> 或 FROM <image>:<tag>
+```
+
+
+
+### RUN
+
+每个 run 相当于一次 docker commit，就是说每执行一次 run，都在当前镜像的基础上 commit 一个新的镜像，因此尽量把命令集中用 run 执行一次，免得生成过多的镜像，同时执行多个命令时可以用 && 连接起来，如果太长了也可以用 \ 换行，格式为：
+
+```dockerfile
+RUN <command> 或 RUN [ "sh", "/run.sh" ]
+```
+
+
+
+### CMD  &&  ENTRYPOINT
+
+为什么要将这两个指令放一起讲呢，因为他们有千丝万缕的关系，剪不断理还乱，ENTRYPOINT 可以说包括了 CMD，两者都有 exec 格式和 shell 格式，比如：
+
+
+
+
+
+
+
+### EXPOSE
+
+这个没啥好说的，用于向宿主机暴露容器中的端口，格式为 ：
+
+```dockerfile
+EXPOSE <prot> 
+```
+
+### ENV
+
+其实这个也没啥好说的，定位 Dockerfile 中的环境变量，格式为：
+
+```dockerfile
+ENV <key> <value>
+```
+
+
+
+### ADD &&  COPY
+
+这两个指令可以将 Dockerfile 的相对路径的资源，复制到镜像中，当目标路径不存在会自动创建，格式为：
+
+```dockerfile
+ADD <src> <test>
+COPY <src> <test>
+```
+
+两个指令唯一区别是 ADD 可以指定一条 URL 当作资源，而 COPY 只能是 Dockerfile 的相对路径。
+
+
+
+### VOLUME
+
+
+
+
+
+### WORKDIR
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 实战
+
+
+
+
+
+```dockerfile
+from tomcat
+
+MAINTAINER zhangchenghui zhangchenghui.dev@gamil.com
+
+ENV WORKSPACE /usr/local/tomcat
+
+WORKDIR $WORKSPACE
+
+COPY sample/webapps webapps
+
+Run echo '<h1>hello, docker</h1>' > webapps/index.html
+
+VOLUME [ "/data" ]
+
+EXPOSE 8080 80
+
+CMD [ "sh", "bin/catalina.sh" ]
+```
+
+
+
+
+
+
+
+```bash
+docker build -t myweb:v4 .
+```
+
+
+
+![docker build](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/dockerfile.png)
+
+查看列表，刚刚利用 dockerfile 生成的镜像就有了：
+
+![docker images](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/dockerfile2.png)
+
+
+
+
+
+
+
