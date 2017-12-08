@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "解决fastJson循环引用的问题"
-categories: JavaEE
+categories: Java
 tags: json
 author: zch
 ---

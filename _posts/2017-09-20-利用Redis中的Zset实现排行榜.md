@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "利用Redis中的Zset实现排行榜"
-categories: 数据库
+categories: Redis
 tags: Redis Zset
 author: zch
 ---

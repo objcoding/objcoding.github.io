@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Java8新特性之Lambda表达式"
-categories: JavaSE
+categories: Java
 tags: Java8 Lambda
 author: zch
 ---

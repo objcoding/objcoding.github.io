@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "使用Apache的Fileupload工具实现文件上传"
-categories: JavaEE
+categories: Tools
 tags: 文件上传 Apache Fileupload IO
 author: zch
 ---

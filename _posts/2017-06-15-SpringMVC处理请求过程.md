@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SpringMVC处理请求过程"
-categories: JavaEE
+categories: Spring
 tags: Spring MVC
 author: zch
 ---
