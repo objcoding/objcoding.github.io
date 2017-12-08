@@ -2,7 +2,7 @@
 layout: post
 title: "利用Redis中的List实现消息队列"
 categories: Redis
-tags: Redis 消息队列
+tags: Redis 消息队列 List
 author: zch
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SpringMVC初始化过程"
-categories: Spring
+categories: SpringMVC
 tags: Spring MVC
 author: zch
 ---

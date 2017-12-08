@@ -2,7 +2,7 @@
 layout: post
 title: "JavaScript原型链"
 categories: JavaScript
-tags: 
+tags: prototype
 author: zch
 ---
 
