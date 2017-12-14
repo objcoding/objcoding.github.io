@@ -2,7 +2,7 @@
 layout: post
 title:  "SpringCloud微服务架构之服务网关"
 categories: SpringCloud
-tags: SpringCloud 微服务
+tags: Zuul
 author: zch
 ---
 
