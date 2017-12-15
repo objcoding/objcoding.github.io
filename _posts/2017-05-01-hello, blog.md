@@ -9,7 +9,7 @@ author: zch
 * content
 {:toc}
 
-hello, blog
+从今天开始，我会在这里分享一些我的工作和学习总结。
 
 
 
