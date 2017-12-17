@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "设计一个简易的MQ"
+title: "一个简易的MQ"
 categories: Redis
 tags: MQ List
 author: zch

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "设计积分排行榜"
+title: "积分排行榜"
 categories: Redis
 tags: Zset
 author: zch
