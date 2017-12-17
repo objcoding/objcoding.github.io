@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "积分排行榜"
+title: "用Redis实现积分排行榜"
 categories: Redis
 tags: Zset
 author: zch
