@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "利用Redis中的List实现消息队列"
+title: "设计一个简易的MQ"
 categories: Redis
-tags: Redis 消息队列 List
+tags: MQ List
 author: zch
 ---
 

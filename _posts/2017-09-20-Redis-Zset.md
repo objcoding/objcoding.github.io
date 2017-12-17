@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "利用Redis中的Zset实现排行榜"
+title: "设计积分排行榜"
 categories: Redis
-tags: Redis Zset
+tags: Zset
 author: zch
 ---
 
