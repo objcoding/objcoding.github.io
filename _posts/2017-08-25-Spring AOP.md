@@ -16,6 +16,10 @@ Spring的面向切面编程可以完美解决。面向切面编程指的是在�
 
 
 
+
+
+
+
 ## AOP的一些相关概念
 
 - 切面（Aspect）：是切入点和通知的结合；
@@ -36,6 +40,30 @@ Spring的面向切面编程可以完美解决。面向切面编程指的是在�
 - 第二个星号表示类名不限；
 - 第三个星号表示方法名不限；
 - 圆括号中的 .. 表示任意个数、类型不限的形参。
+
+
+
+## AOP增强处理方法
+
+### 前置增强（Before）
+
+
+
+### 后置增强（AfterReturning）
+
+
+
+### 环绕增强（Around）
+
+
+
+### 异常抛出异常（）
+
+
+
+### 引介增强（）
+
+
 
 
 
@@ -94,7 +122,8 @@ public class TaskLockAspect {
 
   @Around("pointCut()")
   public Object doAround(ProceedingJoinPoint pjp) {
-    // 此处省略部分代码
+    String targetName = pjp.getTarget().getClass().getName();
+    String methodName = pjp.getSignature().getName();
     String lockKey = targetName + "#" + methodName;
     if(!publicLock.getLock(lockKey)) {
       Long time = Long.valueOf(valueRedisTemplate.get(lockKey));
@@ -102,8 +131,15 @@ public class TaskLockAspect {
       return null;
     }
 
-    // 此处省略部分代码
-    
+    try {
+      Object result = pjp.proceed();
+      publicLock.releaseLock(lockKey);
+      return result;
+    } catch (Throwable throwable) {
+      throwable.printStackTrace();
+      publicLock.releaseLock(lockKey);
+    }
+    return null;
   }
 }
 ```
