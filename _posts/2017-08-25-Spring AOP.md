@@ -45,23 +45,85 @@ Spring的面向切面编程可以完美解决。面向切面编程指的是在�
 
 ## AOP增强处理方法
 
-### 前置增强（Before）
+### Before
+
+```java
+@Aspect
+public class LogAspect {
+  @Before("execution(* cn.youyinian.test.*.*(..))")
+  publc void doBefore() {
+    System.out.println("test before");
+  }
+}
+```
+
+用于目标方法被调用前做一些增强处理。
 
 
 
-### 后置增强（AfterReturning）
+### AfterReturning
+
+```java
+@Aspect
+public class LogAspect {
+  @AfterReturning(returning="rvt", pointcut="execution(* cn.youyinian.test.*.*(..))")
+  publc void doAfterReturning(Object rvt) {
+    System.out.println("获取返回值：" + rvt);
+  }
+}
+```
+
+用于访问目标方法返回值，并作相关处理。
 
 
 
-### 环绕增强（Around）
+### After
+
+```java
+@Aspect
+public class LogAspect {
+  @After("execution(* cn.youyinian.test.*.*(..))")
+  publc void doAfter() {
+    System.out.println("test after");
+  }
+}
+```
+
+用于目标方法被调用后做一些增强处理。与AfterReturning有些相似，但是也有区别，AfterReturning只有在目标方法成功完成后才会被织入。
 
 
 
-### 异常抛出异常（）
+### Around
+
+```java
+@Aspect
+public class LogAspect {
+  @Around("execution(* cn.youyinian.test.*.*(..))")
+  publc void doAround(ProceedingJoinPoint pjp) {
+    System.out.println("around before");
+    pjp.proceed();
+    System.out.println("around after");
+  }
+}
+```
+
+ProceedingJoinPoint 参数是必须的，因为要使的目标方法要调用，那么必须调用其方法proceed()。
 
 
 
-### 引介增强（）
+### AfterThrowing
+
+```java
+@Aspect
+public class LogAspect {
+  @AfterThrowing(throwing="ex", pointcut="execution(* cn.youyinian.test.*.*(..))")
+  publc void doThrowing(Throwable ex) {
+    System.out.println("目标方法抛出异常：" + ex);
+  }
+}
+```
+
+用于处理目标方法抛出的异常。
 
 
 
@@ -75,10 +137,9 @@ Spring的面向切面编程可以完美解决。面向切面编程指的是在�
 
 
 
-
+定义一个切面：
 
 ```java
-// 定义一个切面
 @Aspect
 public class LogInterceptor {
 
@@ -102,13 +163,48 @@ public class LogInterceptor {
 
 
 
+目标方法：
+
+```java
+package cn.youyinian.handler.topic;
+
+import cn.youyinian.remote.TopicRemoteService;
+import com.xxl.job.core.biz.model.ReturnT;
+import com.xxl.job.core.handler.IJobHandler;
+import com.xxl.job.core.handler.annotation.JobHander;
+import com.xxl.job.core.log.XxlJobLogger;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+/**
+ * Created by zch on 2017/8/25.
+ */
+
+@JobHander(value="pushAuthHandler")
+@Service
+public class PushAuthHandler extends IJobHandler {
+
+    @Resource
+    private TopicRemoteService topicRemoteService;
+
+    @Override
+    public ReturnT<String> execute(String... params) throws Exception {
+        topicRemoteService.pushAuthMessage();
+        return ReturnT.SUCCESS;
+    }
+}
+```
+
+
+
 
 
 
 
 ### 定时任务中加入方法锁
 
-
+定义一个切面：
 
 ```java
 @Aspect
@@ -141,6 +237,31 @@ public class TaskLockAspect {
     }
     return null;
   }
+}
+```
+
+
+
+目标方法：
+
+```java
+package cn.youyinian.controller.v1.remote;
+// 此处省略部分代码
+
+@RestController
+@RequestMapping("/remote/topic")
+public class TopicRemoteController {
+
+    private final Logger logger = LoggerFactory.getLogger(TopicRemoteController.class);
+
+    @Resource
+    private TopicAuthService topicAuthService;
+
+    @LockMethod
+    @RequestMapping(method = RequestMethod.GET, value = "task/pushAuthMessage")
+    public void pushAuthMessage() {
+        topicAuthService.pushAuthMessage();
+    }
 }
 ```
 

@@ -42,7 +42,7 @@ $GOPATH 目录有三个约定俗成的目录，一定要彻底理解：
 
 - src：存放源代码，也是 Go 项目源代码的存放地址；
 - pkg：编译后的生成的包，也就是 Go 的 .a 文件，这个后缀名的文件代表的是 Go  的一个包；
-- bin：编译后生成的可执行文件（只有导入 package main 包的文件编译后直接是可执行文件 ）。
+- bin：编译后生成的可执行文件（**只有导入 package main 包的文件编译后直接是可执行文件** ）。
 
 
 
@@ -101,14 +101,14 @@ import (
 )
 
 func main() {
-  mypakage.test()
+  mypakage.Test()
   fmt.Println("hello, go")
 }
 ```
 
 
 
-接下来就是要编译这个应用了，进入该应用目录，执行 go install，就会在 $GOPATH/bin 下生成一个可执行文件  myapp：
+接下来就是要编译这个应用了，进入该应用目录，执行 go install，**由于该应用直接导入的是pakage main 包，它是Go语言中唯一一个可以编译后直接生成可执行文件的包**，因此会在 $GOPATH/bin 下生成一个可执行文件  myapp：
 
 ![gopath](https://raw.githubusercontent.com/zhangchenghuidev/zhangchenghuidev.github.io/master/images/go4.png)
 
@@ -124,7 +124,7 @@ myapp
 
 
 
-其实 在该应用目录下也可执行 go build 命令进行编译，会在当前目录下生成可执行文件，而不会安装在 bin 目录下。
+其实在该应用目录下也可执行 go build 命令进行编译，会在当前目录下生成可执行文件，而不会安装在 bin 目录下。
 
 ![gopath](https://raw.githubusercontent.com/zhangchenghuidev/zhangchenghuidev.github.io/master/images/go6.png)
 
@@ -144,4 +144,4 @@ go get github.com/astaxie/beego
 
 ![gopath](https://raw.githubusercontent.com/zhangchenghuidev/zhangchenghuidev.github.io/master/images/go7.png)
 
-因此，go get 相当于 git clone源码下来，再执行 go install。
+因此，go get 相当于 git clone 源码下来，再执行 go install。
