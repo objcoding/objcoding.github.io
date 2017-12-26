@@ -23,7 +23,7 @@ author: zch
 
 Go 语言的类型转换基本格式如下：
 
-```Go
+```
 type_name(expression)
 ```
 
