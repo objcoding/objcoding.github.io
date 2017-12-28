@@ -112,7 +112,7 @@ func main() {
 
 
 
-```Go
+```go
 // HandleFunc registers the handler function for the given pattern
 // in the DefaultServeMux.
 // The documentation for ServeMux explains how patterns are matched.
