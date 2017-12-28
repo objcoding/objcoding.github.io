@@ -110,6 +110,8 @@ func main() {
 
 ## net/http 包源码例子
 
+
+
 ```Go
 // HandleFunc registers the handler function for the given pattern
 // in the DefaultServeMux.
