@@ -37,7 +37,7 @@ import "fmt"
 type CalculateType func(int, int) // 声明了一个函数类型
 
 // 该函数类型实现了一个方法
-func (c Calculate) Serve() {
+func (c *CalculateType) Serve() {
   fmt.Println("我是一个函数类型")
 }
 
@@ -102,13 +102,33 @@ func main() {
 // 6
 ```
 
-如上例子，Calculation 的 f 参数类型为 CalculateType，add 和 mul 函数具有和 CalculateType 函数类型相同的参数和返回值，因此可以将 add 和 mul 函数作为参数传入 Calculation 函数中。
+如上例子，Calculate 的 f 参数类型为 CalculateType，add 和 mul 函数具有和 CalculateType 函数类型相同的参数和返回值，因此可以将 add 和 mul 函数作为参数传入 Calculate 函数中。
 
 
 
 
 
 ## net/http 包源码例子
+
+```Go
+// HandleFunc registers the handler function for the given pattern
+// in the DefaultServeMux.
+// The documentation for ServeMux explains how patterns are matched.
+func HandleFunc(pattern string, handler func(ResponseWriter, *Request)) {
+  DefaultServeMux.HandleFunc(pattern, handler)
+}
+```
+
+
+
+```go
+// HandleFunc registers the handler function for the given pattern.
+func (mux *ServeMux) HandleFunc(pattern string, handler func(ResponseWriter, *Request)) {
+  mux.Handle(pattern, HandlerFunc(handler))
+}
+```
+
+
 
 ```go
 type HandlerFunc func(ResponseWriter, *Request)
@@ -119,7 +139,7 @@ func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
 }
 ```
 
-刚开始看到这段代码的时候，真的有点懵逼了，这段代码的目的是为了将我们的 Handler 强制实现 ServeHTTP() 方法，如下例子：
+刚开始看到这段源码的时候，真的有点懵逼了，这段源码的目的是为了将我们的 Handler 强制实现 ServeHTTP() 方法，如下例子：
 
 ```go
 func sayHi(w http.ResponseWriter, r *http.Request) {
