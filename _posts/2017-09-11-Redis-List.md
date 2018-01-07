@@ -2,7 +2,7 @@
 layout: post
 title: "用Redis实现一个简易的MQ"
 categories: Redis
-tags: MQ List
+tags: MQ
 author: zch
 ---
 
