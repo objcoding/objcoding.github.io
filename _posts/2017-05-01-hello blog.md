@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "hello, blog"
-categories: 
-tags: 
+categories: Tools
+tags: blog
 author: zch
 ---
 
