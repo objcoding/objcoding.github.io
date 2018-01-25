@@ -8,7 +8,7 @@ author: zch
 
 * content
 {:toc}
-之前写了一篇「[用Redis实现一个简易的MQ](http://zhangchenghui.cn/2017/09/11/Redis-List/)」，基于这个需求，做成了一个开源项目，底层使用Jedis工具连接Redis，具有轻量、易用的特点。==> [项目地址](https://github.com/zzzch/fly-mq/)
+之前写了一篇「[用Redis实现一个简易的MQ](http://zhangchenghui.cn/2017/09/11/Redis-List/)」，基于这个需求，做成了一个开源项目，底层使用Jedis工具连接Redis，具有轻量、易用的特点。==> [项目地址](https://github.com/objcoding/fly-mq/)
 
 
 
