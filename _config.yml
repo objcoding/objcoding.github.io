@@ -37,8 +37,8 @@ gitalk:
   clientID: 761d4cebe16b95a29801
   clientSecret: 35adf9ec70f6b4a11356da6b076565e7ef630681
   repo: blog-comments    #仓库名称
-  owner: zch    #github用户名
-  admin: zch
+  owner: objcoding    #github用户名
+  admin: objcoding
   distractionFreeMode: true
 
 
