@@ -22,7 +22,7 @@ Go 语言中 new 和 make 都是内置函数，用于内存的分配，本文主
 
 举个例子：
 
-```Go
+```go
 func main() {
   var i *int
   *i = 1
