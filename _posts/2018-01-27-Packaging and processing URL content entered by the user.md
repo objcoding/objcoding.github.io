@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "对用户输入的URL内容进行包装处理"
-categories: java
+categories: Java
 tags: url io 正则表达式
 author: zch
 ---
