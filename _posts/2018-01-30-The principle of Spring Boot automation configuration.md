@@ -114,7 +114,7 @@ protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, A
 
 我们最终发现它其实是实现了 ImportSelector 接口：
 
-```Java
+```java
 public interface ImportSelector {
 	String[] selectImports(AnnotationMetadata var1);
 }
