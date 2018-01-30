@@ -19,8 +19,6 @@ SpringBoot 的自动化配置让我们的开发彻底远离了 Spring 繁琐的�
 
 
 
-
-
 SpringBoot 最为重要的一个注解就是 @SpringBootApplication，它其实是一个组合元注解：
 
 ```java
@@ -120,7 +118,7 @@ public interface ImportSelector {
 }
 ```
 
-**实现 ImportSelectors 接口的类通常与常规的 @Import 注解作用相同，它 的 selectImports() 方法返回的数组（类的全类名）都会被纳入到spring容器中。**
+**实现 ImportSelectors 接口的类通常与常规的 @Import 注解作用相同，它 的 selectImports() 方法返回的数组（类的全类名）都会被纳入到 Spring 容器中。**
 
 到这里，**自动化配置幕后英雄终于出现了，它就是 Spring 的 SpringFactoriesLoader 类，该类专门用于加载 classpath下所有 JAR 文件的 META-INF/spring.factories 文件**，不妨看看它的源码：
 
@@ -133,6 +131,7 @@ public static List<String> loadFactoryNames(Class<?> factoryClass, ClassLoader c
     Enumeration<URL> urls = classLoader != null ? classLoader.getResources("META-INF/spring.factories") : ClassLoader.getSystemResources("META-INF/spring.factories");
     ArrayList result = new ArrayList();
 
+    // 循环读取每个配置类路径
     while(urls.hasMoreElements()) {
       URL url = (URL)urls.nextElement();
       Properties properties = PropertiesLoaderUtils.loadProperties(new UrlResource(url));
@@ -169,4 +168,102 @@ org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\
 # 此处省略部分配置
 ```
 
-柳暗花明又一村，我们最终得出 SpringBoot 自动化配置要干的事情就是在启动过程中将  spring.factories 中 相关的自动化配置类进行解析。
+柳暗花明又一村，我们最终得出 SpringBoot 自动化配置要干的事情就是在启动过程中将  spring.factories 中相关的自动化配置类进行解析。
+
+接下来我们就来分析自动化配置类：
+
+ Redis 官方的 RedisAutoConfiguration 配置类：
+
+```java
+@Configuration
+@ConditionalOnClass({JedisConnection.class, RedisOperations.class, Jedis.class})
+@EnableConfigurationProperties({RedisProperties.class})
+public class RedisAutoConfiguration {
+  public RedisAutoConfiguration() {
+  }
+
+  @Configuration
+  protected static class RedisConfiguration {
+    protected RedisConfiguration() {
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(
+      name = {"redisTemplate"}
+    )
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+      RedisTemplate<Object, Object> template = new RedisTemplate();
+      template.setConnectionFactory(redisConnectionFactory);
+      return template;
+    }
+    
+    // 此处省略部分代码
+    
+  }
+}
+```
+
+我们看到了 @ConditionalOnClass 和 @ConditionalOnMissingBean 这些注解，它们都是 SpringBoot的条件注解：
+
+![conditional](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/springboot3.png)
+
+想要知道这些注解有什么功能，这里就不展开讲了，可以去查阅 SpringBoot 官方文档。以下主要是分析这些注解是如何进行工作的。
+
+@ConditionalOnClass
+
+```java
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional({OnClassCondition.class})
+public @interface ConditionalOnClass {
+  Class<?>[] value() default {};
+  String[] name() default {};
+}
+```
+
+可以看出，这些这些条件注解都组合了 @Conditional 元注解，只是使用了不同的条件，继续往下看 OnClassCondition 条件是如何工作的：
+
+```java
+@Order()
+class OnClassCondition extends SpringBootCondition implements AutoConfigurationImportFilter, BeanFactoryAware, BeanClassLoaderAware {
+  private BeanFactory beanFactory;
+  private ClassLoader beanClassLoader;
+
+  OnClassCondition() {
+  }
+
+  public boolean[] match(String[] autoConfigurationClasses, AutoConfigurationMetadata autoConfigurationMetadata) {
+ 	// 此处省略部分代码
+  }
+  // 此处省略部分代码
+}
+```
+
+SpringBootCondition 实现了 Spring 的 Condition 接口，也就是并重写其 matche() 方法来构造判断条件。Condition 可以用于判断 Configuration 配置类需要满足什么条件才可以装进 Spring 容器。
+
+当我们需要在 application.properties 中加入自定义的配置，那么 SpringBoot 是如何根据  application.properties 来实现自定义配置呢？我们往回看，发现了 @EnableConfigurationProperties({RedisProperties.class}) 这个注解，这个注解就是用来读取 application.properties 中对应的配置信息对应到 POJO 类当中：
+
+RedisProperties.java
+
+```java
+@ConfigurationProperties(
+    prefix = "spring.redis"
+)
+public class RedisProperties {
+    private int database = 0;
+    private String url;
+    private String host = "localhost";
+    private String password;
+    private int port = 6379;
+    private boolean ssl;
+    private int timeout;
+    private RedisProperties.Pool pool;
+    private RedisProperties.Sentinel sentinel;
+    private RedisProperties.Cluster cluster;
+	// 此处省略getter和setter
+}
+```
+
+完。
+
