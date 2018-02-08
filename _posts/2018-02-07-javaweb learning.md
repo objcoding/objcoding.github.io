@@ -141,7 +141,7 @@ Redis：一个高性能的 key-value 数据库，当有并发量很高的请求�
 
 Git：世界上最先进的分布式版本控制系统，建议所有初学者从命令行开始使用 Git！
 
-#### ***关注 stormzhang 公众号「googdev」，回复「github」，即可免费获取一份 GitHub 教程电子书，我觉得写得很不错。***
+##### ***关注 stormzhang 公众号「googdev」，回复「github」，即可免费获取一份 GitHub 教程电子书，我觉得写得很不错。***
 
 [Git 官网](https://git-scm.com/)
 
