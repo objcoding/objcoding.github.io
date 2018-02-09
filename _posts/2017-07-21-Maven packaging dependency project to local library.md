@@ -20,20 +20,20 @@ author: zch
 
 现在有个叫server-common-toolbox的工具项目，maven依赖信息如下：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/maven4.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/maven4.png)
 
 首先进入项目所在目录，然后执行mvn install命令：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/maven1.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/maven1.png)
 
 如果出现一下信息，就说明打包安装成功了：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/maven2.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/maven2.png)
 
 打包成功后，可在本地仓库查看：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/maven3.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/maven3.png)
 
 接下来就可以在各个子系统中添加依赖了：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/maven5.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/maven5.png)

@@ -12,6 +12,14 @@ author: zch
 
 
 
+
+
+
+
+
+
+
+
 ## CompletableFuture API
 
 CompletableFuture 类是Java8新增加的类，它继承了Future接口，但Future只能在线程执行任务时可异步处理，但只能通过阻塞的方式获取执行结果，期间主线程被阻塞，这相当于是半异步执行吧，而CompletableFuture则可实现全异步执行，通过以下静态方法创建CompletableFuture对象：
@@ -104,10 +112,5 @@ public JSONObject getOrdersByPage(int page, JSONObject jsonObject) {
         return webManage;
     }
 ```
-
-
-
-## 处理业务核算
-
 
 

@@ -10,7 +10,7 @@ author: zch
 {:toc}
 最近发现返回给前段的json串出现了循环引用的问题，这是由于在json串中存在相同的属性信息，对象的属性之间存在相互引用导致循环，而fastjson支持循环引用/重复引用，并且是缺省打开的。所以会出现以下现象：
 
-![](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/json.jpg)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/json.jpg)
 
 
 

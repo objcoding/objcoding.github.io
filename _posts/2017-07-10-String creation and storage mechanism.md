@@ -30,5 +30,5 @@ String s4 = "abc";// s4引用了在常量区中"abc"字符串对象，这里并�
 
 在jvm内存中，存在着一个字符串常量池，保存着很多String对象，且共享，s3与s4同样引用的是常量池中的”abc“对象，每次创建字符串时，jvm都会先检查 一下常量池是否又这个字符串对象，且创建好以后都不可修改；如果没有则创建，如果有则直接获取其引用。
 
-![字符串存储机制](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/string.png)
+![字符串存储机制](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/string.png)
 

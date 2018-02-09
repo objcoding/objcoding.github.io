@@ -95,7 +95,7 @@ chown zhangch|zhangch*
 
 如下：
 
-![ssh](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/ssh.jpg)
+![ssh](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/ssh.jpg)
 
 
 

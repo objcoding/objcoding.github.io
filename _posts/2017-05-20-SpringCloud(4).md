@@ -170,4 +170,4 @@ public class ApiGatewayApplication {
 
 到这里，微服务系统的zuul路由功能基本搭建完成，如下图（来源于网上）：
 
-![zuul-filter](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/zuul-filter.png)
+![zuul-filter](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/zuul-filter.png)
