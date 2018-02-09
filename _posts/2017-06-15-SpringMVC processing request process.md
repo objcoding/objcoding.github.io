@@ -217,7 +217,7 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 
 ## doDispatch()流程解析
 
-
+参考原文地址：http://jinnianshilongnian.iteye.com/blog/1594806
 
 ![SpringMVC工作流程](https://raw.githubusercontent.com/zchdjb/zchdjb.github.io/master/images/springmvc.png)
 
