@@ -38,7 +38,7 @@ Java 是一门纯粹的面向对象的编程语言，所以除了基础语法之
 
 ## 数据库
 
-关于 sql 方面：[SQL 教程](http://www.runoob.com/sql/sql-tutorial.html)、[MySQL 教程](http://objcoding.com/2017/06/12/Tomcat-structure-and-processing-request-process/) 
+关于 sql 方面：[SQL 教程](http://www.runoob.com/sql/sql-tutorial.html)、[MySQL 教程](http://www.runoob.com/mysql/mysql-tutorial.html) 
 
 我是了解了一些基础语法之后，就直接跟着视频的老师做一些表操作实战练习了，比如单表查询、多表查询等。我建议学 sql 切勿眼高手低，需多加练习，不要只看懂了就行，因为工作中写得一手简练的 sql 是非常重要的。在这里我说下我在项目一直秉承着 sql 语句是能避免多表查询就避免多表查询，能够分开多条语句就分开多条语句，因为这里涉及到多表查询性能和数据库扩展的问题。
 
