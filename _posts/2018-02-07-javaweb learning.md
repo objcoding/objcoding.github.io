@@ -48,7 +48,7 @@ Java 是一门纯粹的面向对象的编程语言，所以除了基础语法之
 
 ![database](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/database.png)
 
-这个小工具源码地址：https://github.com/objcoding/jdbc-utils
+jdbc-utils源码地址：[jdbc-utils](https://github.com/objcoding/jdbc-utils)
 
 
 
