@@ -15,6 +15,5 @@ type: page
 
 - Email: zhangchenghui.dev@gmail.com
 - GitHub: [objcoding]( https://github.com/objcoding/)
-- 微信公众号：objcoding
 
 
