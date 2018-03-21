@@ -25,7 +25,7 @@ author: zch
 3. Mybatis 如何防止 sql 穿透
 4. JVM 的内存模型
 5. 类加载机制
-6. Java 有那些同步机制
+6. Java 有那些同步机制？说一下 volatile 关键字
 7. Spring 的 PostProcessor 接口起到什么作用
 8. Spring 如何实现事务
 9. 如何在 Bean 对象中获取 ApllicationContext 上下文对象？
