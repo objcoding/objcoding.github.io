@@ -25,4 +25,5 @@ type: page
 ## 友情链接
 
 - [逗比罗博客](http://blog.pcluo.com/)
+- [Egan](http://www.egzosn.com/)
 

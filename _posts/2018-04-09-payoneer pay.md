@@ -36,7 +36,7 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 
 
-## 判断授权状态
+## 获取授权状态
 
 授权状态请求 API
 
@@ -100,7 +100,27 @@ https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed043546298103
 
 如果有账户，直接登陆，登陆后就将 payeeId 注册到对应的商户系统里面了，这时该用户就可以付款给商户了。
 
-## 付款
+
+
+## 授权成功重定向
+
+授权成功之后，需要重定向到商户付款页面，重定向地址需要在商户账户后台开发人员选项里面配置：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer6.png)
+
+
+
+## 授权回调
+
+类似于微信支付的支付回调，微信那边处理完成后，回调到商户系统，让商户系统更新支付信息，payoneer 也不例外，在用户授权成功之后，异步回调到商户系统，让商户系统更新用户的授权状态，避免每次需要调用授权状态接口去校验用户的授权状态了。
+
+这个回调地址也是在商户账户后台开发人员选项里面配置：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer5.png)
+
+
+
+## 主动付款
 
 付款 API 如下：
 
