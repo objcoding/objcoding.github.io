@@ -20,15 +20,23 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 ## 商户账号
 
-这一块很坑
+官网上注册一个账号，注册成功后，会发一份开发者文档到你的邮箱：
 
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer3.png)
 
+*programId：商户唯一标识ID，类似于公众号的appId*
+
+*Username：登陆用户名*
+
+*password：登陆密码*
+
+*API password：用于 Basic Auth 授权用的*
+
+**请求 Payoneer API 需要附带 programId、username 和 API password 进行 Basic Auth 授权。**
 
 
 
 ## 获取授权页面
-
-
 
 请求 API
 
