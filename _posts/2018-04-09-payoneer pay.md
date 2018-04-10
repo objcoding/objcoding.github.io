@@ -36,9 +36,48 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 
 
+## 判断授权状态
+
+授权状态请求 API
+
+```
+curl -X POST https://api.payoneer.com/v2/programs/{program_id}/payees/{payee_id}/status/
+
+-H "Content-Type: application/json"
+-d {"payee_id": "ClientPayeeID"} 
+```
+
+授权状态返回数据：
+
+- payeeId 已经授权：
+
+```json
+{
+  "audit_id": 38935280,
+  "code": 0,
+  "description": "Success",
+  "status": "ACTIVE"
+}
+```
+
+- payeeId 未授权：
+
+```json
+{
+  "audit_id": 38935299,
+  "code": 10005,
+  "hint": "Please ensure that the payee has registered with Payoneer",
+  "description": "Payee was not found"
+}
+```
+
+**前端根据该接口返回的数据判断该用户是否有授权，如果有授权直接跳到付款页面，没有则去请求授权页面接口。**
+
+
+
 ## 获取授权页面
 
-请求 API
+获取授权页面请求 API
 
 ```bash
 curl -X POST https://api.payoneer.com/v2/programs/{program_id}/payees/registration-link/
@@ -47,7 +86,9 @@ curl -X POST https://api.payoneer.com/v2/programs/{program_id}/payees/registrati
 -d {"payee_id": "ClientPayeeID"} 
 ```
 
-这时商户系统会返回一个经过授权的url，格式如下：
+*注：最好用后台用户表的用户 id 作为 payeeId。*
+
+这时商户系统会返回一个经过授权的 url，格式如下：
 
 ```bash
 https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed04354629810375ddc9721312B6B5851C51
@@ -57,16 +98,16 @@ https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed043546298103
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer2.png)
 
-
+如果有账户，直接登陆，登陆后就将 payeeId 注册到对应的商户系统里面了，这时该用户就可以付款给商户了。
 
 ## 付款
 
-如果有账户，直接登陆，登陆后就将 payeeId 注册到对应的商户系统里面了，这时该用户就可以付款给商户了，付款 API 如下：
+付款 API 如下：
 
 ```bash
 Curl -X POST https://api.sandbox.payoneer.com/v2/programs/{Program_Id}/charges  
 -H "Content-Type: application/json"  
-–d {"payee_id":"ID123", "amount":"1.2", "client_reference_id":"test_88",      "description":"Charge test", "currency":"USD" 
+–d {"payee_id":"ID123", "amount":"1.2", "client_reference_id":"test_88",      "description":"Charge test", "currency":"USD"}
 ```
 
-付款时只要附带了授权时注册到商户系统的 payeeId，就可以对相应的 payoneer 账户进行扣款了，有没有一种免密支付的体验？其实免密支付也是用这种类似的技术实现的。
+付款时只要附带了授权时注册到商户系统的 payeeId（也就是付款时拿到的该用户 ID） 就可以对相应的 payoneer 账户进行扣款了，有没有一种免密支付的体验？其实免密支付也是用这种类似的技术实现的。
