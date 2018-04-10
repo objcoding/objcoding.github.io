@@ -131,3 +131,11 @@ Curl -X POST https://api.sandbox.payoneer.com/v2/programs/{Program_Id}/charges
 ```
 
 付款时只要附带了授权时注册到商户系统的 payeeId（也就是付款时拿到的该用户 ID） 就可以对相应的 payoneer 账户进行扣款了，有没有一种免密支付的体验？其实免密支付也是用这种类似的技术实现的。
+
+
+
+## 流程图
+
+
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer4.png)
