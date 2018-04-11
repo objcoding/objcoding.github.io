@@ -24,6 +24,7 @@ type: page
 
 ## 友情链接
 
-- [逗比罗博客](http://blog.pcluo.com/)
+- [逗比罗](http://blog.pcluo.com/)
+- [超级大丁丁](https://msgcode.github.io/)
 - [Egan](http://www.egzosn.com/)
 
