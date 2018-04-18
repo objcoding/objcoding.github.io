@@ -20,7 +20,7 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 ## 商户账号
 
-官网上注册一个账号，注册成功后，会发一份开发者文档到你的邮箱：
+官网上注册一个账号，注册成功后，**你还需要跟 payoneer API 对接的相关客服申请开发者 API 对接的信息，因为他们的 API 接口是不开放的**，申请通过后会发一份 API 接口需要的信息的文档给你，如下：
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/payoneer3.png)
 
