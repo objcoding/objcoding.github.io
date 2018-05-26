@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "payoneer 支付流程"
-categories: payment
+categories: Payment
 tags: payoneer
 author: zch
 ---
