@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "payoneer 支付流程"
+title: "Payoneer 支付流程"
 categories: Payment
-tags: payoneer
+tags: Payoneer
 author: zch
 ---
 
