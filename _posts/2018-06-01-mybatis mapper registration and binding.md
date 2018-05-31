@@ -74,7 +74,7 @@ public class UserMapper {
 
 那么 Mapper 是如何示例化的，它是通过 Java 动态代理生成的一个代理类，并与 sqlSession 关联一起，看如下图：
 
-![Mapper 代理类](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis.ng)
+![Mapper 代理类](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis.png)
 
 看得出来，此时的 Mapper 是 Spring Bean 容器里面的一个 Bean，它是一个代理类，那么这个代理类的生成过程是怎样的呢？下面带你一起看看 mybatis 源码。
 
@@ -146,7 +146,7 @@ return sqlSessionFactory;
 }
 ```
 
-**XMLMapperBuilder 这个类主要是用于解析 mybatis 中的 <mapper> 标签里边的内容，功能与 XMLConfigBuilder 类似，都是解析 xml 内容，从源码看，拿到 mapperLocation 的输入流和 configuration 来初始化本身，mapperLocation 即是我们从配置文件配的 mapper XML 地址的封装类，**继续：
+**XMLMapperBuilder 这个类主要是用于解析 mybatis 中的 < mapper >标签里边的内容，功能与 XMLConfigBuilder 类似，都是解析 xml 内容，从源码看，拿到 mapperLocation 的输入流和 configuration 来初始化本身，mapperLocation 即是我们从配置文件配的 mapper XML 地址的封装类**
 
 - **XMLMapperBuilder.parse()**
 
@@ -365,7 +365,7 @@ private MappedStatement resolveMappedStatement(Class<?> mapperInterface, String 
 }
 ```
 
-**MappedStatement 类是保存 Mapper 一个执行方法映射的一个节点（select|insert|delete|update），包括配置的 sql，sql 的 id、缓存信息、resultMap、parameterType、resultType 等重要配置内容。**
+**MappedStatement 类是保存 Mapper 一个执行方法映射的一个节点（select/insert/delete/update），包括配置的 sql，sql 的 id、缓存信息、resultMap、parameterType、resultType 等重要配置内容。**
 
 Mybatis 是如何将Mapper 中的方法节点信息添加到 configuration 的 MappedStatement 属性中呢？我们回到`MapperRegistry.addMapper()`这个方法，看看 MapperAnnotationBuilder 最后的解析：
 
