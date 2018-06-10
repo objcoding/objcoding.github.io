@@ -27,6 +27,9 @@ author: zch
 ```java
 // 以下是伪代码
 
+// 创建 sqlSessionFactory 工厂类
+SqlSessionFactory sqlSessionFactory = SqlSessionFactoryBuilder.build(configuration);
+
 // 创建一个 sqlSession 客户端连接类
 SqlSession sqlSession = sqlSessionFactory.openSession();
 
@@ -42,6 +45,8 @@ try {
 
 ```
 
+
+
 很显然这样使用 Mybatis 是代码略显臃肿，且不美观，我们接下来看看 Spring 是如何优雅地用使用 Mybatis。
 
 
@@ -50,11 +55,40 @@ try {
 
 
 
+### SqlSessionFactory
+
+在上一篇的源码分析中已经有提及到 SqlSessionFactory 的实例了，创建 SqlSessionFactory 实例包括了 Mapper 的注册和绑定过程：
+
+```java
+@Bean
+public SqlSessionFactory sqlSessionFactory() throws Exception {
+  PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+  SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+  
+  // 此处省略部分代码
+  
+  bean.setMapperLocations(resolver.getResources("classpath*:com/**/*Mapper.xml"));//
+  return bean.getObject();
+}
+```
+
+这里我们主动创建 SqlSessionFactory 的实例并注册到 Bean 容器中。
+
+SqlSessionFactory 是 Mybatis 应用的核心类，它是创建 SqlSesison 的工厂类，而 SqlSesison 是我们用 Mybatis 与数据库会话的 顶层 API 类，所有与数据库会话都需要创建 SqlSesison。
+
+SqlSession 
 
 
 
 
 
+### MapperFactoryBean
+
+
+
+
+
+### MapperScan 注解
 
 
 
