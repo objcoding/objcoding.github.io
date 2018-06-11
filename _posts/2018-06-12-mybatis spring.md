@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Mybatis-spring源码分析之注册Mapper Bean"
-categories: Mybatis
-tags: Mybatis Spring IOC 源码分析
+categories: Mybatis Spring
+tags: Mybatis Spring IOC 反射 源码分析
 author: zch
 ---
 
@@ -162,7 +162,7 @@ public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory
 }
 ```
 
-从 externalSqlSession 字段可知，如果 Spring 容器中 SqlSessionFactory 和 SqlSessionTemplate同时存在，那么  SqlSessionDaoSupport 的这两个属性只会被设置一次。
+从 externalSqlSession 字段可知，如果 Spring 容器中 SqlSessionFactory 和 SqlSessionTemplate 同时存在，那么  SqlSessionDaoSupport 的这两个属性只会被设置一次。
 
 
 
@@ -170,7 +170,7 @@ public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory
 
 ```java
 <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="com.tqd.dao.UserMapper"></property>
+    <property name="mapperInterface" value="com.objcoding.dao.UserMapper"></property>
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
 ```
@@ -184,7 +184,7 @@ public T getObject() throws Exception {
 }
 ```
 
-该方法里面这段代码，就是我们单独使用 Mybatis 时的一个代码调用方式，这里 Spring 巧妙地在这里进行了封装，因为 MapperFactoryBean 实现了 FactoryBean 接口，Spring 加载 Bean时，实际上是调用 FactoryBean 的getObject() 方法，到这里你似乎有点豁然开朗的感觉了是不是？
+该方法里面这段代码，就是我们单独使用 Mybatis 时的一个代码调用方式，这里 Spring 巧妙地在这里进行了封装，因为 MapperFactoryBean 实现了 FactoryBean 接口，Spring 加载 Bean 时，实际上是调用 FactoryBean 的getObject() 方法，到这里你似乎有点豁然开朗的感觉了是不是？
 
 
 
@@ -209,32 +209,41 @@ public SqlSessionTemplate(SqlSessionFactory sqlSessionFactory, ExecutorType exec
 }
 ```
 
-我们创建 SqlSessionTemplate 实例最终是调用该方法来实现的，这里将 sqlSessionFactory 给赋值了，而且还通过反射生成了一个 SqlSession 代理类，
+我们创建 SqlSessionTemplate 实例最终是调用该方法来实现的，sqlSessionFactoryBean 实例赋值给 SqlSessionTemplate 的 sqlSessionFactory 属性，而且还通过反射生成了一个 SqlSession 代理类，该代理类即是与数据会话的关键：
 
+```java
+@Override
+public <T> T selectOne(String statement, Object parameter) {
+  return this.sqlSessionProxy.<T> selectOne(statement, parameter);
+}
+```
 
-
-
-
-
+继续往下看：
 
 ```java
 private class SqlSessionInterceptor implements InvocationHandler {
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+    // 创建 DefaultSqlSession 实现类（它不是线程安全的）
     SqlSession sqlSession = getSqlSession(
       SqlSessionTemplate.this.sqlSessionFactory,
       SqlSessionTemplate.this.executorType,
       SqlSessionTemplate.this.exceptionTranslator);
     try {
+      // 通过反射调用 sqlSession 具体方法
       Object result = method.invoke(sqlSession, args);
       if (!isSqlSessionTransactional(sqlSession, SqlSessionTemplate.this.sqlSessionFactory)) {
         // force commit even on non-dirty sessions because some databases require
         // a commit/rollback before calling close()
+        // 提交执行
         sqlSession.commit(true);
       }
+      // 返回执行结果
       return result;
     } catch (Throwable t) {
       Throwable unwrapped = unwrapThrowable(t);
+      //然后判断一下当前的sqlSession是否被Spring托管 如果未被Spring托管则自动commit
       if (SqlSessionTemplate.this.exceptionTranslator != null && unwrapped instanceof PersistenceException) {
         // release the connection to avoid a deadlock if the translator is no loaded. See issue #22
         closeSqlSession(sqlSession, SqlSessionTemplate.this.sqlSessionFactory);
@@ -246,6 +255,7 @@ private class SqlSessionInterceptor implements InvocationHandler {
       }
       throw unwrapped;
     } finally {
+      //关闭sqlSession
       if (sqlSession != null) {
         closeSqlSession(sqlSession, SqlSessionTemplate.this.sqlSessionFactory);
       }
@@ -254,16 +264,121 @@ private class SqlSessionInterceptor implements InvocationHandler {
 }
 ```
 
+getSqlSession 创建一个 SqlSession 实现类，这里是一个默认的实现类 DefaultSqlSession，从该反射具体执行类看出，我们调用代理类执行操作时，已经自动给执行了 commit、close 等操作了，当前的 sqlSession 是否被 Spring 托管，还有事务回滚功能，大大节省了代码量有木有！
+
 
 
 
 
 ### MapperScan 注解扫描入口
 
+接下来就是重头戏了，我们此时需要将 Mapper 接口类扫描并注册生成对应的 BeanDefinition 并添加到 BeanDefinitionRegistry 中。
+
+BeanDefinition：**它是 Spring 中用于包装 Bean 的数据结构，一个 BeanDefinition 描述了一个 bean 的实例，包括它的类名，具体的 class 对象等属性值。**
+
+- MapperScan 注解
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Documented
+@Import(MapperScannerRegistrar.class)
+public @interface MapperScan {
+
+  String[] value() default {};
+
+  // 省略部分代码
+
+  Class<? extends MapperFactoryBean> factoryBean() default MapperFactoryBean.class;
+
+}
+```
+
+在这个注解里面包含了 @Import 注解，它的作用是导入资源，如果导入的是一个普通类，spring 还会将其注册成一个普通的 Bean，通过 @Import 注入了 Mapper 扫描注册类，通过该扫描类扫描 Mapper 目录，并将 Mapper 注册成一个 Bean。
+
+- MapperScannerRegistrar
+
+```java
+public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
+
+  private ResourceLoader resourceLoader;
+
+  @Override
+  public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+
+    // 获取当前注解信息
+    AnnotationAttributes annoAttrs = AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(MapperScan.class.getName()));
+    // 创建 Mapper 扫描类，该类会自动扫描指定目录并将 Mapper 封装成 一个个 BeanDefinition 并添加到 BeanDefinitionRegistry 中
+    ClassPathMapperScanner scanner = new ClassPathMapperScanner(registry);
+
+    // 省略部分代码
+    
+    // 执行过滤
+    scanner.registerFilters();
+    // 开始扫描
+    scanner.doScan(StringUtils.toStringArray(basePackages));
+  }
+
+  @Override
+  public void setResourceLoader(ResourceLoader resourceLoader) {
+    this.resourceLoader = resourceLoader;
+  }
+
+}
+```
+
+**MapperScannerRegistrar 类实现了 ImportBeanDefinitionRegistrar ，该 interface 是 Spring 动态注册 Bean 的方法，所有实现了该接口的类都会被 ConfigurationClassPostProcessor 处理。**
+
+- ClassPathMapeerScanner
+
+```java
+public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
+  
+  // 省略部分代码
+  
+  @Override
+  public Set<BeanDefinitionHolder> doScan(String... basePackages) {
+    // 调用父类方法对指定路径进行扫描并注册 BeanDefinition
+    Set<BeanDefinitionHolder> beanDefinitions = super.doScan(basePackages);
+
+    if (beanDefinitions.isEmpty()) {
+      logger.warn("No MyBatis mapper was found in '" + Arrays.toString(basePackages) + "' package. Please check your configuration.");
+    } else {
+      processBeanDefinitions(beanDefinitions);
+    }
+
+    return beanDefinitions;
+  }
+
+  private void processBeanDefinitions(Set<BeanDefinitionHolder> beanDefinitions) {
+    GenericBeanDefinition definition;
+    for (BeanDefinitionHolder holder : beanDefinitions) {
+     
+      // 省略部分代码
+      
+      // the mapper interface is the original class of the bean
+      // but, the actual class of the bean is MapperFactoryBean
+      //将其bean Class 类型设置为 mapperFactoryBean，放入 BeanDefinitions definition.
+ definition.getConstructorArgumentValues().addGenericArgumentValue(definition.getBeanClassName());
+      definition.setBeanClass(this.mapperFactoryBean.getClass());
+
+      // 省略部分代码
+      
+    }
+  }
+
+  // 省略部分代码
+
+}
+```
+
+**ClassPathMapeerScanner 继承了 ClassPathBeanDefinitionScanner 类，ClassPathBeanDefinitionScanner 会扫描base-package下的所有spring定义的注解标识类，也可以对扫描的机制进行配置，设置一些 Filter，只有满足Filter的类才能被注册为Bean。**
+
+**这里实现并覆盖了 doScan 方法的，并将其 BeanDefinition 中的 beanClass 设置为 MapperFactoryBean，这一步特别关键啊，因为 MapperFactoryBean 实现了 BeanFactory 接口，spring 加载这类型的 Bean 会调用其 getObejct() 方法，上面也提到过 MapperFactoryBean 的 getObejct() 实则是调用 SqlSession 的 getMapper() 方法生成 Mapper 代理类，而该代理类底层操作的还是 SqlSession，绕了一大圈，终于搞明白 Spring 的「用心良苦」了吧。**
 
 
 
+## 总结
 
-## 后记
+![mybatis-spring](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis-spring.png)
 
-用到了很多 spring 的类：FactoryBean、DaoSupport、InitializingBean、ImportBeanDefinitionRegistrar、BeanDefinitionRegistryPostProcessor、ClassPathBeanDefinitionScanner、BeanDefinitionRegistry、BeanDefinitionHolder、DefaultListableBeanFactory（beanFactory）
