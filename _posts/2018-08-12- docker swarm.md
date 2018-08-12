@@ -28,14 +28,19 @@ author: zch
 
 > 一个节点(node)是已加入到 swarm 的 Docker 引擎的实例 当部署应用到集群，你将会提交服务定义到管理节点，接着 Manager 管理节点调度任务到 worker 节点，manager 节点还执行维护集群的状态的编排和群集管理功能，worker 节点接收并执行来自 manager 节点的任务。通常，manager 节点也可以是 worker 节点，worker 节点会报告当前状态给 manager 节点。
 
+![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm6.png)
+
 - Service
 
 > 服务是要在 worker 节点上要执行任务的定义，它在工作者节点上执行，当你创建服务的时，你需要指定容器镜像。
+
+![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm7.png)
 
 - Task
 
 > 任务是在 docekr 容器中执行的命令，Manager 节点根据指定数量的任务副本分配任务给 worker 节点。
 
+![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm8.png)
 
 
 ## 基本指令
@@ -151,7 +156,12 @@ $ docker service ps nginx
 
 这时一个 nginx 的项目就部署到集群中了。
 
+查看集群中有哪些服务：
 
+```
+$ docker service ls
+```
+![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm3.png)
 
 如果遇到部署的节点太少了，或者我们生产中又购买了服务器，我们需要将项目横向扩展，我们怎么做呢：
 
@@ -177,7 +187,7 @@ docker service update --image nginx:1.13.8-alpine nginx
 
 这样便可以在集群中升级服务的版本了。
 
-
+参考原文：https://www.jianshu.com/p/881fd566f9f0
 
 
 
