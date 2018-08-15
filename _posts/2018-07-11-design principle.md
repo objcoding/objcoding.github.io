@@ -8,7 +8,15 @@ author: zch
 
 * content
 {:toc}
-![design Principe](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/design principle.png)
+
+
+
+
+
+
+
+
+
 
 
 
