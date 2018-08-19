@@ -194,17 +194,4 @@ $ docker service create \
 
 ![swarm network model](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network4.png)
 
-swarm 集群的内部会为容器的各个节点之间负责负载均衡的管理，无需我们去操心了，如上如图三台服务器，无论我们访问的哪台服务器，都可以访问到 docker 各个可用节点中。
-
-
-
- 
-
-
-
-
-
-
-
-
-
+swarm 集群的内部会为容器的各个节点之间负责负载均衡的管理，无需我们去操心了，如上如图三台服务器，无论我们访问的哪台服务器，都可以访问到 docker 各个可用节点中，比如访问 172.16.1.11:8080，也可以通过 swarm 集群的负载均衡转发到 172.16.1.12:8080。
