@@ -55,6 +55,8 @@ author: zch
 
 docker 1.9 版本之后，加入了一个默认的 overlay 的网络模型，它是 docker swarm 内置的跨主机通信方案，这是一个基于 vxlan 协议的网络实现，其作用是虚拟出一个子网，让处于不同主机的容器能透明地使用这个子网。所以跨主机的容器通信就变成了在同一个子网下的容器通信，看上去就像是同一主机下的 bridge 网络通信。
 
+关于详细的 vxlan 协议原理，请移步：[vxlan 协议原理简介](http://cizixs.com/2017/09/25/vxlan-protocol-introduction)
+
 
 
 在 swarm 管理节点发布的服务想要监听端口，只需要在 像 docker run 一样在后缀加 -p 8080:8080 就可以了，如下：
