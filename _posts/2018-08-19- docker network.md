@@ -146,6 +146,8 @@ $ docker network inspect ingress
 
 由于 orverlay 网络模型是基于 vxlan 协议的网络实现，所以根据上面的网络信息可知，它是要在三层网络中虚拟出二层网络，即跨网段建立虚拟子网，也就是把 docker 要发送的信息先发送到虚拟子网地址 10.255.0.1，再由虚拟子网包装为宿主机的真实网网址  172.16.0.10，这样做的好处就是不会公开暴露容器的端口，让这些事情交给  overlay 网络驱动去做就行了，而且在同一台服务器，不会引起端口冲突，最重要的一点是可以实现集群容器间的负载均衡。
 
+![overlay network](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network6.png)
+
 **正如它的名字一样，在所有容器的上面一层，覆盖了一层网络，该网络可以使在集群中的容器像本地通信一样，所以 orverlay 网络模型也称之为覆盖网络。**
 
 
