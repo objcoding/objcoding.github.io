@@ -57,25 +57,25 @@ author: zch
 
 首先我们本地增加一个工作节点：
 
-```
+```bash
 $ docker-machine create -d virtualbox worker1
 ```
 
 这里我们选的是 virtualbox 驱动，如果本地没有，请自行安装：
 
-```
+```bash
 $ brew cask install virtualbox
 ```
 
 进入 docker 虚拟主机：
 
-```
+```bash
 $ docker-machine ssh worker1
 ```
 
 将 worker1 主机设定为 swarm 管理节点：
 
-```
+```bash
 $ docker swarm init
 ```
 
@@ -87,7 +87,7 @@ Error response from daemon: could not choose an IP address to advertise since th
 
 所以我们需要选择一个与主机互通的网卡ip：
 
-```
+```bash
 $ docker swarm init --advertise-addr 192.168.99.100
 
 Swarm initialized: current node (gbbyozigwaf8v2bzj6aicpzbn) is now a manager.
@@ -105,7 +105,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 我们来看看节点列表：
 
-```
+```bash
 $ docker node ls
 ```
 
@@ -115,7 +115,7 @@ $ docker node ls
 
 接下来创建工作节点：
 
-```
+```bash
 $ docker-machine create -d virtualbox worker2
 $ docker-machine create -d virtualbox worker3
 $ docker-machine create -d virtualbox worker4
@@ -124,7 +124,7 @@ $ docker-machine create -d virtualbox worker5
 
 依次创建了4个 docker 节点，我们需要将这几个 docker 节点加入到我们的 swarm 集群，我们通过 docker-machine 进入 docker 虚拟主机，然后输入加入集群的指令：
 
-```
+```bash
 $ docker-machine ssh worker2
 
 $ docker swarm join --token SWMTKN-1-69luztakii9ix7f5osezl0v6l2ibfzp1vqc0gbhcous63hm1fx-8p3vxanj97f2e0jflznihvl8f 192.168.99.100:2377
@@ -132,7 +132,7 @@ $ docker swarm join --token SWMTKN-1-69luztakii9ix7f5osezl0v6l2ibfzp1vqc0gbhcous
 
 其余 docker 主机都依照这个步骤加入，之后我们再看看集群的节点列表：
 
-```
+```bash
 $ docker node ls
 ```
 
@@ -140,7 +140,7 @@ $ docker node ls
 
 发现其余 docker 主机都加入到集群中了，现在我们已经拥有了一个有5个节点的 swarm 集群了，这时我们需要发布 docker 实例到集群中：
 
-```
+```bash
 docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine
 ```
 
@@ -148,7 +148,7 @@ docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine
 
 这就好比我们在单机 docker 中的 docker run 一样方便，只不过现在变成了集群部署，其中 —replicas 指定了 service 有几个实例组成，这几个实例会随机分配到集群的节点上，我们看看 service 都部署到哪些节点上：
 
-```
+```bash
 $ docker service ps nginx
 ```
 
@@ -158,14 +158,14 @@ $ docker service ps nginx
 
 查看集群中有哪些服务：
 
-```
+```bash
 $ docker service ls
 ```
 ![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm3.png)
 
 如果遇到部署的节点太少了，或者我们生产中又购买了服务器，我们需要将项目横向扩展，我们怎么做呢：
 
-```
+```bash
 $ docker service scale nginx=5
 ```
 
@@ -173,7 +173,7 @@ $ docker service scale nginx=5
 
 如果不想某个服务在集群中运行了，可以执行：
 
-```
+```bash
 $ docker service rm servicename
 ```
 
@@ -181,7 +181,7 @@ $ docker service rm servicename
 
 如果想更新某个服务，可以执行：
 
-```
+```bash
 docker service update --image nginx:1.13.8-alpine nginx
 ```
 
