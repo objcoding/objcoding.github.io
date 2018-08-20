@@ -8,7 +8,7 @@ author: zch
 
 * content
 {:toc}
-现在工作上有大部分时间都在终端上，需要经常在终端部署项目，查看日志，找bug，所以写一篇ssh连接远程终端的文章，以此记录一下整个配置过程，因为自己也是一个健忘的人，在此过程中也涉及了一些linux权限的知识点。
+现在工作上有大部分时间都在终端上，需要经常在终端部署项目，查看日志，找 bug，所以写一篇 ssh 连接远程终端的文章，以此记录一下整个配置过程，因为自己也是一个健忘的人，在此过程中也涉及了一些 linux 权限的知识点。
 
 
 
@@ -26,15 +26,15 @@ author: zch
 
 ## 客户端生成公钥密钥
 
-用git命令ssh-keygen -t rsa ，会在~/下生成一个.ssh的隐藏文件夹，里面包含了id_rsa密钥和id_rsa.pub公钥，等下把公钥添加到服务器。
+用 git 命令 ssh-keygen -t rsa ，会在 ~/ 下生成一个 .ssh 的隐藏文件夹，里面包含 id_rsa 密钥和 id_rsa.pub 公钥，等下把公钥添加到服务器。
 
-## 下载ssh，配置ssh，启动sshd
+## 下载 ssh，配置 ssh，启动 sshd
 
 ```bash
-yum install openssh-server -y
+$ yum install openssh-server -y
 ```
 
-OpenSSH的主配置文件：/etc/ssh/sshd_config
+OpenSSH 的主配置文件：/etc/ssh/sshd_config
 
 以下是一些常用设置：
 
@@ -55,64 +55,63 @@ PasswordAuthentication no
 
 ```
 
-开启sshd：
+开启 sshd：
 
 ```bash
-service ssh start #启动
-service ssh stop #停止
-service ssh restart #重启 
+$ service ssh start #启动
+$ service ssh stop #停止
+$ service ssh restart #重启 
 ```
 
 查看进程：
 
 ```bash
-ps -ef|grep ssh
+$ ps -ef|grep ssh
 ```
 
 
 
-## 创建用户目录，添加公钥，配置权限
+## 创建用户，添加公钥
 
-在ssh启动后，会在～/下创建一个.ssh隐藏文件夹，里面有一个authorized_keys文件，**可以在这个文件添加需要连接的服务器的客户端的公钥，但是一般不会这么做，这会有安全隐患，因为在root目录下的公钥的客户端登陆到服务器后会直接取得root权限，所以我会在/home目录下创建一个以客户名称的用户目录，再把～/.ssh文件夹复制到该用户目录下**，这里需要一些权限操作：
+在 ssh 启动后，会在 ～/ 下创建一个 .ssh 隐藏文件夹，里面有一个 authorized_keys 文件，**可以在这个文件添加需要连接的服务器的客户端的公钥，但是一般不会这么做，这会有安全隐患，因为在 root 目录下的公钥的客户端登陆到服务器后会直接取得 root 权限，所以我会创建一个用户，在用户所有在目录下添加 .ssh 目录，在 .ssh 目录下创建 authorized_keys 文件，最后把本地公钥添加到 authorized_keys 文件中：**
 
-将.ssh文件夹设置成只有属主有读、写、执行权限：
+- 创建用户：
 
 ```bash
-chmod 700 /home/zhangch/.ssh
+$ adduser chenghui.zhang
 ```
 
-再将authorized_keys文件设置成只有属主有读写权限：
+如果创建 .ssh 目录和 authorized_keys 文件的时候是用 root 创建的，那么需要将其改成 chenghui.zhang 的用户权限：
 
-```bash
-chmod 600 /home/zhangch/.ssh/authorized_keys
 ```
-
-最后还需要将.ssh文件夹里的文件设置成该用户的所有者和所属的组：
-
-```bash
-chown zhangch|zhangch*
+chown chenghui.zhang|chenghui.zhang /home/chenghui.zhang/.ssh
+chown chenghui.zhang|chenghui.zhang /home/chenghui.zhang/.ssh/authorized_keys
 ```
 
 如下：
 
-![ssh](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/ssh.jpg)
+![ssh](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/ssh.png)
 
 
 
 
 
-## 连接终端，获取root权限密码设定
 
-在客户端～/.ssh里面创建一个config文件：
+
+## 连接终端，设置用户获取 root 权限密码
+
+- 连接终端：
+
+在客户端 ～/.ssh 里面创建一个 config 文件：
 
 ```bash
-mkdir config
+$ touch config
 ```
 
 编辑：
 
 ```bash
-sudo vim config
+$ sudo vim config
 ```
 
 添加内容：
@@ -122,56 +121,59 @@ sudo vim config
 Host test
     HostName xxx.xx.xxx.xxx #服务器ip地址
     Port 22 #服务器配置的ssh端口号
-    User zhangch #在服务器的用户名（对应用户文件夹名字）
+    User chenghui.zhang #在服务器的用户名（对应用户文件夹名字）
 ```
 
-然后在终端(macOS推荐使用iTerm2)输入：
+然后在终端( macOS 推荐使用 iTerm2 )输入：
 
 ```bash
-ssh test
+$ ssh test
 ```
 
-到这里，就可以登上服务器了，但现在你还没获得root权限。
+到这里，就可以登上服务器了，但现在你还没获得 root 权限。
 
-接下来就是给用户配置需要输入密码获取root权限的操作：
 
-在服务器root权限下给zhangch用户添加密码：
+
+- 接下来就是给用户配置需要输入密码获取 root 权限的操作：
+
+
+在服务器 root 权限下给 zhangch 用户添加密码：
 
 ```bash
-passwd zhangch
+$ passwd chenghui.zhang
 ```
 
 然后就是输入密码
 
-这时还需要在/etc/sudoers给该用户临时提升权限（sudo就是我们常用的命令，仅需要输入当前用户密码，便可以完成权限的临时提升）
+这时还需要在 /etc/sudoers 给该用户临时提升权限（ sudo 就是我们常用的命令，仅需要输入当前用户密码，便可以完成权限的临时提升）
 
 ```bash
-sudo vim /etc/sudoers
+$ sudo vim /etc/sudoers
 ```
 
 添加下面内容：
 
 ```bash
 # 格式为（用户名    网络中的主机=（执行命令的目标用户）    执行的命令范围）
-user    ALL=(ALL)       ALL
+$ chenghui.zhang    ALL=(ALL)       ALL
 ```
 
 这时候退出保存可能会遇到文件只读状态，我们还需要给该文件更改权限：
 
 ```bash
-chmod 700 /etc/sudoers
+$ chmod 700 /etc/sudoers
 ```
 
-在登陆服务器之后，需要取得临时root权限：
+在登陆服务器之后，需要取得临时 root 权限：
 
 ```bash
-sudo su -
+$ sudo su -
 ```
 
 提示你输入密码，输入刚刚的密码，这时候你就拥有了root权限了。为安全起见，记得操作完后切换回用户目录：
 
 ```bash
-su - zhangch
+$ su - chenghui.zhang
 ```
 
 完。
