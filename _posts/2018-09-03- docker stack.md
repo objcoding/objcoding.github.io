@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "在Swarm集群中使用Compose服务编排"
+title: "Docker Stack多服务编排"
 categories: Docker
-tags: compose swarm
+tags: compose swarm stack
 author: zch
 ---
 
@@ -55,6 +55,7 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
+             
 networks:
   overlay:
 ```
@@ -81,5 +82,41 @@ $ docker stack ps mynet
 
 ![docker compose](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose.png)
 
-stack 是一组相互关联的服务，它们共享依赖关系，并且可以一起orchestrated(编排)和缩放。单个stack能够定义和协调整个应用程序的功能（尽管非常复杂的应用程序可能希望使用多个堆栈）。
+**stack 是一组相互关联的服务，也就是它是服务的上一层，这些服务共享依赖关系，并且可以一起编排和缩放。单个 stack 能够定义和协调整个应用程序的功能（尽管非常复杂的应用程序可能希望使用多个堆栈），简单来说 stack就是一组服务的集合。**
 
+stack 相关命令：
+
+```
+deploy      Deploy a new stack or update an existing stack
+ls          List stacks
+ps          List the tasks in the stack
+rm          Remove one or more stacks
+services    List the services in the stack
+```
+
+现在我们更新一下 docker-compose.yml 文件，增加 portainer 服务：
+
+```
+portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+```
+
+```bash
+$ docker stack deploy -c docker-compose.yml mynet
+```
+
+打开页面：
+
+![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack.png)
+
+portainer 是 docker swarm 集群容器管理页面，可管理 Docker 容器、image、volume、network 等，当让我们还可以在其页面上添加多个stack：
+
+![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack2.png)
