@@ -80,7 +80,7 @@ $ docker stack deploy -c docker-compose.yml mynet
 $ docker stack ps mynet
 ```
 
-![docker compose](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose.png)
+![docker compose](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose2.png)
 
 **stack 是一组相互关联的服务，也就是它是服务的上一层，这些服务共享依赖关系，并且可以一起编排和缩放。单个 stack 能够定义和协调整个应用程序的功能（尽管非常复杂的应用程序可能希望使用多个堆栈），简单来说 stack就是一组服务的集合。**
 
