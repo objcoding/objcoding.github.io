@@ -8,7 +8,7 @@ author: zch
 
 * content
 {:toc}
-之前 swarm 集群中`docker service create`一次只能部署一个微服务，我们可以使用 docker compose 一次启动多个服务。
+之前 swarm 集群中`docker service create`一次只能部署一个微服务，我们可以使用 docker stack + compose 一次启动多个服务。
 
 
 
@@ -17,6 +17,8 @@ author: zch
 
 
 
+
+**stack 是一组相互关联的服务，它是服务的上一层，这些服务共享依赖关系，并且可以一起编排和缩放。单个 stack 能够定义和协调整个应用程序的功能，简单来说 stack 就是一组服务的集合。**
 
 
 
@@ -82,9 +84,7 @@ $ docker stack ps mynet
 
 ![docker compose](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose2.png)
 
-**stack 是一组相互关联的服务，也就是它是服务的上一层，这些服务共享依赖关系，并且可以一起编排和缩放。单个 stack 能够定义和协调整个应用程序的功能（尽管非常复杂的应用程序可能希望使用多个堆栈），简单来说 stack就是一组服务的集合。**
-
-stack 相关命令：
+- stack 相关命令：
 
 ```
 deploy      Deploy a new stack or update an existing stack
@@ -94,7 +94,7 @@ rm          Remove one or more stacks
 services    List the services in the stack
 ```
 
-现在我们更新一下 docker-compose.yml 文件，增加 portainer 服务：
+- 现在我们更新一下 docker-compose.yml 文件，增加 portainer 服务：
 
 ```
 portainer:
