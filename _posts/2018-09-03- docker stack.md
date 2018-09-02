@@ -117,6 +117,6 @@ $ docker stack deploy -c docker-compose.yml mynet
 
 ![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack.png)
 
-portainer 是 docker swarm 集群容器管理页面，可管理 Docker 容器、image、volume、network 等，当让我们还可以在其页面上添加多个stack：
+portainer 是 docker swarm 集群容器管理页面，可管理 Docker 容器、image、volume、network 等，当然我们还可以在其页面上添加多个stack：
 
 ![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack2.png)
