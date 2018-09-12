@@ -294,7 +294,7 @@ The commands are:
 
 go 团队表示，在 go 1.12 之前，这个特性都将会处于实验性阶段，go 团队会努力保持兼容性。一旦模块稳定之后，对 GOPATH 的支持将会被移除掉。
 
-如果 go 之后还有什么更新，我也会在这里对 go modules 的最新玩法进行同步跟新目前暂时发现 goland  IDE 对 go modules 的支持还不是很给力啊，不知道是 go modules 的原因还是 IDE 的原因，为此我在「go 语言中文网」发了一个问答主题：
+如果 go 之后还有什么更新，我也会在这里对 go modules 的最新玩法进行同步更新。目前暂时发现 goland  IDE 对 go modules 的支持还不是很给力啊，不知道是 go modules 的原因还是 IDE 的原因，为此我在「go 语言中文网」发了一个问答主题：
 
 [关于go modules的问题](https://studygolang.com/topics/6496#reply0)
 
