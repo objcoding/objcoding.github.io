@@ -10,7 +10,7 @@ author: zch
 {:toc}
 今天闲的蛋疼把腾讯云服务器重启了，发现登陆不了，由于没有禁止防火墙开机启动，重启后导致防火墙重启启动，导致 SSH 端口变成了过滤状态。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tencent_cloud_2.png)
+
 
 
 
