@@ -115,7 +115,7 @@ public class ProducerController {
 
 - 消费者：
 
-```Java
+```java
 @Component
 public class Consumer {
 
