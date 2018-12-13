@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[置顶]程序员的内功修炼课"
+title: "程序员的内功修炼课"
 categories: 推广
 tags: data-structures algorithms mathematics
 author: zch
