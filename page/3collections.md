@@ -27,4 +27,5 @@ type: page
 - [逗比罗](http://blog.pcluo.com/)
 - [超级大丁丁](https://msgcode.github.io/)
 - [Egan](http://www.egzosn.com/)
+- [段子手+老司机-->肥朝](https://www.jianshu.com/u/f7daa458b874)
 
