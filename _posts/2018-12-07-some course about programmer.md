@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "程序员的内功修炼课"
+title: "老哥，我这里有两本内功修炼宝典，你需要吗？"
 categories: 推广
 tags: data-structures algorithms mathematics
 author: zch
