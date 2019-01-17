@@ -22,24 +22,36 @@ author: zch
 
 - 下载:
 
-wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+```bash
+$ wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+```
+
+
 
 - 解压:
 
+```bash
+$ tar -zxvf redis-5.0.3.tar.gz
+```
 
-tar -zxvf redis-5.0.3.tar.gz
+
 
 - 编译:
 
+```bash
+$ make install PREFIX=/opt/redis/redis-5.0.3
+```
 
-make install PREFIX=/opt/redis/redis-5.0.3
+
 
 - 拷贝配置文件:
 
+```bash
+$ cp redis.conf /opt/redis/redis-5.0.3/bin
+$ cp redis-sentinel.conf /opt/redis/redis-5.0.3/bin
+```
 
-cp redis.conf /opt/redis/redis-5.0.3/bin
 
-cp redis-sentinel.conf /opt/redis/redis-5.0.3/bin
 
 
 
