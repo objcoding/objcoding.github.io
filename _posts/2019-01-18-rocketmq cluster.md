@@ -203,11 +203,9 @@ $ nohup sh mqbroker -c broker-b.properties >/dev/null 2>&1 &
 $ nohup sh mqbroker -c broker-b-s.properties >/dev/null 2>&1 &
 ```
 如果运行出现如下错误:
-```bash
 "The broker[broker-a, 172.17.4.60:10911] boot success. serializeType=JSON and name server is 172.17.4.60:9876"
-
 "INFO: os::commit_memory(0x00000006c0000000, 2147483648, 0) failed; error='Cannot allocate memory' (errno=12)"
-```
+
 那么修改一下runserver.sh和runbroker.sh的合适的jvm参数就可以了
 
 
