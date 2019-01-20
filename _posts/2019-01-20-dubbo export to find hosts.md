@@ -145,7 +145,7 @@ public static String getSystemProperty(String key) {
 
 这里`System.getenv(key);`方法作用是获取环境变量key中的地址值，如果环境变量没有配置对应key的值，那么就会调用`System.getProperty(key);`方法自动获取本地网卡的内网地址。
 
-```Java
+```java
 public class Constants {
   public static final String DUBBO_IP_TO_REGISTRY = "DUBBO_IP_TO_REGISTRY";
   public static final String DUBBO_PORT_TO_REGISTRY = "DUBBO_PORT_TO_REGISTRY";
