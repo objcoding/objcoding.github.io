@@ -35,6 +35,8 @@ layout: default
         </article>
         <hr>
 
+        {% include officialAccounts.html %}
+
        {% assign hasSimilar = '' %}
         {% for post in site.related_posts %}
             {% assign postHasSimilar = false %}
@@ -61,8 +63,6 @@ layout: default
         {% if hasSimilar.size > 0 %}
             </ul>
         {% endif %}
-
-        {% include officialAccounts.html %}
         
         {% include previousAndNext.html %}
 
