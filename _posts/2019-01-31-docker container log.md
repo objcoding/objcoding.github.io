@@ -87,7 +87,7 @@ filebeat.prospectors:
       - /var/lib/docker/containers/*/*.log
       # 因为docker使用的log driver是json-file，因此采集到的日志格式是json格式，设置为true之后，filebeat会将日志进行json_decode处理
    json.keys_under_root: true
-   tail_files: true
+   tail_files: true 
 output.logstash:
   hosts: ["172.17.10.114:5044"]
 ```
