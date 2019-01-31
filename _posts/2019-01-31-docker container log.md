@@ -127,7 +127,7 @@ RUN ln -sf /dev/stdout /xx/xx.log \ # info
 
 如果日志需要记录容器id名称和镜像名称，在运行容器时可以加入以下参数：
 
-```bash
+```
 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}"
 ```
 
