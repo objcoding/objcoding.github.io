@@ -58,15 +58,15 @@ PasswordAuthentication no
 开启 sshd：
 
 ```bash
-$ service ssh start #启动
-$ service ssh stop #停止
-$ service ssh restart #重启 
+$ systemctl start sshd.service #启动
+$ systemctl stop sshd.service #停止
+$ systemctl restart sshd.service #重启 
 ```
 
 查看进程：
 
 ```bash
-$ ps -ef|grep ssh
+$ ps -ef|grep sshd
 ```
 
 
