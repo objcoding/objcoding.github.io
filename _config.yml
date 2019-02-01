@@ -8,7 +8,7 @@
 # Site settings
 title: objcoding
 brief-intro: 每一步成长都想与你分享
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://objcoding.github.io"  # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
