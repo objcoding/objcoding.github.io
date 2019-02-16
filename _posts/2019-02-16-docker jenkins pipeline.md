@@ -8,6 +8,9 @@ author: zch
 
 * content
 {:toc}
+最近在公司推行Docker Swarm集群的过程中，需要用到Jenkins来做自动化部署，Jenkins实现自动化部署有很多种方案，可以直接在jenkins页面写Job，把一些操作和脚本都通过页面设置，也可以在每个项目中直接写Pipeline脚本，但像我那么优秀，那么追求极致的程序员来说，这些方案都打动不了我那颗骚动的心，下面我会跟你们讲讲我是如何通过Pipeline脚本实现自动化部署方案的，并且实现多分支构建，还实现了所有项目共享一个Pipeline脚本。
+
+
 
 
 
@@ -237,3 +240,9 @@ build(map)
 2. 接下来就是将项目具体的参数保存到map中，调用build()方法传递给通用Pipeline脚本。
 
 Shared Libraries共享库极大地提升了Pipeline脚本的通用性，避免了脚本过多带来的问题，也符合了一个优秀程序员的审美观，如果你是一个有追求的程序员，你一定会爱上它。
+
+
+
+附上一张价值连城的手稿图：
+
+![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_10.png)
