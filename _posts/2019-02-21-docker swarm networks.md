@@ -98,7 +98,7 @@ $ sudo docker network create -d overlay --subnet=10.0.15.0/24 chaos_net
 
 在编排文件的networks上配置defualt属性，在defualt属性下面添加external属性，在其下面填写刚刚生成的网络的名称：
 
-```
+```yaml
 networks:
   default:
     external:
