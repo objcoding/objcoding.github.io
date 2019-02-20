@@ -107,6 +107,6 @@ networks:
 
 官方解析如下图所示：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker14.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker15.png)
 
 这么做的好处是可以灵活地将不同stack服务栈加入到相同网络下，也可避免上面提到的几个坑。
