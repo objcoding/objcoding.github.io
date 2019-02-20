@@ -44,7 +44,7 @@ overlay网络模型在docker集群节点间的加入了一层虚拟网络，它�
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/dubbo_1.png)
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/dubbo_1.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/dubbo_2.png)
 
 提供者和消费者同时部署了2个实例，在相同overlay网段下，相互之间是可通信的。
 
