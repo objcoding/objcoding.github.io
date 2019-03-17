@@ -33,7 +33,7 @@ mybatis-plus是完全基于mybatis开发的一个增强工具，它的设计理�
 
 - SqlSessionFactoryBean：继承了FactoryBean和InitializingBean，符合spring loc容器bean的基本规范，可在获取该bean时调用getObject()方法到SqlSessionFactory。
 - XMLMapperBuilder：xml文件解析器，解析Mapper对应的xml文件信息，并将xml文件信息注册到Configuration中。
-- XMLStatementBuilder：xml节点解析器，用于构建select|insert|update|delete节点信息。
+- XMLStatementBuilder：xml节点解析器，用于构建select/insert/update/delete节点信息。
 - MapperBuilderAssistant：Mapper构建助手，将Mapper节点信息封装成statement添加到MappedStatement中。
 - MapperRegistry：Mapper注册与绑定类，将Mapper的类信息与MapperProxyFactory绑定。
 - MapperAnnotationBuilder：Mapper注解解析构建器，这也是为什么mybatis可以直接在Mapper方法添加注解信息就可以不用在xml写sql信息的原因，这个构建器专门用于解析Mapper方法注解信息，并将这些信息封装成statement添加到MappedStatement中。
