@@ -2,7 +2,7 @@
 layout: post
 title: "mybatis-plus源码分析之sql注入器"
 categories: Mybatis
-tags: MappedStatement
+tags: sql注入器 MappedStatement
 author: zch
 ---
 
