@@ -55,7 +55,7 @@ author: zch
 
 ## 从源码的角度分析
 
-源码分析从哪一步开始呢？如果是看过我之前写的那几篇关于mybatis的源码分析，我相信你不会在Mybatis源码前磨磨蹭蹭，而是直接找到源码在哪里了。
+源码分析从哪一步作为入口呢？如果是看过我之前写的那几篇关于mybatis的源码分析，我相信你不会在Mybatis源码前磨磨蹭蹭，迟迟找不到入口。
 
 在之前的文章里已经说过了，Mapper的实现类是一个代理，真正执行逻辑的是MapperProxy.invoke()，该方法最终执行的是sqlSessionTemplate。
 
@@ -175,7 +175,7 @@ public abstract class TransactionSynchronizationManager {
 }
 ```
 
-当前线程事务管理器是spring的一个当前线程事务管理器，它允许将当前资源存储到当前线程ThreadLocal中，从前面也可看出SqlSessionHolder是保存在resources中。
+这是spring的一个当前线程事务管理器，它允许将当前资源存储到当前线程ThreadLocal中，从前面也可看出SqlSessionHolder是保存在resources中。
 
 org.mybatis.spring.SqlSessionUtils#registerSessionHolder：
 
@@ -226,7 +226,7 @@ public static boolean isSynchronizationActive() {
 }
 ```
 
-**每当我们开启一个事务，会调用initSynchronization()方法进行初始化synchronizations，以激活当前线程线程事物管理器。**
+**每当我们开启一个事务，会调用initSynchronization()方法进行初始化synchronizations，以激活当前线程事务管理器。**
 
 ```java
 public static void initSynchronization() throws IllegalStateException {
@@ -244,7 +244,7 @@ public static void initSynchronization() throws IllegalStateException {
 
 
 
-回到SqlSessionInterceptor代理类的逻辑，发现是否需要commit要调用以下方法：
+回到SqlSessionInterceptor代理类的逻辑，发现判断会话是否需要提交要调用以下方法：
 
 org.mybatis.spring.SqlSessionUtils#isSqlSessionTransactional：
 
