@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "钟同学，this is for you！"
+title: "从源码的角度解析Mybatis的会话机制"
 categories: Mybatis Spring
 tags: SqlSession transaction
 author: zch
