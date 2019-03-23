@@ -30,14 +30,12 @@ $ sudo docker info | grep Logging
 
 我们都知道docker logs -f会将所有对应的服务日志输出到终端，无论服务的部署在哪个节点上，那么我现在提出一个问题，是否每个节点对应的容器文件，都会保存该服务的完整日志备份，还是只保存该节点服务对应容器产生的日志？
 
-因为这个问题涉及到每个节点如果都用filebeat监听宿主机的容器日志文件，那么如果每个节点的容器日志都是一个完整的备份，日志就会重复，如果只是保存该节点上容器的日志，就不会。
+因为这个问题涉及到每个节点如果都用filebeat监听宿主机的容器日志文件，那么每个节点的容器日志都是一个完整的备份，日志就会重复，**所以答案是每个节点只保留该节点上容器的日志，docker logs -f 命令只不过在overlay网络模型上走了一层协议，把在其它节点上的相同的容器日志汇聚起来。**
 
-答案是只保留该节点上容器的日志，docker logs -f 命令只不过在overlay网络模型上走了一层协议，把在其它节点上的相同的容器日志汇聚起来。
-
-
+容器日志收集工具有很多，我这里只用filebeat举例。
 
 
-默认使用docker的json-file，首先配置daemon：
+默认使用docker的json-file，首先配置daemon（不推荐这种做法）：
 
 ```bash
 $ sudo dockerd \
@@ -51,31 +49,42 @@ $ sudo dockerd \
 $ sudo docker service update --label servicename=test
 ```
 
-或者直接在docker-compose.yml中标记：
+或者直接在docker-compose.yml中标记（推荐这种做法）：
 
-```yml
+```yaml
 version: "3"
 
 services:
-  go-gin-demo:
-    image: chenghuizhang/go-gin-demo:v3
+  project1:
+    image: chenghuizhang/project1:v3
     ports:
       - 8081:8081
     networks:
-      - overlay
+      - my_net
     deploy:
       mode: replicated
       replicas: 3
     labels:
-      servicename: go-gin-demoxxxxxxx
+      - "servicename=project1"
     logging:
+      driver: "json-file"
       options:
         labels: "servicename"
+        tag: "{{.ImageName}}/{{.Name}}/{{.ID}}"
+        max-size: "100m"
+        max-file: "10"
 
 networks:
-  overlay:
+  my_net:
+  	name: my_net
+  	driver: overlay
+  	ipam:
+  	  config:
+  	  - subnet: 10.18.0.0/24
 
 ```
+
+
 
 在每个节点安装filebeat，并且filebeat.yml配置如下：
 
@@ -94,8 +103,7 @@ output.logstash:
 
 在logstash.conf中配置索引：
 
-```
-
+```yaml
 output {
   elasticsearch {
     action => "index"
@@ -113,7 +121,7 @@ RUN ln -sf /dev/stdout /xx/xx.log \ # info
 	&& ln -sf /dev/stderr /xx/xx.log # error
 ```
 
-或者在在项目的log4j配置输出控制台：
+或者在项目的log4j配置输出控制台：
 
 ```xml
 <Appenders>
@@ -123,35 +131,35 @@ RUN ln -sf /dev/stdout /xx/xx.log \ # info
 </Appenders>
 ```
 
-
-
 如果日志需要记录容器id名称和镜像名称，在运行容器时可以加入以下参数：
 
-```
+```bash
 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}"
 ```
 
+当然也可以在docker-compose编排文件中加入，具体格式在文中上面已经举例了。
+
+下图为官方的tag标签解释文档：
+
 ![tag](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_log_driver_tag.png)
 
-最终，json-file日志插件将容器打印到控制台的日志生成到本地 `/var/lib/docker/containers/*/`目录中，格式如下：
+最终，json-file日志插件将容器打印到控制台的日志生成到本地 `/var/lib/docker/containers/*/`目录中，为json格式，如下：
 
 ```json
 {
     "log":"[GIN-debug] [WARNING] Now Gin requires Go 1.6 or later and Go 1.7 will be required soon.",
     "stream":"stderr",
     "attrs":{
-        "tag":"chenghuizhang/go-gin-demo:v3@sha256:e6c0419d64e5eda510056a38cfb803750e4ac2f0f4862d153f7c4501f576798b/mygo.2.jhqptjugfti2t4emf55sehamo/647eaa4b3913",
-        "servicename":"test"
+        "tag":"chenghuizhang/project1:v3@sha256:e6c0419d64e5eda510056a38cfb803750e4ac2f0f4862d153f7c4501f576798b/mygo.2.jhqptjugfti2t4emf55sehamo/647eaa4b3913",
+        "servicename":"project1"
     },
     "time":"2019-01-29T10:08:59.780161908Z"
 }
 ```
 
+最后在logstash中格式化日志：
 
-
-在logstash中格式化日志：
-
-```json
+```Yaml
 filter {
  grok {
     patterns_dir => "/etc/logstash/conf.d/patterns"
