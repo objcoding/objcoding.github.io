@@ -84,7 +84,7 @@ networks:
 
 ```
 
-
+自定义一个servicename标签，值为project1，tag格式为{{.ImageName}}/{{.Name}}/{{.ID}}，为容器的信息，下面会说到。
 
 在每个节点安装filebeat，并且filebeat.yml配置如下：
 
@@ -166,3 +166,4 @@ filter {
     match => {"message" => "%{TIMESTAMP_ISO8601:time}%{SERVICENAME:attr.servicename}%{DOCKER_TAG:attr.tag}"}
 }
 ```
+fdfdsfds
