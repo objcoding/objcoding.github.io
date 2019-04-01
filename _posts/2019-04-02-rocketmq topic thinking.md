@@ -54,7 +54,7 @@ author: zch
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_10.png)
 
-果然内部版本才是亲儿子啊，真香！为了打入内部深度学习一波，得加把劲了！
+内部版本真香！为了打入内部深度学习一波，得加把劲了！
 
 
 
