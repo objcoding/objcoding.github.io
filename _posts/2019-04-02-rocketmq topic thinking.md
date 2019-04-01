@@ -52,7 +52,7 @@ author: zch
 
 哈哈，其实我的这个想法，蚂蚁金服内部已经实现了，大佬的回答，撩拨到我那颗骚动的心：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_9.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_10.png)
 
 果然内部版本才是亲儿子啊，真香！哈哈，为了打入内部深度学习一波，得加把劲了！
 
