@@ -30,11 +30,11 @@ author: zch
 
 你们有没有想过是如何处理这个问题呢？或者根本不去处理？
 
-通过撸源码可以知道，RocketMQ目前只能是通过手动配置topic1到b3和b4，那么这时问题又来了，如果集群中有成百上千个topic呢？手动配置真的够呛，流量突然增大这时你手动扩容topic时效性也差。那如何来解决这个问题呢？我问了一位蚂蚁金服的大佬，他给出了如下解决方案：
+通过撸源码可以知道，RocketMQ目前只能是通过手动配置topic1到b3和b4，那么这时问题又来了，如果集群中有成百上千个topic呢？手动配置真的够呛，流量突然增大这时你手动扩容topic时效性也差。那如何来解决这个问题呢？
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_9.png)
+**我们可以按业务分集群，把topic归类到不同的集群中，这样每个集群添加broker后，需要重新分配的topic就大大减少了。**
 
-这似乎是没办法之中的办法了啊，其实应该添加一个复制功能，新增的broker自动从nameserver拉取需要复制到新broker的topic配置。希望以后的版本中如愿增加这个功能吧。
+**更好的解决方案是添加一个复制功能，新增的broker自动从nameserver拉取需要复制到新broker的topic配置。期待以后的版本迭代中如愿增加这个功能吧。**
 
 
 
@@ -48,13 +48,11 @@ author: zch
 
 我们都知道手动创建topic有broker模式创建和集群模式创建，我们可以很简单地通过broker模式来创建topic1拥有10个队列，即broker数量*每个broker队列数量就行了，但是通过broker模式创建的话，就有可能造成某些broker负载过高，于是我想通过集群模式去创建topic，我们都知道集群模式创建broker会默认在集群下的每个broker都创建topic的队列路由信息，那么我现在这个集群中创建的每个topic的消息队列至少都会有20个了。
 
-有没有可能以后会多一个创建机制：在集群模式下，只需要输入topic名称和消息队列数量，至于队列被分配到哪个broker，取决于broker的负载情况。
+**有没有可能以后会多一个创建机制：在集群模式下，只需要输入topic名称和消息队列数量，至于队列被分配到哪个broker，取决于broker的负载情况。**
 
-哈哈，其实我的这个想法，蚂蚁金服内部已经实现了，大佬的回答，撩拨到我那颗骚动的心：
+同样期待以后的版本迭代中如愿增加这个功能吧。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_10.png)
 
-内部版本真香！为了打入内部深度学习一波，得加把劲了！
 
 
 
