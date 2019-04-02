@@ -20,7 +20,7 @@ author: zch
 
 
 
-## 当集群新增broker后，如何保证队列负载？
+## 当集群新增master节点后，如何保证队列负载？
 
 假设我现在有两个master broker分别为b1和b2组成了一个集群，我选择手动创建topic1，此时topic1的路由信息会发送到b1和b2，同时b1和b2会将路由信息注册到nameserver，发送topic1的消息时，会从nameserver获取topic1的路由信息，然后进行负载均衡平均分发到b1和b2。
 
