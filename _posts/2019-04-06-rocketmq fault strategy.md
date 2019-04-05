@@ -258,7 +258,7 @@ public boolean isAvailable() {
 }
 ```
 
-
+如果当前系统时间大于故障规避开始时间，说明broker可以继续加入轮询的队伍里了。
 
 ## 写在最后
 
