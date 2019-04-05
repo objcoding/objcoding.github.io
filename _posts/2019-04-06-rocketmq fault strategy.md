@@ -55,7 +55,7 @@ for (; times < timesTotal; times++) {
 
 我在这里提出一个问题：
 
-**现在有个由两台broker节点组成的集群，有topic1，默认在每个broker上创建4个队列，分别是：master-a（q0,q1,q2,q3）、master-b（q0,q1,q2,q3），上一次发送消息到master-a的q0队列，此时master-a宕机了，如果继续发送topic1消息，rocketmq如果避免再次发送到master-a？**
+**现在有个由两个broker节点组成的集群，有topic1，默认在每个broker上创建4个队列，分别是：master-a（q0,q1,q2,q3）、master-b（q0,q1,q2,q3），上一次发送消息到master-a的q0队列，此时master-a宕机了，如果继续发送topic1消息，rocketmq如果避免再次发送到master-a？**
 
 以上问题引出了rocketmq发送消息时如何选择队列的一些机制，选择队列有两种方式，通过sendLatencyFaultEnable的值来控制，默认值为false，不启动broker故障延迟机制，值为true时启用broker故障延迟机制。
 
@@ -161,7 +161,7 @@ public MessageQueue selectOneMessageQueue(final TopicPublishInfo tpInfo, final S
 }
 ```
 
-该方法的轮询选择队列getSendWhichQueue的自增取值，与默认机制一致，不同的是多了判断是否可用，调用了latencyFaultTolerance.isAvailable(mq.getBrokerName())判断，其中肯定内涵机关，所以我们需要从延迟机制的几个核心类找突破口。
+该方法利用sendWhichQueue的自增取值的方式轮询选择队列，与默认机制一致，不同的是多了判断是否可用，调用了latencyFaultTolerance.isAvailable(mq.getBrokerName())判断，其中肯定内涵机关，所以我们需要从延迟机制的几个核心类找突破口。
 
 下面我会从源码的角度详细地分析rocketmq是如何实现在一定时间内规避故障broker的。
 
@@ -246,6 +246,8 @@ public void updateFaultItem(final String name, final long currentLatency, final 
 }
 ```
 
+FaultItem为存储故障broker的类，称为失败条目，每个条目存储了broker的名称、消息发送延迟时长、故障规避开始时间。
+
 该方法主要是对失败条目的一些更新操作，如果失败条目已存在，那么更新失败条目，如果失败条目不存在，那么新建失败条目，其中失败条目的startTimestamp为当前系统时间加上规避时长，startTimestamp是判断broker是否可用的时间值：
 
 org.apache.rocketmq.client.latency.LatencyFaultToleranceImpl.FaultItem#isAvailable：
@@ -260,5 +262,5 @@ public boolean isAvailable() {
 
 ## 写在最后
 
-经过一波源码的分析，我相信你已经找到了你想要的答案，这个故障延迟机制真的是一个很好的设计，我们看源码不仅仅要看爽，爽了之后我们要思考一下这些优秀的设计思想在平时写代码的过程中是否可以借鉴一下？
+经过一波源码的分析，我相信你已经找到了你想要的答案，这个故障延迟机制真的是一个很好的设计，我们看源码不仅仅要看爽，爽了之后我们还要思考一下这些优秀的设计思想在平时写代码的过程中是否可以借鉴一下？
 
