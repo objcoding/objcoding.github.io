@@ -16,7 +16,7 @@ author: zch
 
 **如果前面6个任务还是没有处理完，这时又同时进来5个任务，问：线程池又会创建几条线程还是不会创建？**
 
-如果你此时一脸懵逼，别慌，问题不大。
+如果你此时一脸懵逼，请不要慌，问题不大。
 
 ![dont_panic](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/dont_panic.jpeg)
 
