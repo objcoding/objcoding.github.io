@@ -55,7 +55,9 @@ public ThreadPoolExecutor(int corePoolSize,
 }
 ```
 
-创建线程池一共有7个参数，下面我来解释一下这7个参数的用途：
+创建线程池一共有7个参数，从源码可知，corePoolSize和maximumPoolSize都不能小于0，且核心线程数不能大于最大线程数。
+
+下面我来解释一下这7个参数的用途：
 
 ### corePoolSize
 
@@ -97,7 +99,7 @@ keepAliveTime的单位。
 
 
 
-现在我们知道参数的具体作用，那么我问你们的问题就好回答了：
+现在我们回到刚开始的问题就很好回答了：
 
 **由于线程池corePoolSize=5，因此在线程池初始化时，就已经有5个空闲线程了，因此有4个任务同时进来时，并不会创建线程；前面的4个任务都没完成，这时又进来2个队列，这时5个核心线程都用完了，还剩下1个任务，这时线程池会将剩下这个任务塞进阻塞队列中，等待空闲线程执行，因此并不会创建线程；如果前面6个任务还是没有处理完，这时又同时进来了5个任务，此时还没有空闲线程来执行新来的任务，所以线程池继续将这5个任务塞进阻塞队列，但发现阻塞队列已经满了，这时只能创建“临时”线程了来执行任务了，并且线程池数量最多只能拥有maximumPoolSize大小，因此这时候会创建1个“临时”线程来执行任务，这里创建的线程用“临时”来描述还是因为它们不会长期存在于线程池，它们的存活时间为keepAliveTime。**
 
@@ -155,9 +157,9 @@ public LinkedBlockingQueue() {
 
 从JDK源码可看出，Executors工具类无非是把一些特定参数进行了封装，并提供一些方法供我们调用而已，我们并不能灵活地填写参数，**策略过于简单，不够友好**。
 
-CachedThreadPool和ScheduledThreadPool最大线程数为Integer.MAX_VALUE，如果线程创建也过多，会出现OOM异常。
+CachedThreadPool和ScheduledThreadPool最大线程数为Integer.MAX_VALUE，如果线程无限地创建，会造成OOM异常。
 
-LinkedBlockingQueue基于链表的FIFO队列，是无界的，默认大小是Integer.MAX_VALUE，因此FixedThreadPool和SingleThreadPool的阻塞队列长度为Integer.MAX_VALUE，如果此时队列被塞满任务，很可能会造成OOM异常。
+LinkedBlockingQueue基于链表的FIFO队列，是无界的，默认大小是Integer.MAX_VALUE，因此FixedThreadPool和SingleThreadPool的阻塞队列长度为Integer.MAX_VALUE，如果此时队列被无限地堆积任务，会造成OOM异常。
 
 
 
