@@ -57,31 +57,31 @@ public ThreadPoolExecutor(int corePoolSize,
 
 创建线程池一共有7个参数，下面我来解释一下这7个参数的用途：
 
-### corePoolSize：
+### corePoolSize
 
 线程池核心线程数量，核心线程不会被回收，即使没有任务执行，也会保持空闲状态。
 
-### maximumPoolSize：
+### maximumPoolSize
 
 池允许最大的线程数，当线程数量达到corePoolSize，且workQueue队列塞满任务了之后，继续创建线程。
 
-### keepAliveTime：
+### keepAliveTime
 
 超过corePoolSize之后的“临时线程”的存活时间。
 
-### unit：
+### unit
 
 keepAliveTime的单位。
 
-### workQueue：
+### workQueue
 
 当前线程数超过corePoolSize时，新的任务会处在等待状态，并存在workQueue中，BlockingQueue是一个先进先出的阻塞式队列实现，底层实现会涉及Java并发的AQS机制，有关于AQS的相关知识，我会单独写一篇，敬请期待。
 
-### threadFactory：
+### threadFactory
 
 创建线程的工厂类，通常我们会自顶一个threadFactory设置线程的名称，这样我们就可以知道线程是由哪个工厂类创建的，可以快速定位。
 
-### handler：
+### handler
 
 线程池执行拒绝策略，当线数量达到maximumPoolSize大小，并且workQueue也已经塞满了任务的情况下，线程池会调用handler拒绝策略来处理请求。
 
