@@ -109,6 +109,8 @@ keepAliveTime的单位。
 
 **这里创建的线程用“临时”来描述还是因为它们不会长期存在于线程池，它们的存活时间为keepAliveTime，此后线程池会维持最少corePoolSize数量的线程。**
 
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool.png)
+
 ## 为什么不建议使用Executors创建线程池？
 
 JDK为我们提供了Executors线程池工具类，里面有默认的线程池创建策略，大概有以下几种：
