@@ -2,7 +2,7 @@
 layout: post
 title: "你都理解创建线程池的参数吗？"
 categories: Java
-tags: ThreadPool
+tags: 线程池
 author: zch
 ---
 
