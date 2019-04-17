@@ -7,7 +7,7 @@
 
 # Site settings
 title: 微信公众号「Java科代表」
-brief-intro: (微信号: objcoding)
+brief-intro: (ID:objcoding)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://objcoding.github.io"  # the base hostname & protocol for your site
 
