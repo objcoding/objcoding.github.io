@@ -10,7 +10,7 @@ author: zch
 {:toc}
 在讲解完线程池的构造参数和一些不常用的设置之后，有些同学还是想继续深入地了解线程池的原理，所以这篇文章科代表会带大家深入源码，从底层吃透线程池的运行原理。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/bb.jpg)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/bb.jpeg)
 
 
 
@@ -99,7 +99,7 @@ CAPACITY表示最大有效线程数，根据位运算得出COUNT_MASK=1111111111
 
 Doug Lea大神牛逼！
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/nice.jpg)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/nice.jpeg)
 
 
 
@@ -429,3 +429,4 @@ private Runnable getTask() {
 
 这同学基础真扎实！
 
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/zashi.jpg)
