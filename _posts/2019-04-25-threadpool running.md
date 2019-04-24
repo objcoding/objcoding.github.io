@@ -252,7 +252,7 @@ return workerStarted;
 }
 ```
 
-以上源码主要的作用是创建一个Worker对象，并将新的任务装进Worker中，开启同步将Worker添加进workers中，**这里需要注意workers的数据结构为HashSet，线程不安全，所以需要操作workers需要加同步锁**。添加步骤做完后就启动线程来执行任务了，继续往下看。
+以上源码主要的作用是创建一个Worker对象，并将新的任务装进Worker中，开启同步将Worker添加进workers中，**这里需要注意workers的数据结构为HashSet，非线程安全，所以操作workers需要加同步锁**。添加步骤做完后就启动线程来执行任务了，继续往下看。
 
 
 
