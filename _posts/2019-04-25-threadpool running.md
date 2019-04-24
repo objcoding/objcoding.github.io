@@ -99,7 +99,7 @@ CAPACITY表示最大有效线程数，根据位运算得出COUNT_MASK=1111111111
 
 Doug Lea大神牛逼！
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/papapa.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/nice.jpg)
 
 
 
