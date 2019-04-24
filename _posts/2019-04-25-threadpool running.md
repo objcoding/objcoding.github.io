@@ -40,7 +40,7 @@ ExecutorService扩展了Executor，添加了操控线程池生命周期的方法
 
 ThreadPoolExecutor继承自AbstractExecutorService，同时实现了ExecutorService接口，也是Executor框架默认的线程池实现类，也是这篇文章重点分析的对象，一般我们使用线程池，如没有特殊要求，直接创建ThreadPoolExecutor，初始化一个线程池，如果需要特殊的线程池，则直接继承ThreadPoolExecutor，并实现特定的功能，如ScheduledThreadPoolExecutor，它是一个具有定时执行任务的线程池。
 
-下面我们开始ThreadPoolExecutor的源码分析了（以下源码基于JDK8）：
+下面我们开始ThreadPoolExecutor的源码分析了（以下源码为JDK8版本）：
 
 ### ctl变量
 
