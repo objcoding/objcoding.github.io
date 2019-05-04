@@ -8,7 +8,7 @@ author: zch
 
 * content
 {:toc}
-AQS 全称是 AbstractQueuedSynchronizer，顾名思义，是一个用来构建锁和同步器的框架，它底层用了 CAS 技术来保证操作的原子性，同时利用 FIFO 队列实现线程间的锁竞争，将基础的的同步相关抽象细节放在AQS，这也是 ReentrantLock、CountDownLatch 等同步工具实现同步的底层实现机制。它能够成为实现大部分同步需求的基础，也是 J.U.C 并发包同步的核心基础组件。
+AQS 全称是 AbstractQueuedSynchronizer，顾名思义，是一个用来构建锁和同步器的框架，它底层用了 CAS 技术来保证操作的原子性，同时利用 FIFO 队列实现线程间的锁竞争，将基础的同步相关抽象细节放在 AQS，这也是 ReentrantLock、CountDownLatch 等同步工具实现同步的底层实现机制。它能够成为实现大部分同步需求的基础，也是 J.U.C 并发包同步的核心基础组件。
 
 
 
@@ -47,14 +47,14 @@ public abstract class AbstractQueuedSynchronizer
  }
 ```
 
-1. head 字段为等待队列的头节点；
+1. head 字段为等待队列的头节点，表示当前正在执行的节点；
 2. tail 字段为等待队列的尾节点；
 3. state 字段为同步状态，其中 state > 0 为有锁状态，每次加锁就在原有 state 基础上加 1，即代表当前持有锁的线程加了 state 次锁，反之解锁时每次减一，当 statte = 0 为无锁状态；
 4. 通过 compareAndSetState 方法操作 CAS 更改 state 状态，保证 state 的原子性。
 
 有没有发现，这几个字段都用 volatile 关键字进行修饰，以确保多线程间保证字段的可见性。
 
-**AQS 提供了两种锁，分别是独占锁和共享锁，独占锁指的是操作被认作一种独占操作，比如 ReentrantLock，它实现了独占锁的方法，而共享锁则指的是一个非独占操作，比如一些同步工具 CountDownLatch 和 Semaphore 等同步工具**，下面是 AQS 对这两种锁提供的抽象方法。
+AQS 提供了两种锁，分别是独占锁和共享锁，独占锁指的是操作被认作一种独占操作，比如 ReentrantLock，它实现了独占锁的方法，而共享锁则指的是一个非独占操作，比如一些同步工具 CountDownLatch 和 Semaphore 等同步工具，下面是 AQS 对这两种锁提供的抽象方法。
 
 独占锁：
 
@@ -213,8 +213,6 @@ private Node enq(final Node node) {
 
 经过上面 CAS 不断尝试，这时当前节点已经成功加入到队尾了，接下来就到了acquireQueued 的逻辑，我们继续往下看源码：
 
-**在分析 acquireQueued(final Node node, int arg) 方法之前，我们需要明确一点，我们上面也说过，head 节点代表当前持有锁的线程，那么如果当前节点的 pred 节点是 head 节点，很可能此时 head 节点已经释放锁了，所以此时需要再次尝试获取锁。**
-
 ```java
 final boolean acquireQueued(final Node node, int arg) {
   boolean failed = true;
@@ -250,6 +248,8 @@ final boolean acquireQueued(final Node node, int arg) {
 1. 判断当前节点的 pred 节点是否为 head 节点，如果是，则尝试获取锁；
 2. 获取锁失败后，进入挂起逻辑。
 
+
+提醒一点：**我们上面也说过，head 节点代表当前持有锁的线程，那么如果当前节点的 pred 节点是 head 节点，很可能此时 head 节点已经释放锁了，所以此时需要再次尝试获取锁。**
 
 接下来继续看挂起逻辑源码：
 
@@ -357,7 +357,7 @@ private void unparkSuccessor(Node node) {
 
 ## 总结
 
-这篇文章主要讲述了 AQS 的内部结构和它的同步实现原理，并从源码的角度深度剖析了AQS独占锁模式下的获取锁与释放锁的逻辑，并且从源码中我们得出：**在独占锁模式下，用 state 值表示锁并且0表示无锁状态，0 -> 1 表示从无锁到有锁，仅允许一条线程持有锁，其余的线程会被包装成一个 Node 节点放到队列中进行挂起，队列中的头节点表示当前正在执行的线程，当头节点释放后会唤醒后继节点，从而印证了 AQS 的队列是一个 FIFO 同步队列。**
+这篇文章主要讲述了 AQS 的内部结构和它的同步实现原理，并从源码的角度深度剖析了 AQS 独占锁模式下的获取锁与释放锁的逻辑，并且从源码中我们得出：**在独占锁模式下，用 state 值表示锁并且 0 表示无锁状态，0 -> 1 表示从无锁到有锁，仅允许一条线程持有锁，其余的线程会被包装成一个 Node 节点放到队列中进行挂起，队列中的头节点表示当前正在执行的线程，当头节点释放后会唤醒后继节点，从而印证了 AQS 的队列是一个 FIFO 同步队列。**
 
 
 
