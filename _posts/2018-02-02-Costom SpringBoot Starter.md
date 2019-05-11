@@ -8,7 +8,7 @@ author: zch
 
 * content
 {:toc}
-[SpringBoot自动化配置源码分析](http://objcoding.com/2018/01/30/The-principle-of-Spring-Boot-automation-configuration/)从源码的角度讲解了 SpringBoot 自动化配置的原理，知道了它最终要干的事情不过是读取 META-INF/spring.factories 中的自动化配置类而已。
+[SpringBoot自动化配置源码分析](https://mp.weixin.qq.com/s/Be7vAudvvvuCI2EdwPX80Q)从源码的角度讲解了 SpringBoot 自动化配置的原理，知道了它最终要干的事情不过是读取 META-INF/spring.factories 中的自动化配置类而已。
 
 SpringBoot 项目就是由一个一个 Starter 组成的，一个 Starter 代表该项目的 SpringBoot 起步依赖，除了官方已有的 Starter，如果你需要将自己的项目支持 SpringBoot，那么就需要把它制作成一个 Starter。这篇博客依据 SpringBoot 的自动化配置原理，开发一个属于自己的 Starter。
 
