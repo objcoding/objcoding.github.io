@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: objcoding
-brief-intro: 公众号「后端进阶」，专注后端技术分享！
+title: 公众号「后端进阶」
+brief-intro: 专注后端技术分享！
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://objcoding.github.io"  # the base hostname & protocol for your site
 
