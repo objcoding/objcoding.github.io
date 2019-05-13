@@ -27,7 +27,7 @@ Maven 是一个版本依赖工具，它有一个官方的中央仓库，很多�
 ```
 cd ~/.m2/repository
 git init
-git remote add origin git@github.com:liuhuanting/maven.git
+git remote add origin git@github.com:objcoding/maven.git
 ```
 
 
