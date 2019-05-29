@@ -115,7 +115,7 @@ protocolHandler.setAdapter(adapter);
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_5.png)
 
-- **Engine：表示一个虚拟主机的引擎，一个 Tomcat Server 只有一个 引擎，连接器所有的请求都交给引擎处理，而引擎则会交给相应的 虚拟主机去处理请求；**
+- **Engine：表示一个虚拟主机的引擎，一个 Tomcat Server 只有一个 引擎，连接器所有的请求都交给引擎处理，而引擎则会交给相应的虚拟主机去处理请求；**
 - **Host：表示虚拟主机，一个容器可以有多个虚拟主机，每个主机都有对应的域名，在 Tomcat 中，一个 webapps 就代表一个虚拟主机，当然 webapps 可以配置多个；**
 - **Context：表示一个应用容器，一个虚拟主机可以拥有多个应用，webapps 中每个目录都代表一个 Context，每个应用可以配置多个 Servlet。**
 
@@ -156,7 +156,7 @@ public interface Lifecycle {
 
 Tomcat 中有很多组件，组件通过实现 Lifecycle 接口，Tomcat 通过事件机制来实现对这些组件生命周期的管理。
 
-**Tomcat 的这种容器设计思想，其实是运用了组合设计模式的思想，组合设计模式最大的优点是可以自由添加节点，这样也就使得 Tomcat 的容器组件非常地容器进行扩展，符合设计模式中的开闭原则。** 
+**Tomcat 的这种容器设计思想，其实是运用了组合设计模式的思想，组合设计模式最大的优点是可以自由添加节点，这样也就使得 Tomcat 的容器组件非常地容易进行扩展，符合设计模式中的开闭原则。** 
 
 现在我们知道了 Tomcat 的容器组件的组合方式，那我们现在就来想一个问题：
 
@@ -170,7 +170,7 @@ Engine -> Host -> Context -> Wrapper -> Servlet
 
 那么 Tomcat 是如何来定位 Servlet 的呢？答案是利用 Mapper 组件来完成定位的工作。
 
-**Mapper 最主要的核心功能是保存容器直接的容器组件之间访问的路径**，它是如何做到这点的呢？
+**Mapper 最主要的核心功能是保存容器组件之间访问路径的映射关系**，它是如何做到这点的呢？
 
 我们不妨先从源码入手：
 
