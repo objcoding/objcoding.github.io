@@ -7,7 +7,7 @@
 
 # Site settings
 title: 公众号「后端进阶」
-brief-intro: 回复关键字「后端」免费领取大礼包！
+brief-intro: 回复「后端」免费领取大礼包！
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://objcoding.github.io"  # the base hostname & protocol for your site
 
