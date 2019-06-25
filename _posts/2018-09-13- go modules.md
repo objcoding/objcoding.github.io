@@ -141,7 +141,7 @@ go: finding github.com/objcoding/testmod v1.0.0
 go: downloading github.com/objcoding/testmod v1.0.0
 ```
 
-这时，go.md 文件内容如下：
+这时，go.mod 文件内容如下：
 
 ```
 module gomodules
