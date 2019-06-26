@@ -89,7 +89,7 @@ go modules 发布之后，就完全统一了包引用的地址，如上面我们
 
 go.mod module：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go8.png)
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go9.png)
 
 内部包引用：
 
