@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "go modules详解"
+title: "go modules踩坑总结"
 categories: Go
-tags: module
+tags: modules
 author: zch
 ---
 
 * content
 {:toc}
-我们以前用 go get 获取依赖其实是有潜在危险的，因为我们不确定最新版依赖是否会破坏掉我们项目对依赖包的使用方式，即当前项目可能会出现不兼容最新依赖包的问题。随着 go1.11 的发布，go 给我们带来了 module 新特性，这是 Go 语言新的一套依赖管理系统。
+在 Java 的项目中，有 Maven 和 Gradle 这些很好用的依赖版本管理工具，简直不要太方便了，但是在之前的 Golang 版本中，官方并没有提供版本管理工具，我们以前用 go get 获取依赖其实是有潜在危险的，因为我们不确定最新版依赖是否会破坏掉我们项目对依赖包的使用方式，即当前项目可能会出现不兼容最新依赖包的问题。之后官方出了一个 vendor 机制，将项目依赖的包都放在该目录中，但这也并没有很好地管理依赖的版本。之后官方出了一个准官方版本管理工具 godep，这也算是 go modules 的前身了吧。随着 Go1.11 的发布，Golang 给我们带来了 module 全新特性，这是 Golang 新的一套依赖管理系统。现在 Go1.12 已经发布了，go modules 进一步稳定，但官方还是没有将其设为默认机制，所以踩坑之路是必须的，本篇文章除了详细说明 go modules 的特性以及使用之外，还总结了我在这个过程中遇到的一些“坑”。
 
 
 
@@ -40,10 +40,9 @@ $ cd testmod
 
 $ echo 'package testmod
 		import "fmt"
-	func Hi(name string) string {
-   return fmt.Sprintf("Hi, %s", name)
+	func SayHello(name string) string {
+   return fmt.Sprintf("Hello, %s", name)
 }' >> testmod.go
-
 ```
 
 - 初始化 module：
@@ -70,7 +69,45 @@ $ git commit -am "First commit"
 $ git push -u origin master
 ```
 
-测试项目地址：[testmod](https://github.com/objcoding/testmod)
+
+
+在这里我也着重说说关于项目依赖包引用地址的问题，这个问题虽小，但也确实很困扰人，所以必须得说一下：
+
+go mudules 出现之前，在一个项目中有很多个包，在项目内，有些包需要依赖项目内其它包，假设项目有个包，相对于 gopath 的地址是 objcoding/mypackage，在项目内其它包引用这个包时，就可以通过以下引用：
+
+```go
+import myproject/mypackage
+```
+
+但你有没有想过，当别的项目需要引用你的项目中的某些包，那么就需要远程下载依赖包了，这时就需要项目的仓库地址引用，比如下面这样：
+
+```go
+import github.com/objcoding/myproject/mypackage
+```
+
+go modules 发布之后，就完全统一了包引用的地址，如上面我们说的创建 go.mod 文件后，初始化内容的第一行就是我们说的项目依赖路径，通常来说该地址就是项目的仓库地址，所有需要引用项目包的地址都填写这个地址，无论是内部之间引用还是外部引用，举个例子，goim 的内部包引用：
+
+go.mod module：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go8.png)
+
+内部包引用：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go8.png)
+
+也即是说，在项目 启用了 go modules 之后，引用包必须跟 go mod 文件第一行包名一样，
+
+依赖的包都会保存在 ${GOPATH}/pkg/mod 文件夹中了，我们也可以在项目底部那里查看依赖包：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go10.png)
+
+但也有可能会出现依赖包地址正确但会报红的情况，这时极有可能是你在 Goland 编辑器中没有将项目设置为 go modules 项目，具体设置如下：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go10.png)
+
+勾选了该选项之后，就会在 External Libraries 中出现 Go Modules 目录。
+
+
 
 ## go mudules 版本规则
 
@@ -122,7 +159,7 @@ import (
 )
 
 func main() {
-    fmt.Println(testmod.Hi("zch"))
+    fmt.Println(testmod.SayHello("张乘辉"))
 }
 ```
 
@@ -143,17 +180,31 @@ go: downloading github.com/objcoding/testmod v1.0.0
 
 这时，go.mod 文件内容如下：
 
-```
+```go
 module gomodules
 require github.com/objcoding/testmod v1.0.0
 ```
 
 go.sum 文件内容如下：
 
-```
+```go
 github.com/objcoding/testmod v1.0.0 h1:fGa15gBXoqkG0BVkQGP9i5Pg2nt8nayFpHFf+GLiX6A=
 github.com/objcoding/testmod v1.0.0/go.mod h1:LGpYEmOLZhLQC3JW88STU2Ja3rsfoGZmsidsHJhDNGU=
 ```
+
+
+
+这里还需要注意的是，有时候我们引用 golang.org/x/ 的一些包，但发现在伟大的天朝这个地址是被qian了，但是我们程序员也充分发挥了勤奋好学的优良传统，在 go modules 中设置了 goproxy 机制，如果 go modules 设置了代理，会优先从代理中下载依赖包，在 /etc/profile 中加入以下内容：
+
+```bash
+export GOPROXY="https://goproxy.io"
+```
+
+goproxy.io 谷歌官方的代理地址，当然还有很多国内优秀的第三方代理。
+
+你也可以在 Goland编辑器中设置：
+
+![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go12.png)
 
 
 
@@ -161,16 +212,18 @@ github.com/objcoding/testmod v1.0.0/go.mod h1:LGpYEmOLZhLQC3JW88STU2Ja3rsfoGZmsi
 
 现在我们来升级一下 testmod 项目：
 
-```
+```bash
 $ cd gomodules
 $ echo 'package testmod
 		import "fmt"
-	func Hi(name string) string {
-   return fmt.Sprintf("Hi, %s!", name)
+	func SayHello(name string) string {
+   return fmt.Sprintf("你好, %s", name)
 }' >> testmod.go
 ```
 
-我们姑且就在打印语句上面加个感叹号，我们把这个修改在 v1 分支中进行：
+
+
+我把「Hello」改成「你好」，我们把这个修改在 v1 分支中进行：
 
 ```bash
 $ git commit -m "update testmod" testmod.go
@@ -213,27 +266,13 @@ $ cd testmod
 $ echo 'package testmod
 import (
 	"fmt"
-	"errors"
 )
-func Hi(name, lang string) (string, error) {
-	switch lang {
-	case "en":
-		return fmt.Sprintf("Hi, %s!", name), nil
-	case "pt":
-		return fmt.Sprintf("Oi, %s!", name), nil
-	case "es":
-		return fmt.Sprintf("¡Hola, %s!", name), nil
-	case "fr":
-		return fmt.Sprintf("Bonjour, %s!", name), nil
-	case "cn":
-		return fmt.Sprintf("你好，%s！", name), nil
-	default:
-		return "", errors.New("unknown language")
-	}
+func SayHello(name, str string) string {
+	return fmt.Sprintf("你好, %s, %s", name, str)
 }' >> testmod.go
 ```
 
-这时，Hi() 方法将不兼容 v1 版本，我们需要新建一个 v2.0.0 版本，还是老样子，我们最好在 v2.0.0 版本新建一条 v2 分分支，将 v2.0.0 版本的代码写到这条分支中（这只是一个规范，实际上你将代码也写到任何分支中都行，go并没有这个规范）：
+这时，SayHello() 方法将不兼容 v1 版本，我们需要新建一个 v2.0.0 版本，还是老样子，我们最好在 v2.0.0 版本新建一条 v2 分分支，将 v2.0.0 版本的代码写到这条分支中（这只是一个规范，实际上你将代码也写到任何分支中都行，go并没有这个规范）：
 
 ```bash
 $ git add *
@@ -253,13 +292,13 @@ import (
   	"github.com/objcoding/testmod/v2"
 )
 func main() {
-    fmt.Println(testmod.Hi("zch", "en"))
+    fmt.Println(testmod.SayHello("张乘辉", "最近过得怎样"))
 }
 ```
 
 执行：
 
-```
+```go
 go mod tidy
 ```
 
@@ -267,36 +306,7 @@ go mod tidy
 
 
 
-## go modules 命令大全
-
-go modules 目前暂时有如下命令：
-
-```
-Usage:
-
-	go mod <command> [arguments]
-
-The commands are:
-
-	download    download modules to local cache (下载依赖的module到本地cache))
-	edit        edit go.mod from tools or scripts (编辑go.mod文件)
-	graph       print module requirement graph (打印模块依赖图))
-	init        initialize new module in current directory (再当前文件夹下初始化一个新的module, 创建go.mod文件))
-	tidy        add missing and remove unused modules (增加丢失的module，去掉未用的module)
-	vendor      make vendored copy of dependencies (将依赖复制到vendor下)
-	verify      verify dependencies have expected content (校验依赖)
-	why         explain why packages or modules are needed (解释为什么需要依赖)
-```
-
-
-
-## 总结
-
-go 团队表示，在 go 1.12 之前，这个特性都将会处于实验性阶段，go 团队会努力保持兼容性。一旦模块稳定之后，对 GOPATH 的支持将会被移除掉。
-
-如果 go 之后还有什么更新，我也会在这里对 go modules 的最新玩法进行同步更新。目前暂时发现 goland  IDE 对 go modules 的支持还不是很给力啊，不知道是 go modules 的原因还是 IDE 的原因，为此我在「go 语言中文网」发了一个问答主题：
-
-[关于go modules的问题](https://studygolang.com/topics/6496#reply0)
+Go 团队表示，在 go 1.12 之前，这个特性都将会处于实验性阶段，go 团队会努力保持兼容性。一旦模块稳定之后，对 GOPATH 的支持将会被移除掉。
 
 
 
