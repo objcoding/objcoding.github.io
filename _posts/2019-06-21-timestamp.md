@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "日期居然用字符串保存？我笑了"
+title: "日期的正确处理方式"
 categories: Java
 tags: timestamp
 author: zch
