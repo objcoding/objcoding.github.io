@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "日期的正确处理方式"
+title: "日期的正确存储方式"
 categories: Java
 tags: timestamp
 author: zch
