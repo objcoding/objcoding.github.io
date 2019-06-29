@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Go Modules踩坑总结"
+title: "Go Modules详解"
 categories: Go
 tags: modules
 author: zch
