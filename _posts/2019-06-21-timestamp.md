@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "日期的正确存储方式"
+title: "日期用这种方式来存储可能更加优雅"
 categories: Java
 tags: timestamp
 author: zch
