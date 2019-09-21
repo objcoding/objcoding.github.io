@@ -12,6 +12,22 @@ author: zch
 
 ![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/kafka.png)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 然后我去服务器查看了下 producer 的配置，发现没有配置 max.request.size，默认值为 1048576，而他发送的消息大小为 1575543，因此报了这个异常。
 
 然后接下来他跟我讲他已经在客户端配置了 batch.size 的值为 512000，按照这个值的作用，应该是大于这个值才会进行批量发送消息到 broker：
