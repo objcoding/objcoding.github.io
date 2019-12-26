@@ -87,7 +87,7 @@ protected boolean tryReleaseShared(int arg) {
 
 下面是同步队列节点的结构：
 
-![aqs node](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/aqs.png)
+![aqs node](https://gitee.com/objcoding/md-picture/raw/master/img/aqs.png)
 
 用大神的注释来形象地描述一下队列的模型：
 
@@ -299,7 +299,7 @@ LockSupport 是用来创建锁和其他同步类的基本**线程阻塞**原语�
 
 获取独占锁流程图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/aqs.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/aqs.jpg)
 
 
 

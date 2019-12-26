@@ -26,7 +26,7 @@ author: zch
 
 随后在 pr 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态个 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191127202809.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191127202809.png)
 
 那么根据上面的设计模型，自然可以按需启动 TM client 了。
 
@@ -34,7 +34,7 @@ author: zch
 
 当 Provider 服务出现异常时，是否可以直接由 Provider 的 TM client 发起全局回滚？这也就意味着可以缩短分布式事务的周期时间，尽快释放全局锁让其他数据冲突的事务尽早的获取到锁执行。
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191127202606.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191127202606.png)
 
 
 

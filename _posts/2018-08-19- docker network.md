@@ -41,11 +41,11 @@ author: zch
 
 但这四种网络模式都仅限于单机，其中 bridge 网络模型是 docker 的默认单机网络模型，它会将一个主机上的 docker 容器连接到一个虚拟网桥上，这个虚拟桥名称为 docker0，如下图：
 
-![brige](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network1.png)
+![brige](https://gitee.com/objcoding/md-picture/raw/master/img/d_network1.png)
 
 单机中的容器之间就可以通过 docker0 互相通信了，但是如果容器被分布在不同主机上，在没有跨主机网络模型前，只能通过映射端口的形式来通信了。
 
-![brige](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network2.png)
+![brige](https://gitee.com/objcoding/md-picture/raw/master/img/d_network2.png)
 
 如上图，net1 和 net2 都代表一台主机中的 docker0 网络，在同主机下的容器通过 docker0 网络互相通信，但是在不同主机中却又是隔离的。
 
@@ -68,7 +68,7 @@ chenghuizhang/helloword:0.0.2
 
 但是跟 docker run 的 -p 又有本质的区别，实际上面那条命令并没有将 8080 端口直接暴露出去，而是将 8080 端口托付给 docker 的 overlay 网络模型中了。
 
-![docker ps](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network3.png)
+![docker ps](https://gitee.com/objcoding/md-picture/raw/master/img/d_network3.png)
 
 如上图可知，hello 服务的两个实例都在同一台服务器，都是 8080 端口，且没有映射到宿主机的端口上。
 
@@ -78,7 +78,7 @@ chenghuizhang/helloword:0.0.2
 $ docker network ls
 ```
 
-![docker network](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network5.png)
+![docker network](https://gitee.com/objcoding/md-picture/raw/master/img/d_network5.png)
 
 其中 ingress 为 docker 默认的 overlay 网络。
 
@@ -148,7 +148,7 @@ $ docker network inspect ingress
 
 由于 orverlay 网络模型是基于 vxlan 协议的网络实现，所以根据上面的网络信息可知，它是要在三层网络中虚拟出二层网络，即跨网段建立虚拟子网，也就是把 docker 要发送的信息先发送到虚拟子网地址 10.255.0.1，再由虚拟子网包装为宿主机的真实网网址  172.16.0.10，这样做的好处就是不会公开暴露容器的端口，让这些事情交给  overlay 网络驱动去做就行了，而且在同一台服务器，不会引起端口冲突，最重要的一点是可以实现集群容器间的负载均衡。
 
-![overlay network](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network6.png)
+![overlay network](https://gitee.com/objcoding/md-picture/raw/master/img/d_network6.png)
 
 **正如它的名字一样，在所有容器的上面一层，覆盖了一层网络，该网络可以使在集群中的容器像本地通信一样，所以 orverlay 网络模型也称之为覆盖网络。**
 
@@ -196,6 +196,6 @@ $ docker service create \
 
 到这里，我们已经构建了一个名为 mynet 的网络集群了，集群网络模型如下：
 
-![swarm network model](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network4.png)
+![swarm network model](https://gitee.com/objcoding/md-picture/raw/master/img/d_network4.png)
 
 swarm 集群的内部会为容器的各个节点之间负责负载均衡的管理，无需我们去操心了，如上如图三台服务器，无论我们访问的哪台服务器，都可以访问到 docker 各个可用节点中，比如访问 172.16.1.11:8080，也可以通过 swarm 集群的负载均衡转发到 172.16.1.12:8080。

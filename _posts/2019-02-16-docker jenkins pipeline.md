@@ -66,7 +66,7 @@ $ ssh-keygen -C "root@jenkins"
 
 安装完插件后，还需要去全局工具那里添加maven：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_1.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_1.png)
 
 这里后面Jenkinsfile有用到。
 
@@ -80,19 +80,19 @@ $ ssh-keygen -C "root@jenkins"
 
 首先当然是新建一个mutiBranch多分支构建job：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_2.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_2.png)
 
 接着设置分支源，分支源就是你项目的git地址，选择Jenkinsfile在项目的路径
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_3.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_3.png)
 
 接下来Jenkins会在分支源中扫描每个分支下的Jenkinsfile，如果该分支下有Jenkinsfile，那么就会创建一个分支Job
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_4.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_4.png)
 
 该job下的分支job如下：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_5.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_5.png)
 
 **这里需要注意的是，只有需要部署的分支，才加上Jenkinsfile，不然Jenkins会将其余分支也创建一个分支job。**
 
@@ -108,11 +108,11 @@ Shared Libraries是什么呢？顾名思义，它就是一个共享库，它的�
 
 接下来我们先创建一个用于存储通用Pipeline脚本的git仓库：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_6.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_6.png)
 
 仓库目录不是随便乱添加了，Jenkins有一个严格的规范，下面是官方说明：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_7.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_7.png)
 
 官方已经讲得很清楚了，大概意思就是vars目录用于存储通用Pipeline脚本，resources用于存储非Groovy文件。所以我这里就把Pipeline需要的构建脚本以及编排文件都集中放在这里，完全对业务工程师隐蔽，这样做的目的就是为了避免业务工程师不懂瞎几把乱改，导致出bug。
 
@@ -120,7 +120,7 @@ Shared Libraries是什么呢？顾名思义，它就是一个共享库，它的�
 
 创建完git仓库后，我们还需要在jenkins的`Manage Jenkins » Configure System » Global Pipeline Libraries`中定义全局库：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_8.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_8.png)
 
 这里的name，可以在jenkinsfile中通过以下命令引用：
 
@@ -210,7 +210,7 @@ def call(Map map) {
 
 写完通用Pipeline脚本后，接下来我们就需要在各个项目的需要自动化部署的分支的根目录下新建一个Jenkinsfile脚本了：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_9.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_9.png)
 
 接下来我来解释一下Jenkinsfile内容：
 
@@ -245,4 +245,4 @@ Shared Libraries共享库极大地提升了Pipeline脚本的通用性，避免�
 
 附上一张价值连城的手稿图：
 
-![maven](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/jenkins_10.png)
+![maven](https://gitee.com/objcoding/md-picture/raw/master/img/jenkins_10.png)

@@ -89,21 +89,21 @@ go modules 发布之后，就完全统一了包引用的地址，如上面我们
 
 go.mod module：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go9.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/go9.png)
 
 内部包引用：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go8.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/go8.png)
 
 也即是说，在项目 启用了 go modules 之后，引用包必须跟 go mod 文件第一行包名一样，
 
 依赖的包都会保存在 ${GOPATH}/pkg/mod 文件夹中了，我们也可以在项目底部那里查看依赖包：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go10.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/go10.png)
 
 但也有可能会出现依赖包地址正确但会报红的情况，这时极有可能是你在 Goland 编辑器中没有将项目设置为 go modules 项目，具体设置如下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go11.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/go11.png)
 
 勾选了该选项之后，就会在 External Libraries 中出现 Go Modules 目录。
 
@@ -204,7 +204,7 @@ goproxy.io 谷歌官方的代理地址，当然还有很多国内优秀的第三
 
 你也可以在 Goland编辑器中设置：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go12.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/go12.png)
 
 
 

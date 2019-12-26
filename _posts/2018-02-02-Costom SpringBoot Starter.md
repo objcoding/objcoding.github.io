@@ -181,7 +181,7 @@ public class HelloworldApplication {
 
 访问 http://localhost:8080/，打印以下结果：
 
-![hello, springboot](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/springboot4.png)
+![hello, springboot](https://gitee.com/objcoding/md-picture/raw/master/img/springboot4.png)
 
 
 

@@ -14,7 +14,7 @@ author: zch
 
 如果此刻你一脸懵逼，这个要慌，问题很大，50k马上变5k。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_7.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_7.jpg)
 
 
 
@@ -28,9 +28,9 @@ author: zch
 
 有细心的网友早就想到了这个问题：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_2.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_2.jpg)
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_6.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_6.jpg)
 
 
 
@@ -65,7 +65,7 @@ addWorker方法目的是在线程池中添加任务并执行，**如果task为�
 
 下面我们测试一下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_4.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_4.png)
 
 从测试结果来看，线程池中已经预先创建了corePoolSize数量的空闲线程。
 
@@ -86,7 +86,7 @@ public boolean prestartCoreThread() {
 
 下面我们测试一下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_5.png)
 
 从测试结果来看，线程池中已经预先创建了1条空闲线程。
 
@@ -144,7 +144,7 @@ for (;;) {
 
 下面我们测试一下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_3.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_3.png)
 
 可以看到，核心线程被回收了。
 

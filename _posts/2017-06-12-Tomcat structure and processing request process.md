@@ -40,7 +40,7 @@ Tomcat是一个基于组件形式的的Web容器，由Server（服务器）、Se
 
 ## Tomcat组件
 
-![tomcat](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat2.png)
+![tomcat](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat2.png)
 
 Server：代表整个Tomcat，它包含所有的容器；
 

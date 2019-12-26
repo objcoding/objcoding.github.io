@@ -74,7 +74,7 @@ public class UserMapper {
 
 那么 Mapper 是如何示例化的，它是通过 Java 动态代理生成的一个代理类，并与 sqlSession 关联一起，看如下图：
 
-![Mapper 代理类](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis.png)
+![Mapper 代理类](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis.png)
 
 看得出来，此时的 Mapper 是 Spring Bean 容器里面的一个 Bean，它是一个代理类，那么这个代理类的生成过程是怎样的呢？下面带你一起看看 mybatis 源码。
 
@@ -438,7 +438,7 @@ void parseStatement(Method method) {
 
 最后附上一张简陋的脑图：
 
-![mapper](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis2.png)
+![mapper](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis2.png)
 
 
 

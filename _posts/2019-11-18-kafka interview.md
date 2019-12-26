@@ -30,7 +30,7 @@ author: zch
 
 sender 线程工作机制、ByteBuffer 缓冲区的作用等等：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191118190100.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191118190100.png)
 
 - **如何提高kafka吞吐量？**
 
@@ -38,11 +38,11 @@ sender 线程工作机制、ByteBuffer 缓冲区的作用等等：
 
 - **生产者producer是线程安全的吗？多线程实例还是单线程实例优缺点？**
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191118190201.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191118190201.png)
 
 - **消费者 consumer 是线程安全的吗？多线程实例、单线程实例、单 consumer + 多 worker 线程的优缺点？**
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191118190458.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191118190458.png)
 
 - **消息拉取时，什么情况下会造成消息重复消费？谈谈你对位移提交的理解？**
 
@@ -86,13 +86,13 @@ RAR、OAR、AR、RAR-OAR、OAR-RAR 相关概念，
 
 - **谈谈你对 controller 机制的理解？controller 主要有哪些功能？**
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191118192419.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191118192419.png)
 
 更新集群元数据信息、创建主题、删除主题、分区重分配、preferred leader 副本选举、主题分区扩展、broker 加入集群、broker 崩溃、受控关闭、controller leader 选举。
 
 - **Kafka 的日志存储机制？** 
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191118192545.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191118192545.png)
 
 每个分区拥有单独的日志（partition log）、顺序写、到一定大小分成日志段文件（log segment file）、每个 log 文件对应一个索引文件（.index .timeindex）等等。
 

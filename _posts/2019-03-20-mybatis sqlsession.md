@@ -26,11 +26,11 @@ author: zch
 
 测试在方法中不加事务时，每个请求是否会创建一个SqlSession：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis5.png)
 
 从日志可以看出，在没有加事务的情况下，确实是Mapper的每次请求数据库，都会创建一个SqlSession与数据库交互，下面我们再看看加了事务的情况：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/mybatis6.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis6.png)
 
 从日志可以看出，在方法中加了事务后，两次请求只创建了一个SqlSession，再次证明了我上面的回答，但是仅仅这样回答是体现完全不出一个老司机应有的职业素养的，所以，我要发车了。
 

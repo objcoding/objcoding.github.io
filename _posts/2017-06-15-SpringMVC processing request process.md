@@ -219,7 +219,7 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 
 参考原文地址：http://jinnianshilongnian.iteye.com/blog/1594806
 
-![SpringMVC工作流程](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/springmvc.png)
+![SpringMVC工作流程](https://gitee.com/objcoding/md-picture/raw/master/img/springmvc.png)
 
 
 

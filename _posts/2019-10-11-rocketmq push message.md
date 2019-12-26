@@ -20,11 +20,11 @@ author: zch
 
 之前发表了一篇关于重平衡的文章：「[Kafka 重平衡机制](https://mp.weixin.qq.com/s/4DFup_NziFJ1xdc4bZnVcg)」，里面有说到 RocketMQ 重平衡机制是每隔 20s 从任意一个 Broker 节点获取消费组的消费 ID 以及订阅信息，再根据这些订阅信息进行分配，然后将分配到的信息封装成 pullRequest 对象 pull 到 pullRequestQueue 队列中，拉取线程唤醒后执行拉取任务，流程图如下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_16.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_16.png)
 
 但是其中有一些是没有详细说的，比如每次拉消息都要等 20s 吗？真的有个网友问了我如下问题：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_17.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_17.png)
 
 很显然他的项目是用了 push 模式进行消息拉取，要回答这个问题，就要从 RockeMQ 的消息拉取说起：
 
@@ -185,7 +185,7 @@ if (nextOffset >= 0) {
 
 之前在群里有个网友提了这个问题：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_18.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_18.png)
 
 我当时回答他 RocketMQ 正常也是没有重复消费，但后来发现其实 RocketMQ 在某些情况下，也是会出现消息重复消费的现象。
 

@@ -22,7 +22,7 @@ author: zch
 
 topic在rocketmq的设计思想里，是作为同一个业务逻辑消息的组织形式，它仅仅是一个逻辑上的概念，而在一个topic下又包含若干个逻辑队列，即消息队列，消息内容实际是存放在队列中，而队列又存储在broker中，下面我用一张图来说明topic的存储模型：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_4.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_4.png)
 
 
 
@@ -156,7 +156,7 @@ org.apache.rocketmq.client.impl.factory.MQClientInstance#updateTopicRouteInfoFro
 
 自动创建与消息发送时获取topic信息的时序图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_7.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_7.png)
 
 
 
@@ -233,7 +233,7 @@ else if (commandLine.hasOption('c')) {
 
 预先创建时序图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_8.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_8.png)
 
 
 
@@ -241,7 +241,7 @@ else if (commandLine.hasOption('c')) {
 
 建议线下开启，线上关闭，不是我说的，是官方给出的建议：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rocketmq_5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_5.png)
 
 rocketmq为什么要这么设计呢？经过一波源码深度解析后，我得到了我想要的答案：
 

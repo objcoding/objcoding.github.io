@@ -45,6 +45,6 @@ var n = test.getName();// 该方法位于Sub对象中
 
 
 
-![prototype](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/prototype.png)
+![prototype](https://gitee.com/objcoding/md-picture/raw/master/img/prototype.png)
 
-![prototype](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/prototype2.png)
+![prototype](https://gitee.com/objcoding/md-picture/raw/master/img/prototype2.png)

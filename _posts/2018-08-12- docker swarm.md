@@ -28,19 +28,19 @@ author: zch
 
 > 一个节点(node)是已加入到 swarm 的 Docker 引擎的实例 当部署应用到集群，你将会提交服务定义到管理节点，接着 Manager 管理节点调度任务到 worker 节点，manager 节点还执行维护集群的状态的编排和群集管理功能，worker 节点接收并执行来自 manager 节点的任务。通常，manager 节点也可以是 worker 节点，worker 节点会报告当前状态给 manager 节点。
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm6.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm6.png)
 
 - Service
 
 > 服务是要在 worker 节点上要执行任务的定义，它在工作者节点上执行，当你创建服务的时，你需要指定容器镜像。
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm7.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm7.png)
 
 - Task
 
 > 任务是在 docekr 容器中执行的命令，Manager 节点根据指定数量的任务副本分配任务给 worker 节点。
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm8.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm8.png)
 
 
 ## 基本指令
@@ -109,7 +109,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 $ docker node ls
 ```
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm1.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm1.png)
 
 发现只有管理节点一个，管理节点也是可以用作工作节点的，也是作为集群的一部分。
 
@@ -136,7 +136,7 @@ $ docker swarm join --token SWMTKN-1-69luztakii9ix7f5osezl0v6l2ibfzp1vqc0gbhcous
 $ docker node ls
 ```
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm2.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm2.png)
 
 发现其余 docker 主机都加入到集群中了，现在我们已经拥有了一个有5个节点的 swarm 集群了，这时我们需要发布 docker 实例到集群中：
 
@@ -144,7 +144,7 @@ $ docker node ls
 docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine
 ```
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm5.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm5.png)
 
 这就好比我们在单机 docker 中的 docker run 一样方便，只不过现在变成了集群部署，其中 —replicas 指定了 service 有几个实例组成，这几个实例会随机分配到集群的节点上，我们看看 service 都部署到哪些节点上：
 
@@ -152,7 +152,7 @@ docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine
 $ docker service ps nginx
 ```
 
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm4.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm4.png)
 
 这时一个 nginx 的项目就部署到集群中了。
 
@@ -161,7 +161,7 @@ $ docker service ps nginx
 ```bash
 $ docker service ls
 ```
-![swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm3.png)
+![swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm3.png)
 
 如果遇到部署的节点太少了，或者我们生产中又购买了服务器，我们需要将项目横向扩展，我们怎么做呢：
 

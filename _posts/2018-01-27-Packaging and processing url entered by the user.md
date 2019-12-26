@@ -24,9 +24,9 @@ author: zch
 
 具体效果如某星球发表观点类似：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/url.jpeg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/url.jpeg)
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/url2.jpeg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/url2.jpeg)
 
 我用的是 Java.net 包中的 URL 类来获取网页内容，它可以代表一个这个 url 中的内容，并封装成一个对象来表示，调用 openStream() 方法读取url指定的网页内容，同时将该流装饰成一个字符读取流，这里有个问题，我发现网上的例子很多都是直接将 url 的内容一行读取出来再用正则表达式去分析，我认为这样会很消耗性能，所以我将思路改成一个字符一个字符地读取，同时判断如果将标题标签读取完，就将流关闭。
 

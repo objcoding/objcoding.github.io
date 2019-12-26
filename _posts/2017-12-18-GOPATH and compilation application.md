@@ -34,7 +34,7 @@ export GOPATH=/Users/zhangchenghui/.go
 go env
 ```
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go.png)
 
 
 
@@ -46,7 +46,7 @@ $GOPATH 目录有三个约定俗成的目录，一定要彻底理解：
 
 
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go2.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go2.png)
 
 
 
@@ -77,7 +77,7 @@ Go 语言有个约定俗成的做法就是函数首字母大写相当于 Java �
 
 在该项目目录中执行 go install 或者在任意目录下执行 go install mypakage，请注意该文件的包 package mypakage，意味着编译后会在 pkg 目录生成一个包。
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go3.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go3.png)
 
 接下来我们就可以引用这个包里面的方法啦，这和 maven 的 mvn clean install 一个道理。
 
@@ -110,7 +110,7 @@ func main() {
 
 接下来就是要编译这个应用了，进入该应用目录，执行 go install，**由于该应用直接导入的是pakage main 包，它是Go语言中唯一一个可以编译后直接生成可执行文件的包**，因此会在 $GOPATH/bin 下生成一个可执行文件  myapp：
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go4.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go4.png)
 
 在任意路径下，执行：
 
@@ -120,13 +120,13 @@ myapp
 
 输出如下内容：
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go5.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go5.png)
 
 
 
 其实在该应用目录下也可执行 go build 命令进行编译，会在当前目录下生成可执行文件，而不会安装在 bin 目录下。
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go6.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go6.png)
 
 
 
@@ -142,6 +142,6 @@ go get github.com/astaxie/beego
 
 这条命令就会将源码下载到 src 目录中，并将源码编译后安装到 pkg 目录中：
 
-![gopath](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/go7.png)
+![gopath](https://gitee.com/objcoding/md-picture/raw/master/img/go7.png)
 
 因此，go get 相当于 git clone 源码下来，再执行 go install。

@@ -18,7 +18,7 @@ author: zch
 
 如果你此时一脸懵逼，请不要慌，问题不大。
 
-![dont_panic](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/dont_panic.jpeg)
+![dont_panic](https://gitee.com/objcoding/md-picture/raw/master/img/dont_panic.jpeg)
 
 
 
@@ -109,7 +109,7 @@ keepAliveTime的单位。
 
 **这里创建的线程用“临时”来描述还是因为它们不会长期存在于线程池，它们的存活时间为keepAliveTime，此后线程池会维持最少corePoolSize数量的线程。**
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool.png)
 
 ## 为什么不建议使用Executors创建线程池？
 

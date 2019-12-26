@@ -74,7 +74,7 @@ $ docker stack deploy -c docker-compose.yml mynet
 
 现在我们打开浏览器输入 任一节点 IP:8090 即可看到各节点运行状态。如下图所示：
 
-![visualizer](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose.png)
+![visualizer](https://gitee.com/objcoding/md-picture/raw/master/img/docker_compose.png)
 
 也可以在服务器里面查看服务运行情况：
 
@@ -82,7 +82,7 @@ $ docker stack deploy -c docker-compose.yml mynet
 $ docker stack ps mynet
 ```
 
-![docker compose](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_compose2.png)
+![docker compose](https://gitee.com/objcoding/md-picture/raw/master/img/docker_compose2.png)
 
 - stack 相关命令：
 
@@ -115,8 +115,8 @@ $ docker stack deploy -c docker-compose.yml mynet
 
 打开页面：
 
-![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack.png)
+![docker stack](https://gitee.com/objcoding/md-picture/raw/master/img/docker_stack.png)
 
 portainer 是 docker swarm 集群容器管理页面，可管理 Docker 容器、image、volume、network 等，当然我们还可以在其页面上添加多个stack：
 
-![docker stack](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/docker_stack2.png)
+![docker stack](https://gitee.com/objcoding/md-picture/raw/master/img/docker_stack2.png)

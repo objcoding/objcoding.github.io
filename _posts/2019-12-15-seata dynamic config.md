@@ -28,16 +28,37 @@ Seata 配置中心有一个监听器基准接口，它主要有一个抽象方�
 
 io.seata.config.ConfigurationChangeListener
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191216212442.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191216212442.png)
 
 该监听器基准接口主要有两个实现类型：
 
 1. 实现注册配置订阅事件监听器：用于实现各种功能的动态配置订阅，比如 GlobalTransactionalInterceptor 实现了 ConfigurationChangeListener，根据动态配置订阅实现的动态降级功能；
 2. 实现配置中心动态订阅功能与适配：对于目前还没有动态订阅功能的 file 类型默认配置中心，可以实现该基准接口来实现动态配置订阅功能；对于阻塞订阅需要另起一个线程去执行，这时候可以实现该基准接口进行适配，还可以复用该基准接口的线程池；以及还有异步订阅，有订阅单个 key，有订阅多个 key 等等，我们都可以实现该基准接口以适配各个配置中心。
 
-这里就用默认的 file 配置中心，以它的实现类 FileListener 举例子，它的实现逻辑如下：
+### Nacos 动态订阅实现
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215151642.png)
+Nacos 有自己内部实现的监听器，因此直接直接继承它内部抽象监听器 AbstractSharedListener，实现如下：
+
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191223212237.png)
+
+如上，
+
+- dataId：为订阅的配置属性；
+- listener：配置订阅事件监听器，用于将外部传入的 listener 作为一个 wrapper，执行真正的变更逻辑。
+
+值得一提的是，nacos 并没有使用 ConfigurationChangeListener 实现自己的监听配置，一方面是因为 Nacos 本身已有监听订阅功能，不需要自己再去实现；另一方面因为 nacos 属于非阻塞式订阅，不需要复用 ConfigurationChangeListener 的线程池，即无需进行适配。
+
+添加订阅：
+
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191223213347.png)
+
+Nacos 配置中心为某个 dataId 添加订阅的逻辑很简单，用 dataId 和 listener 创建一个 NacosListener 调用 configService#addListener 方法，把 NacosListener 作为 dataId 的监听器，dataId 就实现了动态配置订阅功能。
+
+### file 动态订阅实现
+
+以它的实现类 FileListener 举例子，它的实现逻辑如下：
+
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215151642.png)
 
 如上，
 
@@ -53,17 +74,17 @@ io.seata.config.ConfigurationChangeListener
 
 ConfigurationChangeEvent 用于保存配置变更的事件类，它的成员属性如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215175232.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215175232.png)
 
 
 
 这里的 getConfig 方法是如何感知 file 配置的变更呢？我们点进去，发现它最终的逻辑如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215162713.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215162713.png)
 
 发现它是创建一个 future 类，然后包装成一个 Runnable 放入线程池中异步执行，最后调用 get 方法阻塞获取值，那么我们继续往下看：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215170908.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215170908.png)
 
 allowDynamicRefresh：动态刷新配置开关；
 
@@ -75,7 +96,7 @@ targetFileLastModified：file 最后更改的时间缓存。
 
 添加一个配置属性监听器的逻辑如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215161103.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215161103.png)
 
 configListenersMap 为 FileConfiguration 的配置监听器缓存，它的数据结构如下：
 
@@ -103,7 +124,7 @@ private volatile boolean disable;
 
 在构造函数中进行初始化赋值：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215173221.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173221.png)
 
 ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION（service.disableGlobalTransaction）这个参数目前有两个功能：
 
@@ -112,13 +133,13 @@ ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION（service.disableGlobalTransaction�
 
 - 实现 ConfigurationChangeListener：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215173358.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173358.png)
 
 这里的逻辑简单，就是判断监听事件是否属于 ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION 配置属性，如果是，直接更新 disable 值。
 
 - 接下来在 GlobalTransactionalInterceptor#invoke 中做点手脚
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215174155.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174155.png)
 
 如上，disable = true 时，不执行全局事务与全局锁。
 
@@ -126,7 +147,7 @@ ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION（service.disableGlobalTransaction�
 
 io.seata.spring.annotation.GlobalTransactionScanner#wrapIfNecessary
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215174409.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174409.png)
 
 在 Spring AOP 进行 wrap 逻辑过程中，当前配置中心将订阅降级事件监听器。
 

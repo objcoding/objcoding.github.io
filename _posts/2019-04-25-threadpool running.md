@@ -10,7 +10,7 @@ author: zch
 {:toc}
 在讲解完线程池的构造参数和一些不常用的设置之后，有些同学还是想继续深入地了解线程池的原理，所以这篇文章我会带大家深入源码，从底层吃透线程池的运行原理。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/bb.jpeg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/bb.jpeg)
 
 
 
@@ -24,7 +24,7 @@ author: zch
 
 在深入源码之前先来看看J.U.C包中的线程池类图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_9.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_9.png)
 
 它们的最顶层是一个Executor接口，它只有一个方法：
 
@@ -99,7 +99,7 @@ CAPACITY表示最大有效线程数，根据位运算得出COUNT_MASK=1111111111
 
 Doug Lea大神牛逼！
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/nice.jpeg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/nice.jpeg)
 
 
 
@@ -148,7 +148,7 @@ public void execute(Runnable command) {
 
 可以发现，源码的解读对应「你都了解线程池的参数吗？」里面那道面试题的解析是一样的，我在这里画一下execute执行任务的流程图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/threadpool_10.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/threadpool_10.png)
 
 
 
@@ -429,4 +429,4 @@ private Runnable getTask() {
 
 这同学基础真扎实！
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/zashi.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/zashi.jpg)

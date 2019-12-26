@@ -36,7 +36,7 @@ author: zch
 
 菜单栏中选择`File`=>`New`=>`Project..`，步骤大概是选择构建的工程类型，如：maven，Gradle；language的选择；选择Spring Boot版本和起步依赖包等等。具体创建步骤这里就省略了。
 
-![spring boot结构图](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/springboot%E7%BB%93%E6%9E%84.png)
+![spring boot结构图](https://gitee.com/objcoding/md-picture/raw/master/img/springboot%E7%BB%93%E6%9E%84.png)
 
 spring boot项目结构如图所示，整个项目结构遵循了maven项目的布局，主要的应用程序代码位于src/main/java目录里，资源都在src/main/resources目录里，测试代码则在src/test/java目录里。不同的是，web页面模板移到templates了，我的项目现在主要用thymeleaf模板作为web页面。
 

@@ -10,7 +10,7 @@ author: zch
 {:toc}
 还记得前几天有个小伙伴跟我反馈发送消息时提示请求数据过大的异常吗？经过调整 max.request.size 的大小之后，又报了了如下异常：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/kafka_3.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_3.png)
 
 
 

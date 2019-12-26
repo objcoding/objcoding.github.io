@@ -22,7 +22,7 @@ author: zch
 
 这里先放一张官方的微信 H5 支付流程图：
 
-![微信 H5 支付流程图](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/wechatpay.png)
+![微信 H5 支付流程图](https://gitee.com/objcoding/md-picture/raw/master/img/wechatpay.png)
 
 
 

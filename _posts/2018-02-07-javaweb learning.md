@@ -20,7 +20,7 @@ author: zch
 
 
 
-![Java Back-end](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/javaweblearning.png)
+![Java Back-end](https://gitee.com/objcoding/md-picture/raw/master/img/javaweblearning.png)
 
 
 
@@ -46,7 +46,7 @@ Java 是一门纯粹的面向对象的编程语言，所以除了基础语法之
 
 你需要弄懂  JDBC API 的用法，其实它只是一组规范接口，所有数据库驱动只要实现了 JDBC，那么我们就可以通过标准的 API 调用相应的驱动，完全不用知道驱动是怎么实现的，这就是面向接口编程的好处。而且对于 JDBC 我是直接看视频去理解的，跟着视频做了一个基于  Apache Dbutils 工具做了一个具有事务性的小工具，我特意用思维导图总结了一下：
 
-![database](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/database.png)
+![database](https://gitee.com/objcoding/md-picture/raw/master/img/database.png)
 
 jdbc-utils源码地址：[jdbc-utils](https://github.com/objcoding/jdbc-utils)
 

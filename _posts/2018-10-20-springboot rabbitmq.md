@@ -145,7 +145,7 @@ server:
 
 启动项目，打开浏览器，请求`http://localhost:5008/sendMessage`，得到打印消息：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rabbit_mq_13.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_13.png)
 
 
 
@@ -153,11 +153,11 @@ server:
 
 
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rabbit_mq_14.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_14.png)
 
 
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/rabbit_mq_15.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_15.png)
 
 
 

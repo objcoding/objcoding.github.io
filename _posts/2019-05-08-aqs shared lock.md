@@ -151,7 +151,7 @@ private void doReleaseShared() {
 
 获取共享锁流程图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/aqs_2.jpg)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/aqs_2.jpg)
 
 
 

@@ -34,7 +34,7 @@ author: zch
 
 虽然对于大部分程序员来说，在平时的业务开发中，已经有各种封装好的数据结构可以使用了，比如 Java 的各类集合框架，很少时候是需要自己去实现数据结构与算法，但是这不代表你不需要去了解。因为你能弄懂那些底层数据结构与算法原理，你就能更好地使用它，合适地使用它，同时还可以理解框架背后的设计原理。
 
-![course_1](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/course_1.jpeg)
+![course_1](https://gitee.com/objcoding/md-picture/raw/master/img/course_1.jpeg)
 
 扫码加入，和我一起迈过这道坎吧！
 
@@ -50,7 +50,7 @@ author: zch
 
 
 
-![course_2](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/course_2.jpeg)
+![course_2](https://gitee.com/objcoding/md-picture/raw/master/img/course_2.jpeg)
 
 
 

@@ -90,7 +90,7 @@ chown chenghui.zhang|chenghui.zhang /home/chenghui.zhang/.ssh/authorized_keys
 
 如下：
 
-![ssh](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/ssh.png)
+![ssh](https://gitee.com/objcoding/md-picture/raw/master/img/ssh.png)
 
 
 

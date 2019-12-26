@@ -22,7 +22,7 @@ Tomcat 里面藏着很多值得我们每个 Java WEB 开发者学习的知识，
 
 前面我也说了，Tomcat 的本质其实就是一个 WEB 服务器 + 一个 Servlet 容器，那么它必然需要处理网络的连接与 Servlet 的管理，因此，Tomcat 设计了两个核心组件来实现这两个功能，分别是连接器和容器，连接器用来处理外部网络连接，容器用来处理内部 Servlet，我用一张图来表示它们的关系：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_3.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat_3.png)
 
 一个 Tomcat 代表一个 Server 服务器，一个 Server 服务器可以包含多个 Service 服务，Tomcat 默认的 Service 服务是 Catalina，而一个 Service 服务可以包含多个连接器，因为 Tomcat 支持多种网络协议，包括 HTTP/1.1、HTTP/2、AJP 等等，一个 Service 服务还会包括一个容器，容器外部会有一层 Engine 引擎所包裹，负责与处理连接器的请求与响应，连接器与容器之间通过 ServletRequest 和 ServletResponse 对象进行交流。
 
@@ -56,7 +56,7 @@ Tomcat 里面藏着很多值得我们每个 Java WEB 开发者学习的知识，
 
 连接器负责将各种网络协议封装起来，对外部屏蔽了网络连接与 IO 处理的细节，将处理得到的 Request 对象传递给容器处理，Tomcat 将处理请求的细节封装到 ProtocolHandler，ProtocolHandler 是一个接口类型，通过实现 ProtocolHandler 来实现各种协议的处理，如 Http11AprProtocol：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_7.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat_7.png)
 
 ProtocolHandler 采用组件模式的设计，将处理网络连接，字节流封装成 Request 对象，再将 Request 适配成  Servlet 处理 ServletRequest 对象这几个动作，用组件封装起来了，ProtocolHandler 包括了三个组件：Endpoint、Processor、Adapter。
 
@@ -105,7 +105,7 @@ protocolHandler.setAdapter(adapter);
 
 以上连接器的各个组件，我用一张图说明它们直接的关系：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_4.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat_4.png)
 
 
 
@@ -113,7 +113,7 @@ protocolHandler.setAdapter(adapter);
 
 在 Tomcat 中一共设计了 4 种容器，它们分别为 Engine、Host、Context、Wrapper，它们的关系如下图所示：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat_5.png)
 
 - **Engine：表示一个虚拟主机的引擎，一个 Tomcat Server 只有一个 引擎，连接器所有的请求都交给引擎处理，而引擎则会交给相应的虚拟主机去处理请求；**
 - **Host：表示虚拟主机，一个容器可以有多个虚拟主机，每个主机都有对应的域名，在 Tomcat 中，一个 webapps 就代表一个虚拟主机，当然 webapps 可以配置多个；**
@@ -211,7 +211,7 @@ for (Container conHost : conHosts) {
 
 定位 Servlet 的流程图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/tomcat_6.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/tomcat_6.png)
 
 
 

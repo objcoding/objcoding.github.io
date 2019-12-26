@@ -81,7 +81,7 @@ $ docker swarm join --token xxxxxxxxxxxxxxxx 193.xxx.61.178:2377
 
 另一台服务器加入，现在得到了拥有两个节点的 swarm 集群：
 
-![docker swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm9.png)
+![docker swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm9.png)
 
 **这里特别注意一下，由于是加入管理节点需要通过外网，所以`docker swarm join`加个地址参数：**
 
@@ -115,7 +115,7 @@ $ docker service ps go-gin-demo
 
 发现 go-gin-demo 部署到工作节点了，这时我们通过管理节点 ip 访问，结果如下：
 
-![docker swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/swarm10.png)
+![docker swarm](https://gitee.com/objcoding/md-picture/raw/master/img/swarm10.png)
 
 说明即使管理节点没有部署该服务，仍然是可以通过 overlay 跨主机网络进行调用的。
 
@@ -125,7 +125,7 @@ $ docker service ps go-gin-demo
 $ lsof -i:8081
 ```
 
-![docker swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network8.png)
+![docker swarm](https://gitee.com/objcoding/md-picture/raw/master/img/d_network8.png)
 
 发现 go-gin-demo 虽然没有部署到管理节点上，但其端口在其他节点上面依然被监听着，**所以我们得出，整个 overlay 网络中，每个服务都可以通过任意一台集群内服务器访问。**
 
@@ -140,6 +140,6 @@ $ systemctl stop firewalld.service # centos 7 关闭防火墙
 ```bash
 $ docker service scale go-gin-demo=2
 ```
-![docker swarm](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/d_network7.png)
+![docker swarm](https://gitee.com/objcoding/md-picture/raw/master/img/d_network7.png)
 
 这时我们随意访问一台服务器，多访问几次，会出现返回来的是另一台服务器的地址，说明 swarm 集群具备负载均衡的特性。

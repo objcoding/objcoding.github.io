@@ -24,7 +24,7 @@ author: zch
 
 由于第三方支付渠道会随着业务的发展变动，所以组织这些 SDK 就需要在不影响支付平台整体架构的前提下可灵活插拔，这里我使用了组件的思想，将支付 API 拆分成各种组件支付组件、退款组件、订单组件、账单组件等等，那么这样就可以当引入一个第三方支付 SDK 时，可灵活在组件上面添加需要的 API，架构设计如下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_1.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_1.png)
 
 通过 Builder 模式根据请求参数构建对应的组件对象，将组件与外部分离，隐藏组件构建的实现。组件模式 + Builder 模式使得支付平台具备了高扩展性。
 
@@ -38,7 +38,7 @@ author: zch
 
 此时我在支付平台架构图加上账户层：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_2.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_2.png)
 
 前端只需要传递 accountId，支付平台就可以根据 accountId 查询出对应的支付账户，然后通过 Builder 模式构建支付账户对应的组件对象，完全屏蔽不同支付之间的差异，在多账户体系里面，可以支持无限多个支付账户，完全满足了公司业务的发展需求。
 
@@ -57,7 +57,7 @@ author: zch
 1. 公司的系统是基于 SpringCloud 微服务架构，微服务之间通过 HTTP 通信，当时有很多个微服务接入了我的支付平台，如果用 HTTP 作分发，可以保证消息返回的实时性，但也会出现一个问题，由于网络不稳定，就会出现请求失败或超时的问题，接口的稳定性得不到保障。
 2. 由于第三方支付如果收到 false 响应，就在接下来一段时间内再次发起回调请求，这么做的目的是为了保证回调的成功率，对于第三方支付来说，这没毛病，但对于商户支付平台来说，也许就是一个比较坑爹的设计，你想一下，假设有一笔订单在支付时恶意篡改了金额，回调校验失败，返回 false 到第三方支付，此时第三方支付会再重复发送回调，无论发送多少次回调，都会校验失败，这就额外增加了不必要的交互，当然这里也可以用幂等作处理，以下是微信支付回调的应用场景说明：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_3.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_3.png)
 
 基于以上两点思考，我认为返回 false 到第三方支付是没必要的，为了系统的健壮性，我采用了消息队列来做异步分发，支付平台收到回调请求后直接返回 true，这时你可能会提出一个疑问，如果此时校验失败了，但此时返回 true，会不会出现问题？首先，校验失败情况，订单必定是处于支付失败的状态，此时返回 true 目的是为了减少与第三方支付不必要的远程交互。
 
@@ -65,7 +65,7 @@ author: zch
 
 以下是统一回调与分发处理的架构设计图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_4.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_4.png)
 
 
 
@@ -75,7 +75,7 @@ author: zch
 
 因此我在 Builder 模式前加多了一层支付策略层：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_6.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_6.png)
 
 
 
@@ -106,7 +106,7 @@ protected abstract void exception(T t, Exception exception);
 
 以下是 Handler 层的架构设计图：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_5.png)
 
 
 
@@ -114,4 +114,4 @@ protected abstract void exception(T t, Exception exception);
 
 以上就是我的支付平台架构设计思路，总结来说，支付平台需要具备可扩展性、稳定性、高可用性，因此我在设计支付平台时使用了很多设计模式以及引入消息队列处理回调分发的问题，使得支付平台具备这几点特性，希望能够给你一些启发与帮助，最后我把支付平台整体的架构设计图贴出来：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/pay_7.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/pay_7.png)
