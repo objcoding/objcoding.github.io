@@ -12,6 +12,16 @@ author: zch
 
 项目中某 kafka 消息组消费特别慢，有时候在 kafka-manager 控制台看到有些消费者已被踢出消费组。
 
+
+
+
+
+
+
+
+
+
+
 从服务端日志看到如下信息：
 
 ![](https://gitee.com/objcoding/md-picture/raw/master/img/20200103143908.png)
