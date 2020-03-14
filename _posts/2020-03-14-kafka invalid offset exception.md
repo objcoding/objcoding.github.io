@@ -137,3 +137,4 @@ $ ~/kafka_2.11-0.11.0.2/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --fil
 在这个过程中，我学到了很多，同时也意识到想要继续深入研究 Kafka，必须要学会 Scala，才能从源码中一探 Kafka 的各种细节。
 
 接下来我还要对关于 Kafka 分区不可用的一些思考，在下一篇章节会讲到，敬请期待！
+
