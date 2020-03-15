@@ -85,7 +85,9 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9200 --delete --grou
 （1）preferred leader 选举
 
 ```bash
-$ bin/kafka-preferred-replica-election --zookeeper localhost:2181 --path-to-json-file <path>/preferred-leader-plan.json
+$ bin/kafka-preferred-replica-election.sh --zookeeper localhost:2181 --path-to-json-file <path>/preferred-leader-plan.json
+
+# {"partitions":[{"topic":"test-topic","partition":0}]}
 ```
 
 ![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315163116.png)
