@@ -127,13 +127,13 @@ $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9200 --topic test -
 （3）生产者性能测试
 
 ```bash
-$ bin/kafka-producer-perf-test.sh --topic test-topic-5 --num-records 500000000000 --record-size 200 --throughput 200 --producer-props bootstrap.servers=localhost:9092,localhost:9093,localhost:9094 acks=-1
+$ bin/kafka-producer-perf-test.sh --topic test_topic --num-records 50000000 --throughput -1 --record-size 200 --producer-props bootstrap.servers=localhost:9092 acks=1 linger.ms=50
 ```
 
 （4）消费者性能测试
 
 ```bash
-$ bin/kafka-consumer-perf-test.sh --topic-list localhost:9200 --message-size 200 --messages 50000 --topic test-topic
+$ bin/kafka-consumer-perf-test.sh --broker-list localhost:9092 --messages 500000000 --topic test_topic
 ```
 
 （5）查看消息元数据
