@@ -29,3 +29,5 @@ type: page
 
 
 关注微信公众号「后端进阶」，第一时间获取最新干货！
+
+[official_accounts](https://gitee.com/objcoding/md-picture/raw/master/img/official_accounts_x.jpg)
