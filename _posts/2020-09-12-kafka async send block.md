@@ -3,7 +3,7 @@ layout: post
 title: "Kafka Producer 异步发送消息居然也会阻塞？"
 categories: Kafka
 tags: 异步发送
-author: zch
+author: 张乘辉
 ---
 
 * content
