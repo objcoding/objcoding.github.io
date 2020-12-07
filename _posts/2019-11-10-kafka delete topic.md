@@ -2,8 +2,8 @@
 layout: post
 title: "Kafka 删除主题流程分析"
 categories: Kafka
-tags: 
-author: zch
+tags: 主题 topic
+author: 张乘辉
 ---
 
 * content

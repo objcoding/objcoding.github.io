@@ -2,8 +2,8 @@
 layout: post
 title: "关于 Kafka 的一些面试题目"
 categories: Kafka
-tags: interview
-author: zch
+tags: interview 面试题目
+author: 张乘辉
 ---
 
 * content

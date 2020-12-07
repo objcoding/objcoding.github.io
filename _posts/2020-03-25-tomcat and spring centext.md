@@ -3,8 +3,8 @@
 layout: post
 title: "在使用 SpringMVC 时，Spring 容器是如何与 Servlet 容器进行交互的？"
 categories: Spring
-tags: context servlet
-author: zch
+tags: context servlet springmvc 容器
+author: 张乘辉
 ---
 
 * content

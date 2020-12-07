@@ -3,7 +3,7 @@ layout: post
 title: "SpringMVC初始化过程"
 categories: SpringMVC
 tags: Spring MVC
-author: zch
+author: 张乘辉
 ---
 
 * content

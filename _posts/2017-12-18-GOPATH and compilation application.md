@@ -3,7 +3,7 @@ layout: post
 title: "Go的环境配置与应用编译"
 categories: Go
 tags: GOPATH
-author: zch
+author: 张乘辉
 ---
 
 * content

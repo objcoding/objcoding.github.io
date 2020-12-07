@@ -3,7 +3,7 @@ layout: post
 title: "Go的new和make"
 categories: Go
 tags: new make 指针 引用类型
-author: zch
+author: 张乘辉
 ---
 
 * content

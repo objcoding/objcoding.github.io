@@ -3,7 +3,7 @@ layout: post
 title: "创建Docker Swarm集群步骤"
 categories: Docker
 tags: swarm
-author: zch
+author: 张乘辉
 ---
 
 * content

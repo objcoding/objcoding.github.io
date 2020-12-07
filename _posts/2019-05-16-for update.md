@@ -3,7 +3,7 @@ layout: post
 title: "由for update引发的血案"
 categories: Spring Mybatis Mysql Oracle
 tags: autocommit forupdate 数据库事务
-author: zch
+author: 张乘辉
 ---
 
 * content

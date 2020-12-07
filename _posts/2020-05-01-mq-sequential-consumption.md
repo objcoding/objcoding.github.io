@@ -3,7 +3,7 @@ layout: post
 title: "深度剖析 Kafka/RocketMQ 顺序消息的一些坑"
 categories: Kafka
 tags: message sequential
-author: zch
+author: 张乘辉
 ---
 
 * content

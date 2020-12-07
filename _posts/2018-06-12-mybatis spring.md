@@ -3,7 +3,7 @@ layout: post
 title: "Mybatis-spring源码分析之注册Mapper Bean"
 categories: Mybatis Spring
 tags: Mybatis Spring IOC 反射 源码分析
-author: zch
+author: 张乘辉
 ---
 
 * content

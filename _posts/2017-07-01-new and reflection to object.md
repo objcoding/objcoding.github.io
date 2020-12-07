@@ -3,7 +3,7 @@ layout: post
 title: "分析new和反射机制创建对象的区别"
 categories: Java
 tags: 反射机制
-author: zch
+author: 张乘辉
 ---
 
 * content

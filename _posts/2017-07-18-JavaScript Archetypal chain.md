@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript原型链"
 categories: JavaScript
 tags: prototype
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -2,8 +2,8 @@
 layout: post
 title: "记一次 Kafka 重启失败问题排查"
 categories: Kafka
-tags: log
-author: zch
+tags: log 节点重启 日志分析
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "Go函数作为值与类型"
 categories: Go
 tags: function
-author: zch
+author: 张乘辉
 ---
 
 * content

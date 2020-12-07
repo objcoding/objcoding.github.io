@@ -3,7 +3,7 @@ layout: post
 title: "解决fastJson循环引用的问题"
 categories: Java
 tags: json
-author: zch
+author: 张乘辉
 ---
 
 * content

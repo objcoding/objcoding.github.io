@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ源码分析之路由中心"
 categories: RocketMQ
 tags: 注册发现 路由 netty
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "搭建Redis主从+哨兵模式"
 categories: Redis
 tags: sentinel
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "Kafka分区副本与RocketMQ队列的区别"
 categories: Kafka RocketMQ
 tags: 分区 队列 副本 master slave
-author: zch
+author: 张乘辉
 ---
 
 * content

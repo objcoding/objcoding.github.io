@@ -3,7 +3,7 @@ layout: post
 title: "腾讯云重启后登录不了解决办法"
 categories: Linux
 tags: 腾讯云
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "我的6封情书通过中通快递送达给你"
 categories: ZTO
 tags: 
-author: zch
+author: 张乘辉
 ---
 
 * content

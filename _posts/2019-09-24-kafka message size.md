@@ -2,8 +2,8 @@
 layout: post
 title: "Kafka消息体大小设置的一些细节"
 categories: Kafka
-tags: 
-author: zch
+tags: message 消息
+author: 张乘辉
 ---
 
 * content

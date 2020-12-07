@@ -3,7 +3,7 @@ layout: post
 title: "基于Jenkins Pipeline自动化部署"
 categories: Jenkins Docker
 tags: Pipeline mutiBranch SharedLibraries
-author: zch
+author: 张乘辉
 ---
 
 * content

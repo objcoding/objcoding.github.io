@@ -3,7 +3,7 @@ layout: post
 title: "彻底搞懂 Kafka 消息大小相关参数设置的规则"
 categories: Kafka
 tags: message
-author: zch
+author: 张乘辉
 ---
 
 * content

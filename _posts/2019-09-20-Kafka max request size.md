@@ -2,8 +2,8 @@
 layout: post
 title: "Kafka发送消息时提示请求数据过大是怎么回事？"
 categories: Kafka
-tags: 
-author: zch
+tags: message
+author: 张乘辉
 ---
 
 * content

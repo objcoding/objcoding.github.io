@@ -2,8 +2,8 @@
 layout: post
 title: "Spring 异步实现原理与实战分享"
 categories: Spring
-tags: async
-author: zch
+tags: async 异步 多线程 JUC
+author: 张乘辉
 ---
 
 * content

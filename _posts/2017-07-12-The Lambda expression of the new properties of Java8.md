@@ -3,7 +3,7 @@ layout: post
 title: "Java8新特性之Lambda表达式"
 categories: Java
 tags: Java8 Lambda
-author: zch
+author: 张乘辉
 ---
 
 * content

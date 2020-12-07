@@ -2,8 +2,8 @@
 layout: post
 title: "RocketMQ 同步复制 SLAVE_NOT_AVAILABLE 异常源码分析"
 categories: RocketMQ
-tags: 
-author: zch
+tags: 同步复制 异常
+author: 张乘辉
 ---
 
 * content

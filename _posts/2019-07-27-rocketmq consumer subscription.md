@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ为什么要保证订阅关系的一致性？"
 categories: RocketMQ
 tags: consumer
-author: zch
+author: 张乘辉
 ---
 
 * content

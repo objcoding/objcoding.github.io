@@ -3,7 +3,7 @@ layout: post
 title: "Tomcat结构及处理请求过程"
 categories: Tomcat
 tags: Tomcat Web容器 Socket Servlet
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "从源码的角度解析线程池运行原理"
 categories: Java
 tags: 线程池
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "关于线程池你不得不知道的一些设置"
 categories: Java
 tags: 线程池
-author: zch
+author: 张乘辉
 ---
 
 * content

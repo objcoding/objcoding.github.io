@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ主从如何同步消息消费进度？"
 categories: RocketMQ
 tags: HA Master Slave 
-author: zch
+author: 张乘辉
 ---
 
 * content

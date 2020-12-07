@@ -3,7 +3,7 @@ layout: post
 title: "Kafka/RocketMQ 多线程消费时如何保证消费顺序？"
 categories: Kafka RocketMQ
 tags: message sequential
-author: zch
+author: 张乘辉
 ---
 
 * content

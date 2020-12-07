@@ -3,7 +3,7 @@ layout: post
 title: "Payoneer 支付流程"
 categories: Payment
 tags: Payoneer
-author: zch
+author: 张乘辉
 ---
 
 * content

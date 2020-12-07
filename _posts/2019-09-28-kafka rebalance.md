@@ -3,7 +3,7 @@ layout: post
 title: "Kafka重平衡机制"
 categories: Kafka
 tags: Rebalance
-author: zch
+author: 张乘辉
 ---
 
 * content

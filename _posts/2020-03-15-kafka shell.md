@@ -2,8 +2,8 @@
 layout: post
 title: "Kafka 常用运维脚本"
 categories: Kafka
-tags: shell
-author: zch
+tags: shell 脚本
+author: 张乘辉
 ---
 
 * content

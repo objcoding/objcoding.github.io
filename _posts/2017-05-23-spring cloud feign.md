@@ -3,7 +3,7 @@ layout: post
 title: "SpringCloud微服务架构之feign客户端"
 categories: SpringCloud
 tags: feign http
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "Mybatis源码分析之Mapper注册与绑定"
 categories: Mybatis
 tags: Mybatis 动态代理 源码分析
-author: zch
+author: 张乘辉
 ---
 
 * content

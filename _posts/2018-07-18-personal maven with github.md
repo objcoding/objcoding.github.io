@@ -3,7 +3,7 @@ layout: post
 title: "用GitHub搭建个人Maven仓库"
 categories: Maven
 tags: GitHub Maven
-author: zch
+author: 张乘辉
 ---
 
 * content

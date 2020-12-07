@@ -3,7 +3,7 @@ layout: post
 title: "Java并发之AQS源码分析（一）"
 categories: Java
 tags: concurrent AQS CAS
-author: zch
+author: 张乘辉
 ---
 
 * content

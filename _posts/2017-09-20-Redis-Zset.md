@@ -3,7 +3,7 @@ layout: post
 title: "用Redis实现积分排行榜"
 categories: Redis
 tags: Zset
-author: zch
+author: 张乘辉
 ---
 
 * content

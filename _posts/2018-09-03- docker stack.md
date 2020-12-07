@@ -3,7 +3,7 @@ layout: post
 title: "Docker Stack多服务编排"
 categories: Docker
 tags: compose swarm stack
-author: zch
+author: 张乘辉
 ---
 
 * content

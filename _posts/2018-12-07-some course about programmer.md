@@ -3,7 +3,7 @@ layout: post
 title: "老哥，我这里有两本内功修炼宝典，你需要吗？"
 categories: 推广
 tags: data-structures algorithms mathematics
-author: zch
+author: 张乘辉
 ---
 
 * content

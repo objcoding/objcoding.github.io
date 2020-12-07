@@ -2,8 +2,8 @@
 layout: post
 title: "当 Kafka 分区不可用且 leader 副本被损坏时，如何尽量减少数据的丢失？"
 categories: Kafka
-tags: partition
-author: zch
+tags: partition 分区 数据 leader副本
+author: 张乘辉
 ---
 
 * content

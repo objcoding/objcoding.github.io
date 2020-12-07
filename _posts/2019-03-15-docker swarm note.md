@@ -3,7 +3,7 @@ layout: post
 title: "Docker Swarm 集群部署笔记"
 categories: Docker
 tags: docker
-author: zch
+author: 张乘辉
 ---
 
 * content

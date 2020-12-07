@@ -3,7 +3,7 @@ layout: post
 title: "Seata 配置中心实现原理"
 categories: Seata
 tags: config
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "「红包」的设计与实现"
 categories: Redis
 tags: 分布式缓存锁 并发
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "深度剖析 Kafka Producer 的缓冲池机制【图解 + 源码分析】"
 categories: Kakfa
 tags: 缓冲池 生产者
-author: zch
+author: 张乘辉
 ---
 
 * content

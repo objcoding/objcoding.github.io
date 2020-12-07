@@ -3,7 +3,7 @@ layout: post
 title: "Dubbo服务暴露之注册地址和端口"
 categories: Dubbo
 tags: 服务暴露
-author: zch
+author: 张乘辉
 ---
 
 * content

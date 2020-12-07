@@ -2,8 +2,8 @@
 layout: post
 title: "记一次Kafka集群线上扩容"
 categories: Kafka
-tags: 
-author: zch
+tags: 集群 扩容
+author: 张乘辉
 ---
 
 * content

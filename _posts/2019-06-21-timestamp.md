@@ -3,7 +3,7 @@ layout: post
 title: "日期用这种方式来存储可能更加优雅"
 categories: Java
 tags: timestamp
-author: zch
+author: 张乘辉
 ---
 
 * content

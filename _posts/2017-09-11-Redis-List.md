@@ -3,7 +3,7 @@ layout: post
 title: "用Redis实现一个简易的MQ"
 categories: Redis
 tags: MQ
-author: zch
+author: 张乘辉
 ---
 
 * content

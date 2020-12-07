@@ -3,7 +3,7 @@ layout: post
 title: "使用Collection的Stream拼装数据"
 categories: Java
 tags: Java8 Lambda Collection Stream
-author: zch
+author: 张乘辉
 ---
 
 * content

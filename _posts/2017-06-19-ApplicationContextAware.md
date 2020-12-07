@@ -3,7 +3,7 @@ layout: post
 title: "ApplicationContextAware的作用"
 categories: Spring
 tags: Spring
-author: zch
+author: 张乘辉
 ---
 
 * content

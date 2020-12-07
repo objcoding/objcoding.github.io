@@ -3,7 +3,7 @@ layout: post
 title: "Kafka 独立消费者"
 categories: Kakfa
 tags: consumer
-author: zch
+author: 张乘辉
 ---
 
 * content

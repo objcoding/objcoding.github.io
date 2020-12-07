@@ -2,8 +2,8 @@
 layout: post
 title: "SpringBoot整合RabbitMQ"
 categories: SpringBoot RabbitMQ
-tags: 
-author: zch
+tags: rabbitmq springboot
+author: 张乘辉
 ---
 
 * content

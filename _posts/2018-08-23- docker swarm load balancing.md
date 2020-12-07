@@ -3,7 +3,7 @@ layout: post
 title: "验证Docker Swarm集群的负载均衡"
 categories: Docker
 tags: swarm loadbalance overlay
-author: zch
+author: 张乘辉
 ---
 
 * content

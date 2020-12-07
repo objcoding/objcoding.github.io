@@ -3,7 +3,7 @@ layout: post
 title: "阿里社招电话一面总结"
 categories: Thinking
 tags: Interview
-author: zch
+author: 张乘辉
 ---
 
 * content
@@ -53,7 +53,7 @@ author: zch
 31. 数据库联表查询时，左连接和右连接的区别
 32. 说说 Mysql 的四种事务隔离级别
 33. 你是通过什么方式进行学习的？
-34. ​
+34. 
 
 
 

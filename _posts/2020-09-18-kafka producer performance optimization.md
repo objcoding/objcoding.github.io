@@ -2,8 +2,8 @@
 layout: post
 title: "记一次 Kafka Producer 性能调优实战"
 categories: Kafka
-tags: 性能调优
-author: zch
+tags: 性能调优 生产者
+author: 张乘辉
 ---
 
 * content

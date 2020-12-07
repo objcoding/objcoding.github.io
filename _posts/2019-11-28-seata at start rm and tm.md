@@ -3,7 +3,7 @@ layout: post
 title: "Seata 客户端需要同时启动 RM 和 TM 吗？"
 categories: Seata
 tags: RM TM
-author: zch
+author: 张乘辉
 ---
 
 * content

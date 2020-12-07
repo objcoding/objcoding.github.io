@@ -3,7 +3,7 @@ layout: post
 title: "Java动态代理原理分析"
 categories: Java
 tags: proxy
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "Docker容器的日志处理"
 categories: Docker
 tags: log ELK 
-author: zch
+author: 张乘辉
 ---
 
 * content

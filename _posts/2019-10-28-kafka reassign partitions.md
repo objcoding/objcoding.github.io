@@ -2,8 +2,8 @@
 layout: post
 title: "Kafka 分区重分配源码分析"
 categories: Kafka
-tags: 
-author: zch
+tags: 分区 Partition
+author: 张乘辉
 ---
 
 * content

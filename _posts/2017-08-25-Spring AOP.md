@@ -3,7 +3,7 @@ layout: post
 title: "Spring面向切面编程"
 categories: Spring
 tags: AOP
-author: zch
+author: 张乘辉
 ---
 
 * content

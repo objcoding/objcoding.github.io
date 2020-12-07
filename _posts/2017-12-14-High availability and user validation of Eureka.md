@@ -3,7 +3,7 @@ layout: post
 title: "Eureka的高可用与用户验证"
 categories: SpringCloud
 tags: Eureka
-author: zch
+author: 张乘辉
 ---
 
 * content

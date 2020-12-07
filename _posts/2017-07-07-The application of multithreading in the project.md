@@ -3,7 +3,7 @@ layout: post
 title: "多线程在项目中的运用"
 categories: Java
 tags: 多线程
-author: zch
+author: 张乘辉
 ---
 
 * content

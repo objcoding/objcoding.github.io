@@ -2,8 +2,8 @@
 layout: post
 title: "使用 K8s 进行作业调度实战分享"
 categories: K8s
-tags: 
-author: zch
+tags: 调度 job
+author: 张乘辉
 ---
 
 * content

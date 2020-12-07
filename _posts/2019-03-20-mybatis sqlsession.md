@@ -3,7 +3,7 @@ layout: post
 title: "从源码的角度解析Mybatis的会话机制"
 categories: Mybatis Spring
 tags: SqlSession transaction
-author: zch
+author: 张乘辉
 ---
 
 * content

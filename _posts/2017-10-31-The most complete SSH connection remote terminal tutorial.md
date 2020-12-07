@@ -3,7 +3,7 @@ layout: post
 title: "最全的SSH连接远程终端教程"
 categories: Linux
 tags: ssh
-author: zch
+author: 张乘辉
 ---
 
 * content

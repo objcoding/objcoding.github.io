@@ -2,8 +2,8 @@
 layout: post
 title: "记一次关于位移提交的问题回答"
 categories: Kafka RocketMQ
-tags: offset
-author: zch
+tags: offset 位移提交
+author: 张乘辉
 ---
 
 * content

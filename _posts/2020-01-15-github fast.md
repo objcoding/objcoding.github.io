@@ -2,8 +2,8 @@
 layout: post
 title: "彻底解决 GitHub 拉取代码网速慢的问题"
 categories: GitHub
-tags: 
-author: zch
+tags: 拉取代码
+author: 张乘辉
 ---
 
 * content

@@ -2,8 +2,8 @@
 layout: post
 title: "图解 K8s 核心概念和术语"
 categories: K8s
-tags: 
-author: zch
+tags: 概念 术语 入门
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "中通消息平台 Kafka 顺序消费线程模型的实践与优化"
 categories: Kafka ZMS
 tags: 顺序消息 多线程
-author: zch
+author: 张乘辉
 ---
 
 * content

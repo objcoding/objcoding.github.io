@@ -3,7 +3,7 @@ layout: post
 title:  "SpringCloud微服务架构之服务消费者"
 categories: SpringCloud
 tags: Ribbon
-author: zch
+author: 张乘辉
 ---
 
 * content

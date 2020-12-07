@@ -3,7 +3,7 @@ layout: post
 title: "深度解析RocketMQ Topic的创建机制"
 categories: RocketMQ
 tags: topic
-author: zch
+author: 张乘辉
 ---
 
 * content

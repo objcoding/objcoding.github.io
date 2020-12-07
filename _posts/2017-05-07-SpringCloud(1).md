@@ -3,7 +3,7 @@ layout: post
 title: "SpringCloud微服务架构之服务注册与发现"
 categories: SpringCloud
 tags: Eureka
-author: zch
+author: 张乘辉
 ---
 
 * content

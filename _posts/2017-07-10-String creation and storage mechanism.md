@@ -3,7 +3,7 @@ layout: post
 title: "字符串创建与存储机制"
 categories: Java
 tags: String
-author: zch
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "Maven打包依赖项目到本地库"
 categories: Tools
 tags: Maven
-author: zch
+author: 张乘辉
 ---
 
 * content

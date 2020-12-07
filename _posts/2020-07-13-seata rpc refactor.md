@@ -2,7 +2,7 @@
 layout: post
 title: "Seata RPC 模块的重构之路"
 categories: Seata
-tags: RPC
+tags: RPC 重构
 author: 张乘辉
 ---
 

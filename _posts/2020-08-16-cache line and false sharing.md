@@ -2,8 +2,8 @@
 layout: post
 title: "探讨缓存行与伪共享"
 categories: Java
-tags: cacheline falsesharing
-author: zch
+tags: cacheline falsesharing 缓存行 伪共享
+author: 张乘辉
 ---
 
 * content

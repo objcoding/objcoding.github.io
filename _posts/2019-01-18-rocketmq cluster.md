@@ -3,7 +3,7 @@ layout: post
 title: "搭建RocketMQ集群"
 categories: RocketMQ
 tags: rocketmq
-author: zch
+author: 张乘辉
 ---
 
 * content

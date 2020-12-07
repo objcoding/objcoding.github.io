@@ -3,7 +3,7 @@ layout: post
 title: "盘点 Kafka 不能保证严格消费顺序的各种情况"
 categories: Kafka
 tags: message sequential
-author: zch
+author: 张乘辉
 ---
 
 * content

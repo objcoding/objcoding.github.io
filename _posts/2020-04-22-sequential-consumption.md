@@ -2,8 +2,8 @@
 layout: post
 title: "保证严格的消息顺序消费究竟有多难？"
 categories: Kafka
-tags: message sequential
-author: zch
+tags: message sequential 顺序消息
+author: 张乘辉
 ---
 
 * content

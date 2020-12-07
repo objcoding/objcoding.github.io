@@ -3,7 +3,7 @@ layout: post
 title:  "SpringCloud微服务架构之断路器"
 categories: SpringCloud
 tags: Hystrix
-author: zch
+author: 张乘辉
 ---
 
 * content

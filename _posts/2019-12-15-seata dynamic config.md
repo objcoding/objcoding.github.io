@@ -3,7 +3,7 @@ layout: post
 title: "Seata 动态配置订阅与降级实现原理"
 categories: Seata
 tags: dynamic
-author: zch
+author: 张乘辉
 ---
 
 * content

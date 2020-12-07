@@ -2,8 +2,8 @@
 layout: post
 title: "RocketMQ 位移提交源码分析"
 categories: RocketMQ
-tags: offsets
-author: zch
+tags: offsets 位移提交 源码分析
+author: 张乘辉
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title: "RabbitMQ集群原理与部署"
 categories: RabbitMQ
 tags: 消息队列 中间件 集群
-author: zch
+author: 张乘辉
 ---
 
 * content

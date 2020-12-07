@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "我对支付平台架构设计的一些思考"
-categories: Pay
-tags: 
-author: zch
+categories: Java
+tags: 支付 架构设计
+author: 张乘辉
 ---
 
 * content

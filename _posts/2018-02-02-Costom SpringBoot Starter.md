@@ -3,7 +3,7 @@ layout: post
 title: "实战|如何自定义SpringBoot Starter？"
 categories: SpringBoot
 tags: Spring SpringBoot starter
-author: zch
+author: 张乘辉
 ---
 
 * content

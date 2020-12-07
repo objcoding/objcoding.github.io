@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ的消费模式"
 categories: RocketMQ
 tags: 集群消费 广播消费 负载均衡
-author: zch
+author: 张乘辉
 ---
 
 * content

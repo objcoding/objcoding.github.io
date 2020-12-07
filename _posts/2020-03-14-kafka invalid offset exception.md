@@ -2,8 +2,8 @@
 layout: post
 title: "从源码和日志文件结构中分析 Kafka 重启失败事件"
 categories: Kafka
-tags: log
-author: zch
+tags: log 日志分析
+author: 张乘辉
 ---
 
 * content

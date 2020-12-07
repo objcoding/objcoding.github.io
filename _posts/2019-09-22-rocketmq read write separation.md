@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ主从读写分离机制"
 categories: RocketMQ
 tags: HA Master Slave 
-author: zch
+author: 张乘辉
 ---
 
 * content

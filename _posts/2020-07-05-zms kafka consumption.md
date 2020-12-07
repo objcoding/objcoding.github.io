@@ -3,7 +3,7 @@ layout: post
 title: "Kafka 消费线程模型在中通消息服务运维平台的应用"
 categories: ZMS
 tags: kafka cusumer mq zms
-author: zch
+author: 张乘辉
 ---
 
 * content

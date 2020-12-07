@@ -3,7 +3,7 @@ layout: post
 title: "SpringBoot自动化配置源码分析"
 categories: SpringBoot
 tags: Spring SpringBoot
-author: zch
+author: 张乘辉
 ---
 * content
 {:toc}

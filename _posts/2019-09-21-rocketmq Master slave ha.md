@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ主从同步源码分析"
 categories: RocketMQ
 tags: HA Master Slave 
-author: zch
+author: 张乘辉
 ---
 
 * content

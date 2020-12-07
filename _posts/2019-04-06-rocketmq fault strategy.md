@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ消息发送的高可用设计"
 categories: RocketMQ
 tags: message latency 高可用
-author: zch
+author: 张乘辉
 ---
 
 * content

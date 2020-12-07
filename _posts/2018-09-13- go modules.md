@@ -3,7 +3,7 @@ layout: post
 title: "Go Modules详解"
 categories: Go
 tags: modules
-author: zch
+author: 张乘辉
 ---
 
 * content

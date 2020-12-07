@@ -3,7 +3,7 @@ layout: post
 title: "RocketMQ Broker启动流程梳理"
 categories: RocketMQ
 tags: Broker
-author: zch
+author: 张乘辉
 ---
 
 * content

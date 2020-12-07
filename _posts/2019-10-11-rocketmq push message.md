@@ -3,7 +3,7 @@ layout: post
 title: "关于RocketMQ消息消费与重平衡的一些问题"
 categories: RocketMQ
 tags: consumer push pull rebalance
-author: zch
+author: 张乘辉
 ---
 
 * content
