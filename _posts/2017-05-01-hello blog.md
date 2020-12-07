@@ -3,7 +3,7 @@ layout: post
 title: "hello, blog"
 categories: Tools
 tags: blog
-author: zch
+author: 张乘辉
 ---
 
 * content
