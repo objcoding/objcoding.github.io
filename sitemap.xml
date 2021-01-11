@@ -14,8 +14,6 @@ sitemap:
     {% else %}
     <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
     {% endif %}
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   {% endfor %}
   {% for page in site.pages %}
@@ -23,8 +21,6 @@ sitemap:
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
     <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>
-    <changefreq>{{ page.sitemap.changefreq }}</changefreq>
-    <priority>{{ page.sitemap.priority }}</priority>
   </url>
   {% endif %}
   {% endfor %}
