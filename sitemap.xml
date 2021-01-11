@@ -1,28 +1,45 @@
----
-sitemap:
-    priority: 0.7
-    changefreq: monthly
----
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">  
 
-  {% for post in site.posts %}
   <url>
-    <loc>{{ site.url }}{{ post.url }}</loc>
-    {% if post.lastmod == null %}
+    <loc>https://objcoding.cn/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!--顶部链接-->
+{% for my_page in site.pages %}
+{% if my_page.type == 'header' %}
+<url>
+    <loc>{{ my_page.url | prepend: site.feed_siteurl }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+</url>
+{% endif %}
+{% endfor %}
+
+<!--博文链接-->
+{% for post in site.posts %}
+<url>
+    <loc>{{ post.url | prepend: site.feed_siteurl }}</loc>
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    {% else %}
-    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-    {% endif %}
-  </url>
-  {% endfor %}
-  {% for page in site.pages %}
-  {% if page.sitemap != null and page.sitemap != empty %}
-  <url>
-    <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>
-  </url>
-  {% endif %}
-  {% endfor %}
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+</url>
+{% endfor %}
 
+<!--其它链接-->
+{% for my_page in site.pages %}
+{% if my_page.type != 'header' and my_page.permalink %}
+<url>
+    <loc>{{ my_page.url | prepend: site.feed_siteurl }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema}}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+</url>
+{% endif %}
+{% endfor %}
+  
 </urlset>
