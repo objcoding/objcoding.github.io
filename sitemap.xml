@@ -1,0 +1,2284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://objcoding.com/2021/01/09/kafka-message/</loc>
+    
+    <lastmod>2021-01-11</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/12/29/kafka-log/</loc>
+    
+
+    <lastmod>2020-12-29</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/12/16/picgo-gitee-picture/</loc>
+    
+    <lastmod>2020-12-16</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/12/15/mybatis-spring-Integration/</loc>
+    
+    <lastmod>2020-12-16</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/12/13/hexo-blog-tutorial/</loc>
+    
+    <lastmod>2020-12-13</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/11/19/zms-kafka-orderly-conusme/</loc>
+    
+    <lastmod>2020-12-08</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/31/docker-container-log/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/01/hello-blog/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/03/SpringBoot/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/07/SpringCloud(1)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/10/SpringCloud(2)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/15/SpringCloud(3)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/20/SpringCloud(4)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/23/spring-cloud-feign/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/27/Shiro(1)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/05/30/Shiro(2)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/03/AngularJS(1)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/07/Workbook/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/08/fileupload/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/12/Tomcat-structure-and-processing-request-process/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/14/SpringMVC-initialization-process/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/15/SpringMVC-processing-request-process/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/19/ApplicationContextAware/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/06/26/Stream-assembly-data-using-Collection/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/01/new-and-reflection-to-object/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/03/JDBC/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/04/Talking-about-the-synchronized-and-volatile-keywords-in-multithreading/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/07/The-application-of-multithreading-in-the-project/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/10/String-creation-and-storage-mechanism/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/12/The-Lambda-expression-of-the-new-properties-of-Java8/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/18/JavaScript-Archetypal-chain/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/07/21/Maven-packaging-dependency-project-to-local-library/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/08/12/Git/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/08/16/Java-Dynamic-proxy/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/08/25/Spring-AOP/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/09/05/Solving-the-problem-of-fastJson-circular-reference/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/09/11/Redis-List/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/09/20/Redis-Zset/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/10/31/The-most-complete-SSH-connection-remote-terminal-tutorial/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/11/28/Gitalk/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/12/01/Docker(1)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/12/07/Docker(2)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/12/14/High-availability-and-user-validation-of-Eureka/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/12/18/GOPATH-and-compilation-application/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2017/12/27/Go-functions-as-values-and-types/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/01/15/Design-and-implementation-of-red-packets/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/01/22/New-and-make-in-the-go-language/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/01/27/Packaging-and-processing-url-entered-by-the-user/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/01/30/The-principle-of-Spring-Boot%20automation-configuration/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/02/02/Costom-SpringBoot-Starter/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/02/06/Docker(3)/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/02/07/javaweb-learning/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/03/15/Docker4/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/03/22/Alibaba-interview/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/04/09/payoneer-pay/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/05/25/wechat-h5-pay/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/06/01/mybatis-mapper/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/06/12/mybatis-spring/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/07/18/personal-maven-with-github/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/08/12/docker-swarm/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/08/19/docker-network/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/08/23/docker-swarm-load-balancing/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/09/03/docker-stack/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/09/13/go-modules/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/09/14/go-test/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/09/28/zgc/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/10/10/tencent-cloud/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/10/16/rabbitmq/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/10/19/rabbitmq-cluster/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/10/20/springboot-rabbitmq/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/11/29/cas/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2018/12/07/some-course-about-programmer/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/17/redis-sentinel/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/18/rocketmq-cluster/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/20/dubbo-export-to-find-hosts/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/22/rocketmq-consumer/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/23/elk/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/01/24/dubbo-link-tracking/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/02/16/docker-jenkins-pipeline/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/02/21/docker-swarm-networks/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/04/lambda/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/11/rocketmq-nameserver/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/14/docker-swarm-install-step/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/15/docker-swarm-note/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/17/mybatis-plus-inject-sql/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/20/mybatis-sqlsession/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/03/31/rocketmq-topic/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/04/02/rocketmq-topic-thinking/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/04/06/rocketmq-fault-strategy/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/04/11/threadpool-initial-parameters/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/04/14/threadpool-some-settings/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/04/25/threadpool-running/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/05/05/aqs-exclusive-lock/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/05/08/aqs-shared-lock/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/05/30/tomcat-architecture/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/05/16/for-update/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/06/04/payment-platform/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/06/21/timestamp/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/14/shanghai-floating/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/18/rocketmq-broker-start/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/20/Kafka-max-request-size/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/21/rocketmq-Master-slave-ha/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/22/rocketmq-read-write-separation/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/07/11/seata/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/07/27/rocketmq-consumer-subscription/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/23/rocketmq-consumer-syns/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/13/kafka-partition-and-rmq-queue/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/10/10/thank-you/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/24/kafka-message-size/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/09/28/kafka-rebalance/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/10/11/rocketmq-push-message/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/10/26/kafka-expansion/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/10/31/kafka-hw/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/03/rocketmq-slave-not-available/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/04/rocketmq-offsets/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/05/kafka-isr/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/10/kafka-delete-topic/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/12/12/seata-config-center/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/02/28/work-from-home/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/01/05/kafka-message-pile-up/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/18/kafka-interview/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/12/15/seata-dynamic-config/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/28/seata-at-start-rm-and-tm/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/08/16/cache-line-and-false-sharing/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/10/28/kafka-reassign-partitions/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/03/14/kafka-invalid-offset-exception/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/03/12/kafka-startup-fail/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/12/%E6%8B%9B%E8%81%98/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2019/11/27/seata-at-start/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/03/15/kafka-shell/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/03/16/kafka-partition-offline/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/01/15/github-fast/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/03/25/tomcat-and-spring-centext/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/04/08/seata-dev/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/04/22/sequential-consumption/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/04/23/kafka-sequential-consumption/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/04/26/multi-threaded-consumption/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/05/01/mq-sequential-consumption/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/05/18/kafka-msg-size-setting/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/05/30/spring-async/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/07/01/consumer-offset/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/07/05/zms-kafka-consumption/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/07/13/seata-rpc-refactor/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/08/24/graphical-k8s-design-concept/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/08/25/send-my-love-to-you-by-zto/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/08/26/k8s-as-a-scheduling-tool/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/06/datax/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/07/enum-map/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/18/kafka-producer-performance-optimization/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/19/kafka-standalone-consumer/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/12/kafka-async-send-block/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/2020/09/20/kafka-producer-cache-pool/</loc>
+    
+    <lastmod>2020-12-07</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/about/index.html</loc>
+    
+    <lastmod>2020-12-06</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/index.html</loc>
+    
+    <lastmod>2020-12-06</lastmod>
+
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/index.html</loc>
+    
+    <lastmod>2020-12-06</lastmod>
+
+  </url>
+
+
+  <url>
+    <loc>https://objcoding.com/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+
+  <url>
+    <loc>https://objcoding.com/tags/blog/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Spring-SpringBoot/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Eureka/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Ribbon/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Hystrix/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Zuul/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/feign-http/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Shiro-SecurityFramework/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Workbook-Excel-%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA-IO/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-Apache-Fileupload-IO/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Tomcat-Web%E5%AE%B9%E5%99%A8-Socket-Servlet/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Spring-MVC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Spring/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Java8-Lambda-Collection-Stream/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/JDBC-MySql-%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B-Socket/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B-synchronized-volatile/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/String/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Java8-Lambda/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/prototype/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Maven/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Git/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/proxy/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/AOP/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/json/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/MQ/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Zset/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/ssh/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/blog-gitalk/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Docker/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Docker-Dockerfile/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/GOPATH/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/function/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E9%94%81-%E5%B9%B6%E5%8F%91/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/new-make-%E6%8C%87%E9%92%88-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/url-io-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Spring-SpringBoot-starter/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Docker-maven/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/experience/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Docker-registry/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Interview-%E9%9D%A2%E8%AF%95/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Payoneer/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/wechat-pay/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Mybatis-Spring-IOC-%E5%8F%8D%E5%B0%84-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/GitHub-Maven/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Swarm/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/swarm-network-overlay/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/swarm-loadbalance-overlay/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/compose-swarm-stack/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/modules/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/jvm-gc/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E4%B8%AD%E9%97%B4%E4%BB%B6-%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/rabbitmq-springboot/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/CAS-concurrent-%E4%B9%90%E8%A7%82%E9%94%81/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/data-structures-algorithms-mathematics/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/sentinel/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/rocketmq/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%9C%8D%E5%8A%A1%E6%9A%B4%E9%9C%B2/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E9%9B%86%E7%BE%A4%E6%B6%88%E8%B4%B9-%E5%B9%BF%E6%92%AD%E6%B6%88%E8%B4%B9-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/ElasticSearch-Logstash-Kibana-Filebeat/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/log/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/log-ELK/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Pipeline-mutiBranch-SharedLibraries/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/swarm-overlay-networks/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/swarm/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/docker/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/sql%E6%B3%A8%E5%85%A5%E5%99%A8-MappedStatement/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/SqlSession-transaction/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/topic/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/topic-queue/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/message-latency-%E9%AB%98%E5%8F%AF%E7%94%A8/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/concurrent-AQS-CAS/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/autocommit-forupdate-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/servlet-web/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%94%AF%E4%BB%98-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/timestamp/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/ACID-BASE-CAP-XA-TCC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%88%86%E5%8C%BA-%E9%98%9F%E5%88%97-%E5%89%AF%E6%9C%AC-master-slave/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Broker/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/message/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/HA-Master-Slave/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/message-%E6%B6%88%E6%81%AF/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Rebalance/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E9%87%8C%E7%A8%8B%E7%A2%91/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/consumer-push-pull-rebalance/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E9%9B%86%E7%BE%A4-%E6%89%A9%E5%AE%B9/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%88%86%E5%8C%BA-Partition/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/HW-%E6%B0%B4%E4%BD%8D-%E5%A4%87%E4%BB%BD/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%90%8C%E6%AD%A5%E5%A4%8D%E5%88%B6-%E5%BC%82%E5%B8%B8/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/offsets-%E4%BD%8D%E7%A7%BB%E6%8F%90%E4%BA%A4-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/ISR-%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E4%B8%BB%E9%A2%98-topic/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/interview-%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/RM-TM/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/config/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/dynamic/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%B6%88%E6%81%AF%E5%A0%86%E7%A7%AF/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%8B%89%E5%8F%96%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/log-%E8%8A%82%E7%82%B9%E9%87%8D%E5%90%AF-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/log-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/shell-%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/partition-%E5%88%86%E5%8C%BA-%E6%95%B0%E6%8D%AE-leader%E5%89%AF%E6%9C%AC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/context-servlet-springmvc-%E5%AE%B9%E5%99%A8/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/OpenSource-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/message-sequential-%E9%A1%BA%E5%BA%8F%E6%B6%88%E6%81%AF/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/message-sequential/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/async-%E5%BC%82%E6%AD%A5-%E5%A4%9A%E7%BA%BF%E7%A8%8B-JUC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/offset-%E4%BD%8D%E7%A7%BB%E6%8F%90%E4%BA%A4/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/kafka-cusumer-mq-zms/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/RPC-%E9%87%8D%E6%9E%84/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/cacheline-falsesharing-%E7%BC%93%E5%AD%98%E8%A1%8C-%E4%BC%AA%E5%85%B1%E4%BA%AB/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%A6%82%E5%BF%B5-%E6%9C%AF%E8%AF%AD-%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E8%B0%83%E5%BA%A6-job/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%9E%9A%E4%B8%BE-%E5%B8%B8%E9%87%8F-%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E5%BC%82%E6%AD%A5%E5%8F%91%E9%80%81-Producer/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98-%E7%94%9F%E4%BA%A7%E8%80%85/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/consumer/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/producer/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/blog-%E5%8D%9A%E5%AE%A2-hexo/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/mybatis-spring-%E6%95%B4%E5%90%88-bug-interceptor-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/PicGo-Gitee-%E5%9B%BE%E5%BA%8A-Typora/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Message/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/AngularJS/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0-%E8%B7%AF%E7%94%B1-netty/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/AT/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/tags/Lambda-Collections-StreamAPI-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+
+
+  <url>
+    <loc>https://objcoding.com/categories/Tools/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/SpringBoot/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/SpringCloud/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Shiro/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Tomcat/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/SpringMVC/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Spring/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Java/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/JavaScript/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Redis/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Linux/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Docker/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Go/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Thinking/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Payment/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Mybatis/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Mybatis-Spring/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Maven/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/RabbitMQ/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/SpringBoot-RabbitMQ/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/%E6%8E%A8%E5%B9%BF/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/RocketMQ/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Dubbo/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Jenkins-Docker/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Spring-Mybatis-Mysql-Oracle/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Seata/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Kafka-RocketMQ/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Kafka/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/ZTO/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/GitHub/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/ZMS/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/K8s/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/DataX/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Kakfa/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/Hexo/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://objcoding.com/categories/PicGo-Gitee/</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
