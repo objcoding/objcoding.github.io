@@ -205,7 +205,7 @@ GenerateHandler 处理器的逻辑主要是使用 K8s API 创建缓存资源，�
 
 以上是  ZCache Operator 的整体设计理念，接下来，我们要想，我们如何将编写好的 Operator 部署到 K8s 集群中呢？
 
-Operator 部署并没有严格的要求，只要 Operator 能够访问 K8s 集群，以及能够被 K8s 触发执行即可，最简单的做法就是将 Operator 作为 K8s 集群中的一个 Pod，为了 Operator 高可用，使用 Deployment 进行部署，同时将 Replicas 设置为 1 即可。
+Operator 部署并没有严格的要求，只要 Operator 能够访问 K8s 集群，以及能够被 K8s 触发执行即可，最简单的做法就是将 Operator 作为 K8s 集群中的一个 Pod，为了 Operator 高可用，使用 Deployment 进行部署，同时将 Replicas 设置为 "1" 即可。
 
 
 
