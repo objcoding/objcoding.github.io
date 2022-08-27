@@ -69,7 +69,7 @@ RabbitMQ 内部有各种基础构件，包括队列、交换器、绑定、虚�
 
 
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_11.jpg)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rabbit_mq_11.jpg)
 
 
 
@@ -175,7 +175,7 @@ Cluster status of node rabbit@node1 ...
 
 登陆管理后台查看节点状态：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_8.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rabbit_mq_8.png)
 
 cluster 搭建起来后若在 web 管理工具中 rabbitmq_management 的 Overview 的 Nodes 部分看到 “Node statistics not available” 的信息，说明在该节点上 web 管理插件还未启用。 执行如下命令：
 
@@ -277,7 +277,7 @@ $ rabbitmqctl set_policy ha-nodes "^nodes." '{"ha-mode":"nodes","ha-params":["ra
 
 
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_12.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rabbit_mq_12.png)
 
 
 
@@ -289,7 +289,7 @@ HAProxy 提供高可用性、负载均衡以及基于 TCP 和 HTTP 应用的代�
 
 集群负载均和架构图：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_10.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rabbit_mq_10.png)
 
 
 
@@ -337,7 +337,7 @@ $ /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg
 
 后台管理：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rabbit_mq_9.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rabbit_mq_9.png)
 
 
 

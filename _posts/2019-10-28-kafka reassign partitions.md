@@ -21,7 +21,7 @@ author: 张乘辉
 
 Kafka 为用户提供了分区重分配的执行脚本 kafka-reassign-partitions.sh，脚本内容如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027152623.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027152623.png)
 
 ReassignPartitionsCommand 类为我们提供了分区重分配的功能，主要有如下方法：
 
@@ -35,7 +35,7 @@ ReassignPartitionsCommand 类为我们提供了分区重分配的功能，主要
 
 kafka.admin.ReassignPartitionsCommand#executeAssignment：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027162512.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027162512.png)
 
 在调用脚本向 zk 提交 Partition 的分区重分配策略，将策略提交到到 zk 前需要进行一步判断，如果分区重分配还在进行，那么本次执行计划是无法提交的，意味着集群当前只能有一个分区重分配执行。
 
@@ -43,13 +43,13 @@ kafka.admin.ReassignPartitionsCommand#executeAssignment：
 
 kafka.admin.ReassignPartitionsCommand#reassignPartitions：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027150518.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027150518.png)
 
 3、Kafka Controller 有一个监听器，监听 zk 节点 /admin/reassign_partitions 变化，将分配策略更新到 zk 上，该监听器就会被触发，然后执行分区重分配逻辑：
 
 kafka.controller.KafkaController.PartitionReassignment：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027150659.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027150659.png)
 
 该监听器会将正在迁移的 Partition 添加到 partitionsBeingReassigned 中，记录当前正在迁移的 Partition 列表。
 
@@ -57,12 +57,12 @@ kafka.controller.KafkaController.PartitionReassignment：
 
 kafka.controller.KafkaController#maybeTriggerPartitionReassignment：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027150921.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027150921.png)
 
 5、如果分区变更，执行真正的分区重分配策略：
 kafka.controller.KafkaController#onPartitionReassignment：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191027150320.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191027150320.png)
 
 以上 onPartitionReassignment 是 Kafka 执行分区重分配真正的核心方法，从注释可看出有几个专有名词，特此说明一下：
 

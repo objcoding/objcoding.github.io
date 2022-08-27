@@ -12,11 +12,11 @@ author: 张乘辉
 
 在 ZDTP 中，数据同步的动作可抽象成一个执行单元（以下称为 worker），类似于线程执行单元 Runnable ，Runnable 放入一个队列中等待线程的调度执行，执行完 Runnable 即完成了它的使命。当用户在 ZDTP 控制台中创建同步任务并启动任务时，会根据同步任务的配置，产生若干个用于该任务的 worker，假设这些 worker 都在本地执行，可以将其包装成一个 Runnable，然后创建一个线程执行，如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200822221813.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200822221813.png)
 
 但是在单机模式下，就会遇到性能瓶颈，此时就需要分布式调度，将 worker 调度到其他机器执行：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200822222656.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200822222656.png)
 
 问题是我们如何将 worker 更好地调度到其它机器中执行呢？
 
@@ -28,7 +28,7 @@ author: 张乘辉
 
 Worker 在提前创建好的虚拟机中运行， 任务启动时需要根据当前 Worker 负载情况进行选择空闲的 Worker，相当于 Worker 是以 Agent 的形式运行，如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200822222628.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200822222628.png)
 
 伴随而来的缺点主要有以下几点：
 
@@ -40,7 +40,7 @@ Worker 在提前创建好的虚拟机中运行， 任务启动时需要根据当
 
 将 Worker 打包成 Docker 镜像，使用 K8s 对 worker 容器进行调度作业，并且一个 Worker 只运行一个任务，如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200821150923.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200821150923.png)
 
 使用 K8s 的优点如下：
 
@@ -60,7 +60,7 @@ K8s 集群的调度对象是 Pod，调度方式有多种，这里主要介绍以
 
 Deployment 内部使用了 Replica Set 来实现，他们之间高度相似，也可以将 Deployment 看作是 Replica Set 的升级版本。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200821162453.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200821162453.png)
 
 **2、Job（批处理调度）**
 
@@ -70,13 +70,13 @@ Deployment 内部使用了 Replica Set 来实现，他们之间高度相似，�
 
 根据 ZDTP Worker 运行方式，我们可以使用一个 Job 对像对应一个 Worker，有多少个 worker 就创建多少个 Job，除非 Pod 异常，才会重启该 Pod，正常执行完后 Job 就退出，如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200822202357.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200822202357.png)
 
 2）Queue with Pod Per Work Item 模式
 
 这种模式将客户端生成的 worker 存放在一个队列中，然后只会创建一个 job 去消费队列中的 worker item，通过设置 parallelism 参数可以同时启动多少个 worker Pod 同时处理 worker，值得一体的是，这种模式下的 Worker 处理程序逻辑只会从队列拉取 worker 处理，处理完就立即退出，completions 参数用于控制正常退出的 Pod 数量，当退出的 Pod 数量达到了 completions 后，Job 结束，即 completions 参数可以控制 Job 的处理 Worker 的数量。如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200825223141.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200825223141.png)
 
 3）Queue with Variable Pod Count 模式
 
@@ -84,7 +84,7 @@ Deployment 内部使用了 Replica Set 来实现，他们之间高度相似，�
 
 这种模式也要求队列能够让 Pod 感知是否还存在 worker，像 RocketMQ/Kafka 之类的消息中间件并不能做到，只会让客户端一直等待，因此这种模式不能选用  RocketMQ/Kafka，可以选择数据库或者 Redis 来实现。如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200825223224.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200825223224.png)
 
 当然如果后面还有定时执行 Worker 的需求，使用 K8s 的 cronjob（定时任务调度）是一个非常好的选择。
 

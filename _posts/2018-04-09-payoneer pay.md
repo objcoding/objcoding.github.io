@@ -14,7 +14,7 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer1.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer1.png)
 
 
 
@@ -22,7 +22,7 @@ Payoneer 支付类似于 Oauth 授权，用户要支付费用给商家，必须�
 
 官网上注册一个账号，注册成功后，**你还需要跟 payoneer API 对接的相关客服申请开发者 API 对接的信息，因为他们的 API 接口是不开放的**，申请通过后会发一份 API 接口需要的信息的文档给你，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer3.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer3.png)
 
 *programId：商户唯一标识ID，类似于公众号的appId*
 
@@ -96,7 +96,7 @@ https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed043546298103
 
 打开后页面：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer2.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer2.png)
 
 如果有账户，直接登陆，登陆后就将 payeeId 注册到对应的商户系统里面了，这时该用户就可以付款给商户了。
 
@@ -106,7 +106,7 @@ https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed043546298103
 
 授权成功之后，需要重定向到商户付款页面，重定向地址需要在商户账户后台开发人员选项里面配置：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer6.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer6.png)
 
 
 
@@ -116,7 +116,7 @@ https://payouts.sandbox.payoneer.com/partners/lp.aspx?token=14c982ed043546298103
 
 这个回调地址也是在商户账户后台开发人员选项里面配置：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer5.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer5.png)
 
 
 
@@ -138,4 +138,4 @@ Curl -X POST https://api.sandbox.payoneer.com/v2/programs/{Program_Id}/charges
 
 
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/payoneer4.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/payoneer4.png)

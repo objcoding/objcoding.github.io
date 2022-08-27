@@ -42,7 +42,7 @@ author: 张乘辉
 
 下面是我自己手画的概念图，很难看，将就着看吧：
 
-![roketmq](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq.jpg)
+![roketmq](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq.jpg)
 
 
 

@@ -148,7 +148,7 @@ public static List<String> loadFactoryNames(Class<?> factoryClass, ClassLoader c
 
 我们去看看 spring.factories 到底长什么样子：
 
-![spring.factories](https://gitee.com/objcoding/md-picture/raw/master/img/springboot2.png)
+![spring.factories](https://raw.githubusercontent.com/objcoding/md-picture/master/img/springboot2.png)
 
 ```properties
 # Initializers
@@ -205,7 +205,7 @@ public class RedisAutoConfiguration {
 
 我们看到了 @ConditionalOnClass 和 @ConditionalOnMissingBean 这些注解，它们都是 SpringBoot的条件注解：
 
-![conditional](https://gitee.com/objcoding/md-picture/raw/master/img/springboot3.png)
+![conditional](https://raw.githubusercontent.com/objcoding/md-picture/master/img/springboot3.png)
 
 想要知道这些注解有什么功能，这里就不展开讲了，可以去查阅 SpringBoot 官方文档。以下主要是分析这些注解是如何进行工作的。
 

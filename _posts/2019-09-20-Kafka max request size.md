@@ -10,7 +10,7 @@ author: 张乘辉
 {:toc}
 今天有个小伙伴跟我反馈，在 Kafka 客户端他明明设置了 batch.size 参数，以提高 producer 的吞吐量，但他发现报了如下错误：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka.png)
 
 
 
@@ -32,7 +32,7 @@ author: 张乘辉
 
 然后接下来他跟我讲他已经在客户端配置了 batch.size 的值为 512000，按照这个值的作用，应该是大于这个值才会进行批量发送消息到 broker：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_2.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_2.png)
 
 于是我又得去撸源码，搞清楚 Kafka 发送消息实现细节：
 

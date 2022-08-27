@@ -227,7 +227,7 @@ broker对外API启动：启动client远程通讯服务
 
 
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_13.jpg)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_13.jpg)
 
 
 

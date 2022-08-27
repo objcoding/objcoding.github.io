@@ -24,7 +24,7 @@ Kafka 一直以来都以高吞吐量的特性而家喻户晓，就在上周，�
 
 在新版的 Kafka Producer 中，设计了一个消息缓冲池，客户端发送的消息都会被存储到缓冲池中，同时 Producer 启动后还会开启一个 Sender 线程，不断地从缓冲池获取消息并将其发送到 Broker，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912172553.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912172553.png)
 
 这么看来，Kafka 的所有发送，都可以看作是异步发送了，因此在新版的 Kafka Producer 中废弃掉异步发送的方法了，仅保留了一个 send 方法，同时返回一个 Futrue 对象，需要同步等待发送结果，就使用 Futrue#get 方法阻塞获取发送结果。而我在项目中直接调用 send 方法，为何还会发送阻塞呢？
 
@@ -83,15 +83,15 @@ public static void main(String[] args) {
 
 以上例子构建了一个  Kafka Producer 对象，同时使用死循环不断地发送消息，这时如果把 `Thread.sleep(10);`注释掉，则会出现发送耗时很长的现象：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912223722.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912223722.png)
 
 使用 JProfiler 可以查看到分配内存的地方出现了阻塞：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912223106.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912223106.png)
 
 跟踪到源码：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912223239.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912223239.png)
 
 发现在 `org.apache.kafka.clients.producer.internals.BufferPool#allocate` 方法中，如果判断缓冲池没有空闲的内存了，则会阻塞内存分配，直到有空闲内存为止。
 
@@ -101,7 +101,7 @@ public static void main(String[] args) {
 
 Kafka Producer 通常在第一次发送消息之前，需要获取该主题的元数据 Metadata，Metadata 内容包括了主题相关分区 Leader 所在节点信息、副本所在节点信息、ISR 列表等，Kafka Producer 获取 Metadata 后，便会根据 Metadata 内容将消息发送到指定的分区 Leader 上，整个获取流程大致如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912190702.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912190702.png)
 
 如上图所示，Kafka Producer 在发送消息之前，会检查主题的 Metadata 是否需要更新，如果需要更新，则会唤醒 Sender 线程并发送 Metatadata 更新请求，此时 Kafka Producer 主线程则会阻塞等待 Metadata 的更新。
 

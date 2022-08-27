@@ -46,7 +46,7 @@ author: 张乘辉
 
 首先你得有一个不可用的分区（并且该分区 leader 副本数据已损失），如果是测试，可以以上故障重现 1-8 步骤实现一个不可用的分区（需要增加一个 broker）：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315200806.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315200806.png)
 
 此时 leader 副本在 broker0，但已经挂了，且分区不可用，此时 broker2 的副本由于掉出 ISR ，不可选为 leader，且 leader 副本已损坏清除，如果此时重启 broker0，follower 副本会进行日志截断，将会丢失该分区所有数据。
 
@@ -54,27 +54,27 @@ author: 张乘辉
 
 1、使用 kafka-reassign-partitions.sh 脚本对该主题进行分区重分配，当然你也可以使用 kafka-manager 控制台对该主题进行分区重分配，重分配之后如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315201915.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315201915.png)
 
 此时 preferred leader 已经改成 broker2 所在的副本了，但此时的 leader 依然还是 broker0 的副本。**需要注意的是，分区重分配之后的 preferred leader 一定要之前那个踢出 ISR 的副本，而不是分区重分配新生成的副本。因为新生成的副本偏移量为 0，如果自动重分配不满足，那么需要编写 json 文件，手动更改分配策略。**
 
 2、进入 zk，查看分区状态并修改它的内容：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315202132.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315202132.png)
 
 修改 node 内容，强行将 leader 改成 2（与重分配之后的  preferred leader 一样），并且将 leader_epoch 加 1 处理，同时 ISR 列表改成 leader，改完如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315202637.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315202637.png)
 
 此时，kafka-manager 控制台会显示成这样：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315202812.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315202812.png)
 
 但此时依然不生效，记住这时需要重启 broker 0。
 
 3、重启 broker0，发现分区的 lastOffset 已经变成了  broker2 的副本的 lastOffset：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315203052.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315203052.png)
 
 成功挽回了 46502 条消息数据，尽管依然丢失了 76053 - 46502 = 29551 条消息数据，但相比全部丢失相对好吧！
 

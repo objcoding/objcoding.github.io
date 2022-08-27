@@ -50,7 +50,7 @@ $ bin/kafka-topics.sh --alter --zookeeper localhost:2181 --partitions 64 --topic
 # ...
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315145802.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315145802.png)
 
 ## consumer 相关管理
 
@@ -62,7 +62,7 @@ kafka-consumer-groups.sh
 $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9200 --group test-group --describe
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315150715.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315150715.png)
 
 （2）重设消费组位移
 
@@ -70,7 +70,7 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9200 --group test-gr
 $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9200 --group test-group --reset-offsets --topic test-topic --to-earliest --execute
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315152119.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315152119.png)
 
 （3）删除消费组
 
@@ -90,7 +90,7 @@ $ bin/kafka-preferred-replica-election.sh --zookeeper localhost:2181 --path-to-j
 # {"partitions":[{"topic":"test-topic","partition":0}]}
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315163116.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315163116.png)
 
 （2）分区重分配
 
@@ -114,7 +114,7 @@ $ bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --reassignment-jso
 $ bin/kafka-console-producer.sh --broker-list localhost:9200 --topic test --request-required-acks all --timeout 3000 --message-send-max-retries 3
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315164532.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315164532.png)
 
 （2）kafka-console-consumer.sh
 
@@ -122,7 +122,7 @@ $ bin/kafka-console-producer.sh --broker-list localhost:9200 --topic test --requ
 $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9200 --topic test --from-beginning
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200315165004.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200315165004.png)
 
 （3）生产者性能测试
 

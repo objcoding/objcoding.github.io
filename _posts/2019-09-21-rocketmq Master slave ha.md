@@ -22,7 +22,7 @@ author: 张乘辉
 
 HA 的实现逻辑放在了 store 存储模块的ha目录中，其核心实现类如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_14.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_14.png)
 
 1. HAService：主从同步的核心实现类
 2. HAService$AcceptSocketService：主服务器监听从服务器连接实现类
@@ -468,7 +468,7 @@ private boolean processReadEvent() {
 
 最后贴上《RocketMQ 技术内幕》这本书的一张 RocketMQ HA 交互图：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_15.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_15.png)
 
 
 

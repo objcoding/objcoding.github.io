@@ -111,7 +111,7 @@ public Object invoke(Object proxy, Method method, Object[] args);
 
 如下图所示：
 
-![invocationHandler](https://gitee.com/objcoding/md-picture/raw/master/img/proxy.png)
+![invocationHandler](https://raw.githubusercontent.com/objcoding/md-picture/master/img/proxy.png)
 
 
 

@@ -41,7 +41,7 @@ author: 张乘辉
 
 首先我们来看下 ContextLoaderListener 监听器的源码：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320205328.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320205328.png)
 
 我们发现它继承了 ContextLoader，并且实现了 ServletContextListener 接口，下面说下这两个东西的作用：
 
@@ -50,13 +50,13 @@ author: 张乘辉
 
 因此，ContextLoaderListener 最主要的作用就是在 Tomcat 启动时，根据配置加载 Spring 容器。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320205759.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320205759.png)
 
 以上就是 ContextLoaderListener 实现 contextInitialized 方法的逻辑，也是加载并初始化 Spring 容器的开始。
 
 org.springframework.web.context.ContextLoader#initWebApplicationContext
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320210832.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320210832.png)
 
 以上代码逻辑主要做了以下几个操作：
 
@@ -69,17 +69,17 @@ org.springframework.web.context.ContextLoader#initWebApplicationContext
 
 org.springframework.web.context.support.WebApplicationContextUtils#getWebApplicationContext
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320220655.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320220655.png)
 
 关于这个方法在哪里调用后面有说到。
 
 org.springframework.web.context.ContextLoader#configureAndRefreshWebApplicationContext
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320210900.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320210900.png)
 
 以上是 Spring 容器初始化逻辑，其中，CONFIG_LOCATION_PARAM 即是我们在 xml 中配置的 contextConfigLocation 参数：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320212506.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320212506.png)
 
 同时还会将 Servlet 容器保存到 Spring 容器中，最后调用 refresh 方法进行初始化。
 
@@ -95,11 +95,11 @@ SpringMVC 本质上来讲，就是一个大号的 Servlet，其各种机制都�
 
 org.springframework.web.servlet.FrameworkServlet#initWebApplicationContext
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320220032.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320220032.png)
 
 DispatcherServlet 的父类同样有一个方法，该方法是加载 SpringMVC 容器，即源码中的 webApplicationContext：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320221939.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320221939.png)
 
 我们发现，rootContext 就是 ContextLoaderListener 加载的 Spring 容器，在这里，它会以父容器的身份保存到 SpringMVC 容器中。
 
@@ -107,23 +107,23 @@ DispatcherServlet 的父类同样有一个方法，该方法是加载 SpringMVC 
 
 1、在 Springboot 应用程序启动时，在 SpringBootServletInitializer#onStartup 方法中，会创建一个 rootAppContext 容器，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320235338.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320235338.png)
 
 **同时将上文所说的 ContextLoaderListener 监听器添加到 Servlet 容器中，同样达到了 xml 配置的效果**，而调用 createRootApplicationContext 方法创建 rootAppContext 容器时，会将 contextClass 设置为 AnnotationConfigServletWebServerApplicationContext.class。
 
 2、DispatcherServlet 此时作为一个 Bean，实现了 ApplicationContextAware 接口，会自动将上下文环境保存到 webApplicationContext 字段中；
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320233807.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320233807.png)
 
 DispatcherServlet 初始化时，经过 debug 可以看到，rootContext 和 webApplicationContext 是同一个实例对象：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320231335.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320231335.png)
 
 原因是通过 ContextLoaderListener 加载的上下文环境，通过 ApplicationContextAware 接口自动 set 进来保存到 DispatcherServlet 的 webApplicationContext 变量中了。
 
 在 FrameworkServlet#initWebApplicationContext 方法最后，最终会将 webApplicationContext 注入以一个元素的形式保存到 Servlet 容器中：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200320234137.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200320234137.png)
 
 
 
@@ -133,11 +133,11 @@ DispatcherServlet 初始化时，经过 debug 可以看到，rootContext 和 web
 
 org.springframework.web.servlet.DispatcherServlet#onRefresh
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200321000909.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200321000909.png)
 
 DispatcherServlet 初始化时，从 Spring 容器中获取相关 Bean，初始化各种不同的组件，比如初始化 HandlerMapping：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200321001725.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200321001725.png)
 
 
 

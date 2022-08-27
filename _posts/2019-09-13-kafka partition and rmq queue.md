@@ -24,11 +24,11 @@ author: 张乘辉
 
 RocketMQ 每个主题都会有若干个队列，分布于集群中各个 broker 上，分布规律如下：
 
- ![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_4.png)
+ ![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_4.png)
 
 队列会在 broker 中抽象成一个 consumer queue，在集群模式下，每个队列每个消费组只能存在一个消费者进行订阅消费，但是一个消费者可以消费多个队列，这也保证了在集群模式下消息不会被重复消费，如下图所示：
 
- ![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_12.png)
+ ![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_12.png)
 
 在RocketMQ开源版本中，在创建主题时，通过集群创建模式，指定主题在集群中的队列数量，比如集群中有 2 个 broker，我们创建主题时选择队列数量为 4，就会在每个 broker 中为该主题创建 4 个 队列，那么该主题在集群中就会有 4 * 2 个队列数量，这里有个不好的地方就是无法精确控制队列数量，但这个问题不大。
 
@@ -44,7 +44,7 @@ Kafka 的分区概念是其核心概念之一，分区机制使得 Kafka 具备�
 
 在 Kafka 中，一个主题在集群中会拥有一个以上分区，每个分区在每个消费集群中只能有一个消费者进行订阅消费，，但是一个消费者可以消费多个队列，与 RocketMQ 队列一样：
 
- ![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_1.png)
+ ![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_1.png)
 
 我们可以通过调整主题的分区数量提高消息的吞吐量，还可以为分区设置副本因子，即该分区在集群中拥有多少个副本（replica），副本分为 leader replica 与 follower replica，它们之间通过 ISR（in-sync replica）与 leader replica 保持数据同步。
 

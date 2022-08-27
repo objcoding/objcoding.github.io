@@ -22,7 +22,7 @@ author: 张乘辉
 
 重平衡跟消费组紧密相关，它保证了消费组成员分配分区可以做到公平分配，也是消费组模型的实现，消费组模型如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_1.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_1.png)
 
 
 
@@ -41,7 +41,7 @@ Kafka 重平衡机制的一些实现相比 RocketMQ 还是有些区别的，但�
 
 Kafka 重平衡：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_11.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_11.png)
 
 从图中可看出，Kafka 重平衡是外部触发导致的，触发 Kafka 重平衡的有以下几种情况：
 
@@ -55,7 +55,7 @@ Kafka 重平衡：
 
 RocketMQ重平衡：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_16.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_16.png)
 
 RocketMQ 消费者启动时，会开启两条线程，一条线程执行拉取消息任务，另一条线程者则定时执行重平衡任务，从图中可看出拉取消息线程会从 pullRequestQueue 中取出拉取任务，pullRequestQueue 是一个阻塞队列，意味着当 pullRequestQueue 队列中元素为空时，会一直阻塞，直到有新的拉取任务，那么如果添加新的任务到阻塞队列中去呢？这时 RocketMQ 的重平衡作用就来了，它会每隔 20s 从任意一个 Broker 节点获取消费组的消费 ID 以及订阅信息，再根据这些订阅信息进行分配，然后将分配到的信息封装成 pullRequest 对象 pull 到 pullRequestQueue 队列中，拉取线程唤醒后执行拉取任务。
 
@@ -79,7 +79,7 @@ RocketMQ 消费者启动时，会开启两条线程，一条线程执行拉取�
 
 下面我用图来形象表达这三个参数的含义：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_12.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_12.png)
 
 
 
@@ -106,24 +106,24 @@ RocketMQ 消费者启动时，会开启两条线程，一条线程执行拉取�
 
 有新的成员加入消费组：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_5.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_5.png)
 
 
 
 消费组成员崩溃
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_6.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_6.png)
 
 
 
 消费组成员主动离开
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_7.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_7.png)
 
 
 
 消费组成员提交位移时
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/kafka_8.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/kafka_8.png)
 
 

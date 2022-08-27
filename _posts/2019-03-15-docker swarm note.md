@@ -22,7 +22,7 @@ swarm集群分为管理节点和工作节点，管理节点可以操作swarm命�
 
 一般来说一个swarm集群需要两个以上的管理节点。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker16.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker16.png)
 
 
 
@@ -30,7 +30,7 @@ swarm集群分为管理节点和工作节点，管理节点可以操作swarm命�
 
 在分布式集群应用中，应用的不同部分拆分成“服务”，服务在swarm集群中可部署在多个节点上，形成集群，可使用swarm命令动态扩展服务在swarm集群中运行的实例数量，以满足需求。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker17.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker17.png)
 
 
 
@@ -38,7 +38,7 @@ swarm集群分为管理节点和工作节点，管理节点可以操作swarm命�
 
 技术栈是一组相关的服务，它们共享依赖项并且可以一起进行编排和扩展，比如我们的vipay和cash项目的各个服务，可使用compose.yml文件编排成vipay技术栈以及cash技术栈，并使用 `docker stack deploy`分别进行部署。技术栈也是swarm集群中层次结构的最高级别。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker18.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker18.png)
 
 
 

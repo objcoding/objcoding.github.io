@@ -53,7 +53,7 @@ func new(Type) *Type
 
 new 的内存分配示意图：
 
-![new](https://gitee.com/objcoding/md-picture/raw/master/img/gonew.png)
+![new](https://raw.githubusercontent.com/objcoding/md-picture/master/img/gonew.png)
 
 其实要说明一点的就是，new 不常用，我们常常会通过结构体的字面量达到 new 的效果，而且这样写也比较优雅：
 
@@ -83,7 +83,7 @@ func make(t Type, size ...IntegerType) Type
 
 make 的内存分配示意图：
 
-![make](https://gitee.com/objcoding/md-picture/raw/master/img/gomake.png)
+![make](https://raw.githubusercontent.com/objcoding/md-picture/master/img/gomake.png)
 
 
 

@@ -28,13 +28,13 @@ In the middle of a leadership election, there is currently no leader for this pa
 
 查看了 KafkaServer.log 日志，发现 Kafka 重启过程中，产生了大量如下日志：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200312212507.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200312212507.png)
 
 发现大量主题索引文件损坏并且重建索引文件的警告信息，定位到源码处：
 
 kafka.log.OffsetIndex#sanityCheck
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200311204129.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200311204129.png)
 
 按我自己的理解描述下：
 
@@ -46,7 +46,7 @@ Kafka 在启动的时候，会检查 kafka 是否为 cleanshutdown，判断依�
 
 索引文件与日志文件对应关系图如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200311195627.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200311195627.png)
 
 判断索引文件是否损坏的依据是：
 
@@ -63,7 +63,7 @@ entries 索引块等于零时，意味着索引没有内容，此时可以认为
 
 我在相关 issue 中似乎找到了一些答案：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314231948.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314231948.png)
 
 https://issues.apache.org/jira/browse/KAFKA-1112
 
@@ -73,7 +73,7 @@ https://issues.apache.org/jira/browse/KAFKA-1554
 
 有意思的来了，导致开机不了并不是这个问题导致的，因为这个问题已经在后续版本修复了，从日志可看出，它会将损坏的日志文件删除并重建，我们接下来继续看导致重启不了的错误信息：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200312212611.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200312212611.png)
 
 问题就出在这里，在**删除并重建索引过程中，就可能出现如上问题**，在 issues.apache.org 网站上有很多关于这个 bug 的描述，我这里贴两个出来：
 

@@ -10,7 +10,7 @@ author: 张乘辉
 {:toc}
 我不记得有多少人问过以下这个问题了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200422092844.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200422092844.png)
 
 我觉得这个问题问得很频繁，而且非常经典，在这里我就以 Kafka 为例子，说说我对 Kafka 顺序消息的一些理解吧，如有理解不对的地方麻烦留言指点一下。
 

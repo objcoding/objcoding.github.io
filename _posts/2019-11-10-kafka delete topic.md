@@ -26,11 +26,11 @@ author: 张乘辉
 
 删除主题有多种方法，可通过 kafka-topic.sh 脚本并执行 --delete 命令，或者用暴力方式直接在 zk 删除对应主题节点，其实删除主题无非就是令 zk 节点删除，以触发 controller 对应监听器，然后再通过监听器通知到所有 broker，具体流程如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191111073445.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191111073445.png)
 
 删除主题执行后，controller 监听到 zk 主题节点被删除，通知到所有 broker 删除主题对应的副本，这里会分成两个步骤，第一个步骤先将下线主题对应的副本，最后才执行真正的删除操作，注意，这里也并为真正的将主题从磁盘中删除，此时仅仅只会将要删除的副本所在的目录重命名，以免之后创建主题时目录有冲突，每个broker 都会有一个定时线程，定时清除已重命名为删除状态的日志文件，具体如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191111074026.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191111074026.png)
 
 
 
@@ -38,17 +38,17 @@ author: 张乘辉
 
 自动创建主题的前提是 broker 配置参数 auto.create.topic.enble=true，删除主题后，当 Producer 发送时会对发送进行重试，期间会发送 MetadataRquest 命令到 broker 请求获取最新的元数据，在获取元数据的同时，会判断是否需要自动创建主题，如果需要，则调用 zk 客户端创建主题节点，controller 监听到有新主题创建，就会触发 controller 相关状态机工作创建主题。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191111073545.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191111073545.png)
 
 
 
 刚刚也说过，kafka 重命名要删除的主题后，并不会立马就会删除，而是等待异步线程去删除，如下图所示，重命名后与重新创建的分区不冲突，可以证明删除是异步执行的了，且不影响生产发送，但是被重命名后的日志就不能消费了，即丢失了。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191111074956.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191111074956.png)
 
 如下图可看出，在一分钟后，重命名后的副本被删除。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191112081724.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191112081724.png)
 
 
 

@@ -380,5 +380,5 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
 
 在分析源码时习惯胡乱地画一下：
 
-![mybatis-spring](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis-spring.jpeg)
+![mybatis-spring](https://raw.githubusercontent.com/objcoding/md-picture/master/img/mybatis-spring.jpeg)
 

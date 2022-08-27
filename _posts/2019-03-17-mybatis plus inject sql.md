@@ -27,7 +27,7 @@ mybatis-plus是完全基于mybatis开发的一个增强工具，它的设计理�
 
 现在我将Mapper的注册与绑定过程用时序图再梳理一遍：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis3.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/mybatis3.png)
 
 解析一下这几个类的作用：
 
@@ -159,7 +159,7 @@ public interface ISqlInjector {
 
 其中AutoSqlInjector提供了最基本的sql注入，以及一些通用的sql注入与拼装的逻辑，LogicSqlInjector在AutoSqlInjector的基础上复写了删除逻辑，因为我们的数据库的数据删除实质上是软删除，并不是真正的删除。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/mybatis4.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/mybatis4.png)
 
 com.baomidou.mybatisplus.mapper.AutoSqlInjector#inspectInject：
 

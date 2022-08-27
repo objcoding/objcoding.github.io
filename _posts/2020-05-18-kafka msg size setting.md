@@ -30,7 +30,7 @@ Kafka 允许的最大 record batch size，什么是 record batch size ？简单�
 
 kafka.log.Log#analyzeAndValidateRecords
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200518212717.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200518212717.png)
 
 以上源码可以看出 message.max.bytes 并不是限制消息体大小的，而是限制一个批次的消息大小，所以我们需要注意生产端对于 batch.size 的参数设置需要小于 message.max.bytes。
 
@@ -84,7 +84,7 @@ replica.fetch.max.bytes 参见 2.2.x 版本的官方解释：
 
 org.apache.kafka.clients.producer.KafkaProducer#ensureValidRecordSize
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200518213347.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200518213347.png)
 
 从以上源码得出结论，Kafka 会首先判断本次消息大小是否大于 maxRequestSize，如果本次消息大小 maxRequestSize，则直接抛出异常，不会继续执行追加消息到 batch。
 
@@ -92,7 +92,7 @@ org.apache.kafka.clients.producer.KafkaProducer#ensureValidRecordSize
 
 org.apache.kafka.clients.producer.internals.Sender#sendProducerData
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519093538.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519093538.png)
 
 也就是说，max.request.size 参数具备两个特性：
 
@@ -116,13 +116,13 @@ batch.size 是 Kafka producer 非常重要的参数，它的值对 Producer 的�
 
 org.apache.kafka.clients.producer.internals.RecordAccumulator#append
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200518221149.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200518221149.png)
 
 以上，将消息追加到消息缓冲区时，会尝试追加到一个 ProducerBatch，如果 ProducerBatch 满了，就去缓存区申请 batch.size 大小的缓存创建一个新的 ProducerBatch 继续追加消息。需要注意的是，如果消息大小本身就比 batch.size 大，这种情况每个 ProducerBatch 只会包含一条消息。
 
 最终 RecordAccumulator 缓存区看起来是这样的：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519100250.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519100250.png)
 
 
 
@@ -191,7 +191,7 @@ $ {kafka_path}/bin/kafka-producer-perf-test.sh --topic test-topic2 --num-records
 
 测试结果：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519133332.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519133332.png)
 
 可以得出结论，成功拦截了大于 max.request.size 的消息。
 
@@ -216,11 +216,11 @@ $ {kafka_path}/bin/kafka-producer-perf-test.sh --topic test-topic1 --num-records
 
 测试结果：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519134813.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519134813.png)
 
 当 max.message.bytes = 2500 时：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519135106.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519135106.png)
 
 **可以得出结论，max.message.bytes 参数校验的是批次大小，而不是消息大小。**
 
@@ -242,13 +242,13 @@ $ {kafka_path}/bin/kafka-producer-perf-test.sh --topic test-topic1 --num-records
 
 测试结果：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519140529.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519140529.png)
 
 可以得出结论，即使消息大小比 batch.size 还大，依然会继续发送消息。
 
 当 max.message.bytes = 900 时：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200519140940.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200519140940.png)
 
 **可以得出结论，即使 batch.size < max.message.bytes，但由于消息大小比 batch.size 大的情况下依然会发送消息，如果没有 max.request.size 参数控制消息大小的话，就有可能会报错。**
 

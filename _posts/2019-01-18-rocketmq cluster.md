@@ -50,7 +50,7 @@ author: 张乘辉
 
 ## 集群的一些概念
 
-![rocketmq-cluster](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_cluster.png)
+![rocketmq-cluster](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_cluster.png)
 
 - Name Server: 是一个几乎无状态节点, 可集群部署, 节点之间间无任何信息同步. 
 - Broker:  Broker分为Master与Slave, 一个Master可以对应多个Slave, 但是一个Slave只能对应一个Master, Master与Slave的对应关系通过指定相同的BrokerName, 不同的BrokerId来定义, BrokerId为0表示Master, 非0表示Slave. Master也可以部署多个. 每个Broker与Name Server集群中的所有节点建立长连接, 定时注册Topic信息到所有Name Server. 

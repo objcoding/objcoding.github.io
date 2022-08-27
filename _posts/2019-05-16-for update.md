@@ -79,7 +79,7 @@ public void forupdateByConcurrent() {
 
 首先我们先将数据库连接池的初始化大小调大一点，使该次并发执行至少会获取 2 个以上 ID 不同的 connection 对象来执行 for update，以下是某一次的执行日志：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/transaction.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/transaction.png)
 
 得到测试结果，发现如果有 2 个或以上 ID 不同的 connection 对象执行 sql，会发生阻塞，而 Mysql 不会发生阻塞，至于 Mysql 为什么不会发生阻塞，后面我再给大家解释。
 
@@ -209,7 +209,7 @@ public void commit() throws SQLException {
 set global general_log = 1;
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/transaction_1.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/transaction_1.png)
 
 查看日志，发现 Mysql 会为每条执行的 sql 设置 autocommit=1，即自动提交事务，无须显式提交 commit，每条 sql 就是一个事务。
 

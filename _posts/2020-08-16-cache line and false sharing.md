@@ -20,7 +20,7 @@ author: 张乘辉
 
 对计算机组成原理相对熟悉的小伙伴都知道，CPU 的速度比内存的速度高了几个数量级，为了 CPU 更快从内存中读取数据，设置了多级缓存机制，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200815234310.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200815234310.png)
 
 当 CPU 运算时，首先会从 L1 缓存查找所需要的数据，如果没有找到，再去 L2 缓存中去找，以此类推，直到从内存中获取数据，这也就意味着，越长的调用链，所耗费的执行时间也越长。那是不是可以从主内存拿数据的时候，顺便多拿一些呢？这样就可以避免频繁从主内存中获取数据了。聪明的计算机科学家已经想到了这个法子，这就是缓存行的由来。缓存是由多个缓存行组成的，而每个缓存行大小通常来说，大小为 64 字节，并且每个缓存行有效地引用主内存中的一块儿地址，CPU 每次从主内存中获取数据时，会将相邻的数据也一同拉取到缓存行中，这样当 CPU 执行运算时，就大大减少了与主内存的交互。
 
@@ -67,11 +67,11 @@ public class CacheLineEffect {
 
 我使用的测试运行环境配置如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200816001851.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200816001851.png)
 
 运行后结果如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200816001723.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200816001723.png)
 
 可以看到，使用缓存行比没有使用缓存行的性能提升了将近 4 倍。
 
@@ -81,7 +81,7 @@ public class CacheLineEffect {
 
 当 CPU 执行完后，还需要将数据回写到内存上，以便于别的线程可以从主内存中获取最新的数据。假设两个线程都加载了相同的 Cache line 数据，会产生什么样的影响呢？下面我用一张图解释：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200816004338.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200816004338.png)
 
 数据 A、B、C 被加载到同一个 Cache line，假设线程 1 在 core1 中修改 A，线程 2 在 core2 中修改 B。
 
@@ -108,7 +108,7 @@ public final static class ValuePadding {
 
 JDK1.8 有专门的注解 @Contended 来避免伪共享，为了更加直观，我使用了对象填充的方法，其中 `protected long p1, p2, p3, p4, p5, p6, p7` 作为前置填充对象，`protected long p9, p10, p11, p12, p13, p14, p15`作为后置填充对象，这样任意线程访问 ValuePadding 时，value 都处于不同的 Cache line 中，不会产生伪共享问题。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200816011538.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200816011538.png)
 
 下面的例子用来演示伪共享与解决伪共享后的性能差异：
 
@@ -225,7 +225,7 @@ public class MyFalseSharing {
 
 运行程序，测试结果如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200816201430.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200816201430.png)
 
 可见，当有多个线程同时操作同一个 Cache line 的数据时，伪共享问题会影响 CPU 性能。
 

@@ -22,7 +22,7 @@ author: 张乘辉
 
 看了Nameserver的源码后大呼惊叹，整个NameServer总共就由这么几个类类组成：
 
-![rocketmq nameserver](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_1.png)
+![rocketmq nameserver](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_1.png)
 
 其中NamesrvStartup为启动类，NamesrvController为核心控制器，RouteInfoManager为路由信息表。
 
@@ -198,7 +198,7 @@ public void start() throws Exception {
 
 路由启动时序图：
 
-![nameServer startup](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_2.png)
+![nameServer startup](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_2.png)
 
 
 
@@ -387,7 +387,7 @@ public RegisterBrokerResult registerBroker(
 
 路由注册时序图：
 
-![Broker register](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_3.png)
+![Broker register](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_3.png)
 
 
 

@@ -24,7 +24,7 @@ author: 张乘辉
 
 从服务端日志看到如下信息：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200103143908.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200103143908.png)
 
 该消费组在短时间内重平衡了 600 多次。
 
@@ -40,7 +40,7 @@ Kafka 发生重平衡的有以下几种情况：
 
 在查看 kafka 客户端日志，发现有很多如下日志：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200105171601.png) 
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200105171601.png) 
 
 日志的描述得知，消费者被被剔除的原因是调用 poll() 方法消费耗时太久了，其中有提到 max.poll.interval.ms 和 max.poll.records 两个参数，而且还会导致提交
 

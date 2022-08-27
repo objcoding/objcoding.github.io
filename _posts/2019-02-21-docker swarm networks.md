@@ -30,21 +30,21 @@ overlay网络模型在docker集群节点间的加入了一层虚拟网络，它�
 
 下面我画个模型图给大家理解下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker12.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker12.png)
 
 在早期使用docker进行微服务部署时，你肯定干过将docker容器所在宿主机的ip作为注册地址，因为如果你将容器内的ip作为注册地址，其他服务将不可访问你的服务，只有一条路，就是将宿主机的ip挂在容器内部处理，或者在容器内部添加ip地址环境变量来处理。
 
 当使用docker swarm进行集群服务部署时，这个问题自然也就随之解决了，当服务已加入到overlay网络中，服务容器内会获得一个overlay网络的一个地址，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker13.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker13.png)
 
 而dubbo默认会拿eth0的ip作为注册地址，因此服务只需要将docker容器的ip地址作为注册地址就行了，只要服务与服务之间在同一个ovelay网段下，就可以进行通信。
 
 这里我特别做了一个验证，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/dubbo_1.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/dubbo_1.png)
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/dubbo_2.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/dubbo_2.png)
 
 提供者和消费者同时部署了2个实例，在相同overlay网段下，相互之间是可通信的。
 
@@ -58,7 +58,7 @@ overlay网络模型在docker集群节点间的加入了一层虚拟网络，它�
 
 swarm load balancer：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker14.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker14.png)
 
 
 
@@ -107,6 +107,6 @@ networks:
 
 官方解析如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/docker15.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker15.png)
 
 这么做的好处是可以灵活地将不同stack服务栈加入到相同网络下，也可避免上面提到的几个坑。

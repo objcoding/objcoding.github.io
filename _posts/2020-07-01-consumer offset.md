@@ -10,15 +10,15 @@ author: 张乘辉
 {:toc}
 今晚撸得正兴奋时，有个朋友突然问了我一个关于位移提交的问题，他最近刚接触 Kafka，在一篇博客中看到了这么一段话：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200701222319.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200701222319.png)
 
 然后他给我举了不是那么常规的一个问题，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200701222011.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200701222011.png)
 
 我一看问题就觉得有点奇怪了，我知道这个朋友肯定是从 RocketMQ 过来的，因为在 RocketMQ 的位移提交机制，只能是提交已消费的最小位移：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200701222721.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200701222721.png)
 
 具体我有一篇文章专门详细地分析了 RocketMQ 的位移提交机制：[RocketMQ 位移提交源码分析](https://mp.weixin.qq.com/s/vgfgUT5z2wv8tkFj-5q7lQ)
 

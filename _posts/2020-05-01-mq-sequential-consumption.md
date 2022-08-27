@@ -10,7 +10,7 @@ author: 张乘辉
 {:toc}
 我不记得有多少人问过以下这个问题了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200422092844.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200422092844.png)
 
 我觉得这个问题问得很频繁，而且非常经典，在这里我就以 Kafka 为例子，说说我对 Kafka 顺序消息的一些理解吧，如有理解不对的地方麻烦留言指点一下。
 
@@ -58,7 +58,7 @@ author: 张乘辉
 
 当然，还有一个读者是这么问的：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426170035.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426170035.png)
 
 以下分析假设生产端已经将顺序消息成功发送到同一个分区。
 
@@ -70,7 +70,7 @@ kafka 的消费类 KafkaConsumer 是非线程安全的，因此用户无法在�
 
 这样相当于一个进程内拥有多个消费者，也可以说消费组内成员是有多个线程内的 KafkaConsumer 组成的。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426193745.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426193745.png)
 
 但其实这个消费模型是存在很大问题的，从消费消费模型可看出每个 KafkaConsumer 会负责固定的分区，因此无法提升单个分区的消费能力，如果一个主题分区数量很多，只能通过增加 KafkaConsumer 实例提高消费能力，这样一来线程数量过多，导致项目 Socket 连接开销巨大，项目中一般不用该线程模型去消费。
 
@@ -78,13 +78,13 @@ kafka 的消费类 KafkaConsumer 是非线程安全的，因此用户无法在�
 
 针对第一个线程模型的缺点，我们可采取 KafkaConsumer 实例与消息消费逻辑解耦，把消息消费逻辑放入单独的线程中去处理，线程模型如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426195213.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426195213.png)
 
 从消费线程模型可看出，当 KafkaConsumer 实例与消息消费逻辑解耦后，我们不需要创建多个 KafkaConsumer 实例就可进行多线程消费，还可根据消费的负载情况动态调整 worker 线程，具有很强的独立扩展性，在公司内部使用的多线程消费模型就是用的单 KafkaConsumer 实例 + 多 worker 线程模型。
 
 但这个消费模型由于消费逻辑是利用多线程进行消费的，因此并不能保证其消息的消费顺序，在这里我们可以引入阻塞队列的模型，一个 woker 线程对应一个阻塞队列，线程不断轮训从阻塞队列中获取消息进行消费，对具有相同 key 的消息进行取模，并放入相同的队列中，实现顺序消费， 消费模型如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426210045.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426210045.png)
 
 但是以上两个消费线程模型，存在一个问题：
 

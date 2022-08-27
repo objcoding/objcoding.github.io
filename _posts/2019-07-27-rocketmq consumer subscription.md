@@ -10,9 +10,9 @@ author: 张乘辉
 {:toc}
 前段时间有个朋友向我提了一个问题，他说在搭建 RocketMQ 集群过程中遇到了关于消费订阅的问题，具体问题如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_9.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_9.png)
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_10.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_10.png)
 
 
 
@@ -326,7 +326,7 @@ c2：broker_b（q0/q1/q2/q3）
 
 下面我用图表示 topicA 和 topicB 经过 rebalance 之后的消费情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/rocketmq_11.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/rocketmq_11.png)
 
 至于为什么会报 the consumer's subscription not exist，我们继续往下撸：
 

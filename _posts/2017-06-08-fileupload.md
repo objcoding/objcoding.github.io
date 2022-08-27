@@ -173,7 +173,7 @@ public class UpLoadController {
 
 ## 总结
 
-![源码大致流程](https://gitee.com/objcoding/md-picture/raw/master/img/fileupload.png)
+![源码大致流程](https://raw.githubusercontent.com/objcoding/md-picture/master/img/fileupload.png)
 
 ## 源码
 

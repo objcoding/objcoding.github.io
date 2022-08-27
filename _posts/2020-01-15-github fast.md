@@ -33,7 +33,7 @@ author: 张乘辉
 
 Gitee 创建仓库时，可以导入已有仓库时选择从 GitHub 仓库中导入，这时我们填写 Seata 主仓库地址，意味着 Gitee 仓库将可以从 Seata 主仓库中同步代码 ：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200115202001.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200115202001.png)
 
 将 Gitee 仓库 clone 到本地（此时仓库名称默认 origin）：
 
@@ -41,7 +41,7 @@ Gitee 创建仓库时，可以导入已有仓库时选择从 GitHub 仓库中导
 git clone https://gitee.com/objcoding/seata.github.io.git
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200115204049.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200115204049.png)
 
 这个速度快到我想哭，你能想象GitHub 2 KiB/s 的悲惨人生么。
 
@@ -53,7 +53,7 @@ git remote add objcoding https://github.com/objcoding/seata.github.io.git
 
 fetch objcoding 远程仓库内容到本地：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200115204257.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200115204257.png)
 
 **速度很快，因为远程仓库中的绝大部份代码，已经从 gitee 拉取下来了。**
 
@@ -73,11 +73,11 @@ git remote add seata https://github.com/seata/seata.github.io.git
 
 为什么这里还需要添加 seata 仓库呢？这是因为一般来说，seata 主仓库增加的代码数据量都很少，即使是 2Kib/s 的速度，也是可以拉取下来的，所以平时可以直接从 seata 主仓库中拉取最新代码就可以了，但是像 seata.github.io 仓库，突然某个大佬上传了几十兆数据，那么此时我就可以利用 Gitee 仓库去同步这些代码，具体操作如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200115202542.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200115202542.png)
 
 接下来 fetch gitee 对应的分支，就可以将这些数据拉取下来了。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200115214037.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200115214037.png)
 
 以上是整个同步过程分析。
 

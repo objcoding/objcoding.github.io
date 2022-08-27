@@ -141,7 +141,7 @@ RUN ln -sf /dev/stdout /xx/xx.log \ # info
 
 下图为官方的tag标签解释文档：
 
-![tag](https://gitee.com/objcoding/md-picture/raw/master/img/docker_log_driver_tag.png)
+![tag](https://raw.githubusercontent.com/objcoding/md-picture/master/img/docker_log_driver_tag.png)
 
 最终，json-file日志插件将容器打印到控制台的日志生成到本地 `/var/lib/docker/containers/*/`目录中，为json格式，如下：
 

@@ -24,13 +24,13 @@ author: 张乘辉
 
 在新版的 Kafka Producer 中，设计了一个消息缓冲池，在创建 Producer 时会默认创建一个大小为 32M 的缓冲池，也可以通过 buffer.memory 参数指定缓冲池的大小，同时缓冲池被切分成多个内存块，内存块的大小就是我们创建 Producer 时传的 batch.size 大小，默认大小 16384，而每个 Batch 都会包含一个 batch.size 大小的内存块，消息就是存放在内存块当中。整个缓冲池的结构如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200913211915.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200913211915.png)
 
 客户端将消息追加到对应主题分区的某个 Batch 中，如果 Batch 已经满了，则会新建一个 Batch，同时向缓冲池（RecordAccumulator）申请一块大小为 batch.size 的内存块用于存储消息。
 
 当 Batch 的消息被发到了 Broker 后，Kafka Producer 就会移除该 Batch，既然 Batch 持有某个内存块，那必然就会涉及到 GC 问题，如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200913191436.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200913191436.png)
 
 以上，频繁的申请内存，用完后就丢弃，必然导致频繁的 GC，造成严重的性能问题。那么，Kafka 是怎么做到避免频繁 GC 的呢？
 
@@ -61,7 +61,7 @@ public class BufferPool {
 
 当 Batch 的消息发送完毕后，就会将它持有的内存块归还到 free 中，以便后面的 Batch 申请内存块时不再创建新的 ByteBuffer，从 free 中取就可以了，从而避免了内存块被 JVM 回收的问题。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200913212301.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200913212301.png)
 
 
 
@@ -176,7 +176,7 @@ try {
 
 首先创建一个本次等待 Condition，并且把它添加到类型为 Deque 的 waiters 中（后面在归还内存中会唤醒），while 循环不断收集空闲的内存，直到内存比申请内存大时退出，在 while 循环过程中，调用 Condition#await 方法进行阻塞等待，归还内存时会被唤醒，唤醒后会判断当前申请内存是否大于 batchSize，如果等与 batchSize 则直接将归还的内存返回即可，如果当前申请的内存大于 大于 batchSize，则需要调用 freeUp 方法从 free 中释放空闲的内存出来，然后进行累加，直到大于申请的内存为止。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200913220918.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200913220918.png)
 
 
 
@@ -209,7 +209,7 @@ public void deallocate(ByteBuffer buffer, int size) {
 
 如果归还的内存块大小等于 batchSize，则将其清空后添加到缓冲池的 free 中，即将其归还给缓冲池，避免了 JVM GC 回收该内存块。如果不等于呢？直接将内存大小累加到未分配并且空闲的内存大小值中即可，内存就无需归还了，等待 JVM GC 回收掉，最后唤醒正在等待空闲内存的线程。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200913221545.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200913221545.png)
 
 
 

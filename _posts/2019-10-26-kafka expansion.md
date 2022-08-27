@@ -32,11 +32,11 @@ Attempting to send response via channel for which there is no open connection, c
 
 kafka.network.Processor#sendResponse：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025100603.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025100603.png)
 
 看源码注释，是远程连接关闭了或者空闲时间太长了的意思，找到具体客户端负责人，经询问后，这是大数据 Spark 集群的节点。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025144043.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025144043.png)
 
 从以上日志看出，Spark 集群的某个消费组 OrderDeliveryTypeCnt，竟然发生了近 4 万次重平衡操作，这显然就是一个不正常的事件，Kafka 消费组发生重平衡的条件有以下几个：
 
@@ -76,7 +76,7 @@ kafka.network.Processor#sendResponse：
 
 根据以上重分配的步骤，意味着在数据进行过程中不会发生客户端阻塞，因为期间 Leader 并没有发生变更，在数据迁移完成进行 Leader 选举时才会，但影响不大，针对这点影响我特意用脚本测试了一下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191024145124.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191024145124.png)
 
 可以发现，在发送过程中，如果 Leader 发生了变更，生产者会及时拉取最新的元数据，并重新进行消息发送。
 
@@ -124,15 +124,15 @@ echo '{"version":1,"partitions":[{"topic":"sjzn_spark_binlog_order_topic","parti
 bin/kafka-reassign-partitions.sh  --zookeeper xxx.xxx.xx.xxx:2181,xxx.xxx.xx.xxx:2181,xxx.xxx.xx.xxx:2181 --reassignment-json-file sjzn_spark_order_unique_topic_resign.json --verify
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191026160345.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191026160345.png)
 
 由于该主题存在的数据量特别大，整个重分配过程需要维持了好几个小时：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025012921.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025012921.png)
 
 在它进行数据迁移过程中，我特意去 kafka-manage 控制台观察了各分区数据的变动情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025012342.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025012342.png)
 
 从控制台可看出，各分区的副本数目基本都增加了，这也印证了分区当前的副本数等于原有的副本加上新分配的副本的集合，新分配的副本集合目前还没追上 Leader 的位移，因此没有加入 ISR 列表。
 
@@ -140,24 +140,24 @@ bin/kafka-reassign-partitions.sh  --zookeeper xxx.xxx.xx.xxx:2181,xxx.xxx.xx.xxx
 
 过一段时间后，发现位移已经改变了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025012411.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025012411.png)
 
 从这点也印证了在分区重分配过程中，只要 Leader 没有发生变更，客户端是可以持续发送消息给分区 Leader 的。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025131741.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025131741.png)
 
 从上图可看出，新分配的副本追上 Leader 的位移后，就会加入 ISR 列表中。
 
 现在去看看集群带宽负载情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025012550.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025012550.png)
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025012616.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025012616.png)
 
 从上图中可看出，在迁移过程中，新分配的副本不断地从 Leader 拉取数据，占用了集群带宽。
 
 主题各分区重分配完成后的副本情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191025085729.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191025085729.png)
 
 从以上图中可看出，各分区的新分配的副本都已经全部在 ISR 列表中了，并且将旧分配的副本删除，经过 Preferred Leader 选举之后，各分区新分配副本的 Preferred Leader 大多数成为了该分区 leader。

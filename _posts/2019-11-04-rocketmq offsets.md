@@ -130,7 +130,7 @@ private final TreeMap<Long, MessageExt> msgTreeMap = new TreeMap<>();
 
 它是一个 TreeMap 结构，key 为消息位移，value 为消息数据，消息容器中，消息可以按照位移进行排序，那也就意味着，当消息消费完，只需要在消息容器中移除即可，然后返回消息容器中最小元素（最小位移），如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20191103204158.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191103204158.png)
 
 由于消息是按照位移进行排序，因此我们只需移除已消费的消息，并且确保不会将未消费的位移提交，就可避免了位移大的消息先消费导致消息丢失的问题了。
 

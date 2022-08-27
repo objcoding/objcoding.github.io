@@ -20,7 +20,7 @@ author: 张乘辉
 
 首先把导致 Kafka 进程退出的异常栈贴出来：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200312212611.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200312212611.png)
 
 *注：以下源码基于 kafka 0.11.0.2 版本。*
 
@@ -28,7 +28,7 @@ author: 张乘辉
 
 kafka.log.Log#loadSegmentFiles
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200313225913.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200313225913.png)
 
 从前一篇文章中已经说到，Kafka 在启动的时候，会检查kafka是否为 cleanshutdown，判断依据为 ${log.dirs} 目录中是否存在 .kafka_cleanshutDown 的文件，如果非正常退出就没有这个文件，接着就需要 recover log 处理，在处理中会调用 。
 
@@ -36,7 +36,7 @@ kafka.log.Log#loadSegmentFiles
 
 kafka.log.LogSegment#recover
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314140801.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314140801.png)
 
 源码中相关变量说明：
 
@@ -52,13 +52,13 @@ kafka.log.LogSegment#recover
 
 我们知道一批消息中，有最开头的消息和末尾消息，所以一个消息批次中，分别有 baseOffset 和 lastOffset，源码注释如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314142502.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314142502.png)
 
 其中最关键的描述是：**它可以是也可以不是第一条记录的偏移量**。
 
 kafka.log.OffsetIndex#append
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200313230353.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200313230353.png)
 
 以上是追加索引块核心方法，在这里可以看到 Kafka 异常栈的详细信息，Kafka 进程也就是在这里被异常中断退出的（**这里吐槽一下，为什么一个分区有损坏，要整个 broker 挂掉？宁错过，不放过？就不能标记该分区不能用，然后让 broker 正常启动以提供服务给其他分区吗？建议 Kafka 在日志恢复期间加强异常处理，不知道后续版本有没有优化，后面等我拿 2.x 版本源码分析一波**），退出的条件是：
 
@@ -72,7 +72,7 @@ _entries == 0 || offset > _lastOffset = false
 
 前面也说过了，消息批次中的 baseOffset 不一定是第一条记录的偏移量，那么问题是不是出在这里？我的理解是这里有可能会造成两个消息批次获取到的 baseOffset 有相交的值？对此我并没有继续研究下去了，但我确定的是，在 kafka 2.2.1 版本中，append() 方法中的 offset 已经改成 消息批次中的 lastOffset 了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314153516.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314153516.png)
 
 这里我也需要吐槽一下，**如果出现这个 bug，意味着这个问题除非是将这些故障的日志文件和索引文件删除，否则该节点永远启动不了，这也太暴力了吧？**我花了非常多时间去专门看了很多相关 issue，目前还没看到有解决这个问题的方案？或者我需要继续寻找？我把相关 issue 贴出来：
 
@@ -100,11 +100,11 @@ $ ~/kafka_2.11-0.11.0.2/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --fil
 
 用 less -Nm 命令查看，log  和 index 对比：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314125904.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314125904.png)
 
 如上图所示，index最后记录的 offset = 110756715，positioin=182484660，与异常栈显示的一样，说明在进行追加下一个索引块的时候，发现下一个索引块的 offset 索引不大于最后一个索引块的 offset，因此不允许追加，报异常并退出进程，那么问题就出现在下一个消息批次的 baseOffset，根据 log.index.interval.bytes 默认值大小为 4 KB（4096），而追加的条件前面也说了，需要大于 log.index.interval.bytes，因此我们 DumpLogSegments 工具查询：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314150938.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314150938.png)
 
 从 dump 信息中可知，在 positioin=182484660 往后的几个消息批次中，它们的大小加起来大于 4096 的消息批次的 offset=110756804，postion=182488996，它的 baseOffset 很可能就是 110756715，与索引文件最后一个索引块的 Offset 相同，因此出现错误。
 
@@ -112,13 +112,13 @@ $ ~/kafka_2.11-0.11.0.2/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --fil
 
 我们先查看 offset = 110756715，positioin=182484660 的消息块详情：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314162521.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314162521.png)
 
 
 
 接着寻找 offset = 110756715，的消息批次块：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314163312.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314163312.png)
 
 终于找到你了，跟我预测的一样！postion=182488996，在将该消息批次追加到索引文件中，发生 offset 混乱了。
 
@@ -130,7 +130,7 @@ $ ~/kafka_2.11-0.11.0.2/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --fil
 
 我也尝试发送邮件给 Kafka 维护者，期待大佬的回应：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200314164458.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200314164458.png)
 
 不过呢，0.11.0.2 版本属于很旧的版本了，因此，升级 Kafka 版本才是长久之计啊！我已经迫不及待地想撸 kafka 源码了！
 

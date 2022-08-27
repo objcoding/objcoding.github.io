@@ -20,20 +20,20 @@ author: 张乘辉
 
 现在有个叫server-common-toolbox的工具项目，maven依赖信息如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/maven4.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/maven4.png)
 
 首先进入项目所在目录，然后执行mvn install命令：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/maven1.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/maven1.png)
 
 如果出现一下信息，就说明打包安装成功了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/maven2.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/maven2.png)
 
 打包成功后，可在本地仓库查看：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/maven3.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/maven3.png)
 
 接下来就可以在各个子系统中添加依赖了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/maven5.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/maven5.png)

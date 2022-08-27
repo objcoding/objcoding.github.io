@@ -38,23 +38,23 @@ Springboot 中有非常多 @Enable* 的注解，其目的是显式开启某一�
 
 org.springframework.scheduling.annotation.AbstractAsyncConfiguration#setConfigurers
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611195610.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611195610.png)
 
 我们可以实现 AsyncConfigurer 接口的方式去自定义一个线程池 Bean，这个后面会会讲到，源码所示，这里目的是为了这个 bean，并将其定义的线程池对象和异常处理对象保存到 AsyncConfiguration 中，用于创建 AsyncAnnotationBeanPostProcessor 。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611195946.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611195946.png)
 
 这两个对象后面源码分析会再次遇上。
 
 而这个配置类就是为了注册一个名为 AsyncAnnotationBeanPostProcessor 的 bean，如其名，它是一个 BeanPostProcessor 处理器，它的类继承结构如下所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611195400.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611195400.png)
 
 从类继承结构可以看出，AsyncAnnotationBeanPostProcessor 实现了 BeanPostProcessor 和 BeanFactoryAware，因此 AsyncAnnotationBeanPostProcessor 会在 setBeanFactory 方法中做了 Spring 异步编程中最为重要的一步，创建一个针对 @Async 注解的通知器 AsyncAnnotationAdvisor（叫做切面貌似也可以），这个通知器主要用于拦截被 @Async 注解的方法。同时，bean 实例初始化过程会被  AsyncAnnotationBeanPostProcessor 拦截处理，处理过程会将符合条件的 bean 注册 AsyncAnnotationAdvisor ：
 
 org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor#postProcessAfterInitialization
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611220044.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611220044.png)
 
 
 
@@ -62,7 +62,7 @@ org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor#postProcessA
 
 接下来我们就分析 AsyncAnnotationAdvisor 是如何创建的。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611205738.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611205738.png)
 
 AsyncAnnotationAdvisor 实现了 PointcutAdvisor 接口，因此需要同时实现 getPointcut 和 getAdvice 方法，而这两个方法的实际内容有以上红框创建实现。
 
@@ -78,7 +78,7 @@ Spring AOP 的编程核心概念：
 
 - buildAdvice：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611210607.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611210607.png)
 
 buildAdvice 方法可知，切面是一个 AnnotationAsyncExecutionInterceptor 类，该类实现了 MethodInterceptor 接口，其 invoke 方法即为拦截处理的核心源码，后面会进行详细分析。
 
@@ -94,7 +94,7 @@ buildAdvice 方法可知，切面是一个 AnnotationAsyncExecutionInterceptor �
 
 org.springframework.aop.interceptor.AsyncExecutionInterceptor#invoke
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611224149.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611224149.png)
 
 拦截处理的核心逻辑就是这么简单，也没啥好分析的，无非就是匹配方法指定的线程池，接着构建执行单元 Callable，最后调用 doSubmit 方法执行。
 
@@ -104,7 +104,7 @@ org.springframework.aop.interceptor.AsyncExecutionInterceptor#invoke
 
 org.springframework.aop.interceptor.AsyncExecutionAspectSupport#determineAsyncExecutor
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611225209.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611225209.png)
 
 getExecutorQualifier 方法目的是获取 @Async 注解上的 value 值，value 值即线程池 Bean 的名称，如果获取到的 targetExecutor 不是 Spring 类型的线程池，则使用 TaskExecutorAdapter 进行适配，这也是为什么我们直接创建 Executor 类型的线程池 Spring 也是支持的原因。
 
@@ -112,7 +112,7 @@ getExecutorQualifier 方法目的是获取 @Async 注解上的 value 值，value
 
 org.springframework.aop.interceptor.AsyncExecutionAspectSupport#configure
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200614202430.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200614202430.png)
 
 原来当 defaultExecutor 和 exceptionHandler 是当初从 ProxyAsyncConfiguration 中获取用户自定义的 AsyncConfigurer 实现类而来的，那么如果 defaultExecutor 不存在怎么办？从源码可看出，defaultExecutor 其实是一个 SingletonSupplier 类型，如果调用 get 方法不存在，则使用默认值，默认值为：
 
@@ -122,7 +122,7 @@ org.springframework.aop.interceptor.AsyncExecutionAspectSupport#configure
 
 org.springframework.aop.interceptor.AsyncExecutionAspectSupport#getDefaultExecutor
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200614203436.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200614203436.png)
 
 注意第一个红框的注释，此时 Spring 寻找默认的线程池 Bean 为指定 Spring 的 TaskExecutor 类型，并非 Executor 类型，如果 Bean 容器中没有找到  TaskExecutor 类型的 Bean，则继续寻找默认为以下名称的 Bean：
 
@@ -133,7 +133,7 @@ public static final String DEFAULT_TASK_EXECUTOR_BEAN_NAME = "taskExecutor";
 那么如果都没有找到怎么办呢？在这个方法直接返回 null 了，AsyncExecutionInterceptor 类覆写了 这个方法：
 
 org.springframework.aop.interceptor.AsyncExecutionInterceptor#getDefaultExecutor
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200614203955.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200614203955.png)
 
 如果没有找到，则直接创建一个 SimpleAsyncTaskExecutor 类作为 @Async 注解底层使用的线程池。
 
@@ -155,7 +155,7 @@ org.springframework.aop.interceptor.AsyncExecutionInterceptor#getDefaultExecutor
 
 我们先来看下结果：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200528165656.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200528165656.png)
 
 很奇怪，明明我们都没有在项目中自定义线程池 Bean，按照以上源码的分析结果来看，此时 Spring 选择的是 SimpleAsyncTaskExecutor 才对，莫非是 super#getDefaultExecutor 方法找到了线程池 Bean？
 
@@ -167,7 +167,7 @@ org.springframework.aop.interceptor.AsyncExecutionInterceptor#getDefaultExecutor
 
 org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200611163322.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200611163322.png)
 
 从以上源码可以看出，默认的线程池的参数还可以手动在 properties 中配置，这意味着不需要主动创建线程池的情况下，也可以通过 properties 配置文件更改线程池相关参数。
 
@@ -223,7 +223,7 @@ public class AsyncConfigurerTest implements AsyncConfigurer {
 
 这种方式可以方便定义异常处理的逻辑，不过从源码分析可以看出，项目中只能存在一个 AsyncConfigurer 的配置，意味着我们只能通过 AsyncConfigurer 配置一个自定义的线程池 Bean。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200614224541.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200614224541.png)
 
 3、利用 spring-boot-autoconfigure 在 properties 配置线程池参数：
 

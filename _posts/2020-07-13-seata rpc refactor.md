@@ -40,7 +40,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 在最新的 RPC 模块中的继承关系简单清晰，用如下类关系图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200711111637.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200711111637.png)
 
 
 
@@ -54,7 +54,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 同时将客户端和服务端的引导类逻辑抽象出来，如下类关系图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510225359.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200510225359.png)
 
 1. RemotingBootstrap：引导类接口，有 start 和 stop 两个抽象方法；
 2. NettyClientBootstrap：客户端引导实现类；
@@ -75,17 +75,17 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 - RM 客户端请求服务端的交互逻辑：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-41-45.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/Xnip2020-05-12_21-41-45.png)
 
 - TM 客户端请求服务端的交互逻辑：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-44-04.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/Xnip2020-05-12_21-44-04.png)
 
 
 
 - 服务端请求 RM 客户端的交互逻辑：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513000620.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200513000620.png)
 
 从以上的交互图中可以清晰地看到了 Seata 的交互逻辑。
 
@@ -117,7 +117,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 基于以上的交互逻辑分析，我们可以将处理消息的逻辑抽象成若干个 Processor，一个 Processor 可以处理一个或者多个消息类型的消息，只需在 Seata 启动时注册将消息类型注册到 ProcessorTable 中即可，形成一个映射关系，这样就可以根据消息类型调用对应的 Processor 对消息进行处理，用如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_22-09-17.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/Xnip2020-05-12_22-09-17.png)
 
 在抽象 Remoting 类中定一个 processMessage 方法，方法逻辑是根据消息类型从 ProcessorTable 中拿到消息类型对应的 Processor。
 
@@ -127,7 +127,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 1）客户端
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234047.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200510234047.png)
 
 1. RmBranchCommitProcessor：处理服务端全局提交请求；
 2. RmBranchRollbackProcessor：处理服务端全局回滚请求；
@@ -137,7 +137,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 2）服务端
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234016.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200510234016.png)
 
 1. RegRmProcessor：处理 RM 客户端注册请求；
 2. RegTmProcessor：处理 TM 客户端注册请求；
@@ -147,7 +147,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 下面我以 TM 发起全局事务提交请求为例子，让大家感受下 Processor 在整个交互中所处的位置：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200514191842.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200514191842.png)
 
 
 
@@ -170,11 +170,11 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 同步请求：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103838.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200513103838.png)
 
 异步请求：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103904.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200513103904.png)
 
 
 
@@ -185,7 +185,7 @@ RPC 模块是我最初研究 Seata 源码开始的地方，因此我对 Seata �
 
 最终 RPC 模块看起来是这样的：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200711213204.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200711213204.png)
 
 
 

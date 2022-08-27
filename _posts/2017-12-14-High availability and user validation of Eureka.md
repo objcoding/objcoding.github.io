@@ -143,4 +143,4 @@ security:
 
 登陆 Eureka，看到以下弹窗，说明添加用户验证成功：
 
-![Eureka](https://gitee.com/objcoding/md-picture/raw/master/img/eureka.png)
+![Eureka](https://raw.githubusercontent.com/objcoding/md-picture/master/img/eureka.png)
