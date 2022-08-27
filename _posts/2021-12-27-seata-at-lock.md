@@ -146,7 +146,7 @@ private void processLocalCommitWithGlobalLocks() throws SQLException {
 
 先来看一下使用 Seata AT 模式是怎么产生脏写的：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211226164628.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211226164628.png)
 
 *注：分支事务执行过程省略其它过程。*
 
@@ -156,7 +156,7 @@ private void processLocalCommitWithGlobalLocks() throws SQLException {
 
 1、业务二执行时加 `@GlobalTransactional`注解：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211226210337.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211226210337.png)
 
 *注：分支事务执行过程省略其它过程。*
 
@@ -164,7 +164,7 @@ private void processLocalCommitWithGlobalLocks() throws SQLException {
 
 2、业务二执行时加  `@GlobalLock`注解：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211226210502.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211226210502.png)
 
 *注：分支事务执行过程省略其它过程。*
 
@@ -172,7 +172,7 @@ private void processLocalCommitWithGlobalLocks() throws SQLException {
 
 2、业务二执行时加  `@GlobalLock` 注解 +  `select for update`语句：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211226172358.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211226172358.png)
 
 如果加了`select for update`语句，则会在 update 前检查全局锁是否存在，只有当全局锁释放之后，业务二才能开始执行 updateA 操作。
 
@@ -186,6 +186,6 @@ private void processLocalCommitWithGlobalLocks() throws SQLException {
 
 业务二查询 A 时加  `@GlobalLock` 注解 +  `select for update`语句：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211226210633.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211226210633.png)
 
 加`select for update`语句会在执行 SQL 前检查全局锁是否存在，只有当全局锁完成之后，才能继续执行 SQL，这样就防止了脏读。
