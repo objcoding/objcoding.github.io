@@ -36,7 +36,7 @@ npm -g install hexo-cli
 
 随后运行 `hexo --version`，若出现以下信息：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213135450.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213135450.png)
 
 则说明 Hexo 已经安装成功。
 
@@ -58,7 +58,7 @@ mkdir -p ~/blog && cd ~/blog
 hexo init ./
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213140015.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213140015.png)
 
 这个步骤可能会因为网络情况，耗时可能会很长，过程中如果出现了 Err 字样的错误问题，说明初始化出错了，这是你需要将目录中所有的文件删除后再试试，科学上网也许能解决这个问题。当然你也可以试试以下这个方法：
 
@@ -68,7 +68,7 @@ npm config set registry https://registry.npm.taobao.org
 
 表示初始化成功的提示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213140506.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213140506.png)
 
 在博客源码文件目录下（一定要在当前目录），运行：
 
@@ -76,11 +76,11 @@ npm config set registry https://registry.npm.taobao.org
 hexo s
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213140918.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213140918.png)
 
 Hexo 会在本地启动一个 Http 服务器。按照提示，我们访问 http://localhost:4000：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213141115.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213141115.png)
 
 如果能够向上面这样正常打开，则说明博客已经在本地启动成功了！
 
@@ -94,7 +94,7 @@ Hexo 会在本地启动一个 Http 服务器。按照提示，我们访问 http:
 hexo new post 'post name'
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213141819.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213141819.png)
 
 如上，我们创建了一篇名为《test-post》的文章，hexo 会将他文章输出到 `{blog_path}/source/_posts/`，也因此我们知道了 Hexo 管理下的博客所有文章都会被放在 `source/_posts` 目录中。
 
@@ -104,7 +104,7 @@ hexo new post 'post name'
 open ./source/_posts
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213142136.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213142136.png)
 
 这时我们就可以使用 md 编辑器写文章了，这里我强烈推荐 Typora，在我心中是最强 md 编辑器没有之一！
 
@@ -124,7 +124,7 @@ description: 文章描述
 
 Hexo 的文章模版会放在 ./scaffolds 目录中：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213145501.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213145501.png)
 
 Hexo 默认有三个 模版，刚刚我们执行的 `hexo new post` 命令使用的默认即 post.md，我们可以使用其它模版：
 
@@ -134,7 +134,7 @@ hexo new page
 
 写好文章之后，运行 `hexo s`：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213142654.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213142654.png)
 
 
 
@@ -146,13 +146,13 @@ hexo new page
 git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213143514.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213143514.png)
 
 这里可能需要小等一会。
 
 下载好之后，会保存在 `./themes` 目录中，该目录也是存在自定义主题的地方：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213143804.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213143804.png)
 
 启用主题：
 
@@ -160,13 +160,13 @@ git clone https://github.com/theme-next/hexo-theme-next themes/next
 vim _config.yml
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213143716.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213143716.png)
 
 将 theme 选项配置为我们刚下好的主题名称（`./themes` 目录中的主题目录名称）。
 
 再使用 `hexo s` 启动博客本地服务器：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213144343.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213144343.png)
 
 此时可以看到博客主题已经换成 nexT 主题了。
 
@@ -207,7 +207,7 @@ plugins:
 hexo generate # 或者 hexo g
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213150353.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213150353.png)
 
 静态文件生成好之后会保存到 `./public` 目录中。
 
@@ -215,7 +215,7 @@ hexo generate # 或者 hexo g
 
 还需要在 `./_config.yaml` 中配置部署信息：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213150836.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213150836.png)
 
 运行以下命令：
 
@@ -223,15 +223,15 @@ hexo generate # 或者 hexo g
 hexo deploy # 或者 hexo d
 ```
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213151102.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213151102.png)
 
 这时直接将 `./public` 目录中的文件提交到配置的仓库中。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213151233.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213151233.png)
 
 这时我们在仓库中找到：服务 -> Gitee Pages：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201213151351.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201213151351.png)
 
 部署好之后，会提示你的 Gitee Pages 的地址，例如我的博客 Gitee Pages 地址是：https://objcoding.gitee.io/。
 

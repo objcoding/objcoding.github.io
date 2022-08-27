@@ -22,7 +22,7 @@ author: 张乘辉
 
 公司发展初期，由于用户量少，系统的并发请求并不高，且数据量少，往往只需要将应用单点部署即可满足业务的需求：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220716.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220716.png)
 
 以上就是一个典型的早期互联网应用的架构模式，应用只需要部署在单台服务器上，甚至数据库都放在同一台服务器，流量直上直下，一杆子到底。
 
@@ -36,7 +36,7 @@ author: 张乘辉
 
 单体应用缺乏故障转移，同时随着请求数量的增多，单体应用部署的请求处理不过来了，常见的问题是应用连接数被打满，用户的请求超时，而且响应耗时长。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220741.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220741.png)
 
 如上图所示，将系统进行水平化拆分，部署多个应用实例，同时网关将流量进行平均分配，有效减少单个应用的请求压力，同时应用服务具备故障转移，当服务遇到故障，只要还保持着一个以上应用实例，系统就能够运转（还需要考虑降级处理）。
 
@@ -46,7 +46,7 @@ author: 张乘辉
 
 随着公司业务的高速发展，业务的体量越来越大，一个应用承载了全部的业务，所有的业务代码都放在同一个代码仓库中，虽然这样容易部署，运维成本低，但缺点非常明显，随着业务的体量越来越大，项目的代码急剧增加，各个业务间的越来越复杂，耦合度越来越高。而且扩展性随着代码量的增多越来越差，而且发布周期窗口会越来越长，无法做到快速迭代快速上线。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220755.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220755.png)
 
 为了解决以上问题，我们可以对系统按照业务的维度进行垂直拆分，比如商城系统，可以拆分成用户服务、交易服务、订单服务等，如上图所示。
 
@@ -60,7 +60,7 @@ author: 张乘辉
 
 随着业务的发展，这时发现应用服务不再是负担，但数据层成为了整个系统的唯一单点，这时候，随着系统 TPS 的增多，应用的实例部署越来越多，单个数据库的连接数变多，数据的写入效率变慢了，单主库无法维持整个系统的数据读写。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220804.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220804.png)
 
 这时将数据层进行读写分离，将数据库拆分成一个主数据库和若干个从数据库，数据的写入还是由主数据库负责，读数据则由从数据库负责，这样就可以大大减轻了数据写入的负担。但读写分离就是读和写不是严格同步的，主数据库同步数据给从数据库需要一定的时间，但大部分的数据延迟都能够接受。
 
@@ -68,7 +68,7 @@ author: 张乘辉
 
 数据读写分离之后，数据写入减轻了一定的负担，但我们发现，整个系统全局只有只有一个主库，各个业务域的数据写入都严重依赖于这个主库，流量一旦上来，单主数据库根本扛不住。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220854.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220854.png)
 
 与应用垂直拆分类似，存储层的垂直拆分，同样根据业务维度去拆分，拆分成若干个库，比如商城系统，可以拆分成用户库、订单库等。从上图可以看到，数据写入的流量，各个业务域独自负担自己的数据读写。
 
@@ -80,7 +80,7 @@ author: 张乘辉
 
 这时我们可以按照用户维度，对数据进行水平拆分，比如按照用户 ID 最后两位，将一张大表切分成 100 张小表，再新建 100 个库（当然数据库可以少于表的数量），我们可以将这种分库分表规则称为百库百表模式。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220837.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220837.png)
 
 分库分表可以有效减少单表数据的数据量，还可以按照用户维度将流量分散到各个库和表中，性能得到了全面的提升。
 
@@ -104,7 +104,7 @@ author: 张乘辉
 
 我们将按照用户维度对应用实例进行单元化隔离，每个单元都部署了系统所有的服务，用户可在某个单元内走完所有的业务流程，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211127220923.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211127220923.png)
 
 可以看出，经过单元化隔离，数据库的连接数量成倍地减少，如果单元化粒度拆分更小，那么数据库的连接数量会更少。
 
@@ -133,7 +133,7 @@ author: 张乘辉
 
 LDC 则是在 IDC 的基础上进行的一个逻辑划分，一个 LDC 逻辑数据中心被称为一个「单元」，每个单元都拥有所有部署的应用，每个单元可以分配到任意一个物理机房，每个物理机房可以拥有若干个单元，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211129010904.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211129010904.png)
 
 如上图所示，物理机房在水平部署模式下，单元化如何解决数据分区问题呢？
 
@@ -151,13 +151,13 @@ LDC 则是在 IDC 的基础上进行的一个逻辑划分，一个 LDC 逻辑数
 
 系统经过单元化隔离部署之后，通常情况下数据库连接已不再是瓶颈，这也是单元化部署带来的收益之一，这时我们很容易通过将单元中的每个服务增加若干个应用实例来达到扩容的目的。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211128203637.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211128203637.png)
 
 ### 单元扩容
 
 增加单元数量，增加后的每个单元，流量重新分配，但需要注意的是，增加单元数据，并不意味着数据分区会增加，数据层与应用层的扩容完全没有关系，但值得一提的是，单元扩容可以有效减少数据库的连接数，每个单元所连接的数据分区，是按照单元所负责的用户维度的流量来区分的，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20211128203647.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20211128203647.png)
 
 
 

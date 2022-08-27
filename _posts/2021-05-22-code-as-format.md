@@ -58,9 +58,9 @@ markdown 它是一种轻量级的「标记语言」，“标记”我的理解�
 
 公司很多小伙伴都用一款名叫 Visual Paradigm 工具画时序图，为了保持风格一致，我也使用这个工具一段时间，但我发现我自己真的用不来，UI 界面交互复杂，组件拖拽各种反人类设计，后来我还是使用回 PlantUml，它有 IDEA 插件，只需要在 IDEA 安装使用即可：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210522192755.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210522192755.png)
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210522192316.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210522192316.png)
 
 如上所示，你可以用写代码的方式构建你的时序图，把所有的心思都专注在内容上，你完全不需要理会要怎么去调整格式，按照特定的格式，你把流程相关的内容写下来之后，时序图就完成了。
 

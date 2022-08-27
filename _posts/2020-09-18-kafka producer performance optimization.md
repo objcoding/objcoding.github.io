@@ -35,13 +35,13 @@ buffer.memory=268435456
 
 在生产环境的一台服务器上，使用以上参数对集群进行生产发送性能压测：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200917200048.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200917200048.png)
 
 从上图可以看到，使用平均 4k 大小的消息体对集群进行压测，**单个 Producer 平均吞吐量达到 2000MB/s，50w/s+**！
 
 作为对比，我还是使用同一台服务器，将调优参数去掉，再压一遍：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200917200258.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200917200258.png)
 
 可以看到，最高的吞吐量也不过 500M/s，最低已经来到 2M/s 了。
 
@@ -53,7 +53,7 @@ buffer.memory=268435456
 
 由于发送端发送频率非常快，加上由于 Spark 客户端频繁断开连接导致生产端 Sender 线程发送延迟增高，这就会造成客户端发送速率 > Sender线程的发送速率。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200912172553.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200912172553.png)
 
 它们之间会有一个缓冲池，如果客户端发送速率 > Sender 线程的发送速率，缓冲池会很快塞满，阻塞当前发送进程，导致发送延迟增高。
 
@@ -67,7 +67,7 @@ buffer.memory=268435456
 
 该参数主要作用是限定每次发送到 broker 的数据大小，默认值为 1M，如果太小，会导致生产端与 broker 的网络交互增多，加上加上由于 Spark 客户端频繁断开连接导致生产端 Sender 线程发送延迟增高。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200917201030.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200917201030.png)
 
 如上图，当 max.request.size=5242880 时，请求 broker 发送的数据量不大于 max.request.size。
 

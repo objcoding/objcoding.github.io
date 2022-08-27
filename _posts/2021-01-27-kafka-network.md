@@ -22,33 +22,33 @@ author: 张乘辉
 
 打开消息控制台（以下简称 ZMS），查看该集群的状态，发现 RT 值比平时高了很多：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126230005.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126230005.png)
 
 这很不正常，于是赶忙去查看各个节点日志：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126213902.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126213902.png)
 
 发现某个节点日志出现 ISR 频繁收缩又扩张的现象，接着查看其他节点，发现只有某个节点会出现这种现象，在 ZMS 中再次查看各个节点的 major GC 情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126225939.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126225939.png)
 
 发现该节点 major GC 有点频繁而且不规律，接着还发现了一些连接断开的日志：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126214058.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126214058.png)
 
 同时还发现该节点流出的流量不正常：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126225849.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126225849.png)
 
 从上图可看出，该节点的流出流量少了很多，猜测是因为 follower 副本拉取消息的流量少了很多，也是该节点的 Leader 副本会将 follower 副本踢出 ISR 列表的表现现象。
 
 根据业务方反馈，在 1 月 12 日那天，这一天增加了很多客户端连接集群。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126230030.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126230030.png)
 
 导致每个节点在这一天开始大概增加了 4 千个 TCP连接，这个问题也是从这一天开始出现的，从上图也可以看出，连接数也是从这天开始飙升的。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126230052.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126230052.png)
 
 从上图也可以看出，而且该集群的 RT 值升高也是从这一天开始发生的。
 
@@ -62,11 +62,11 @@ author: 张乘辉
 
 排查问题之前，大致讲下 Kafka 的网络线程模型，它的处理流程如下：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126212855.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126212855.png)
 
 如上，要理解 Kafka 的网络线程模型可以看下 Kafka 的 kafka.network.SocketServer 类注释（不得不说 Kafka 源码在注释方面做得非常棒，值得学习）：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126213217.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126213217.png)
 
 从源码注释可以看出， Kafka 的网络线程模型采用了 1 Acceptor 线程 + N Processor 线程 + M Handler 线程的线程模型。
 
@@ -79,7 +79,7 @@ Kafka 为了监控为了实时监控这些网络线程的运行状态，专门�
 
 查看各个节点 Processor 线程的空闲率情况：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126233253.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126233253.png)
 
 从上图可以看出，出现问题的那个节点， Processor 线程的空闲率几乎为 0，等待流量下来之后才慢慢恢复。
 
@@ -89,11 +89,11 @@ Kafka 为了监控为了实时监控这些网络线程的运行状态，专门�
 
 第二天醒来后，发现即使在集群 TPS 非常高的时候，Processor 线程的空闲率依然可以维持在 0.9 左右：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126220142.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126220142.png)
 
 节点的 CPU 使用率也提高了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210126220300.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210126220300.png)
 
 直至目前写完文章，集群现在依然是稳如老狗，集群各个节点没有再发生过 ISR 频繁变化，连接频繁断开的现象了。
 

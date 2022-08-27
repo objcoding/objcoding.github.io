@@ -10,7 +10,7 @@ author: 张乘辉
 {:toc}
 前段时间在公众号读者交流群，有读者提问到关于并发场景相关的问题：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210511000251.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210511000251.png)
 
 从读者的描述，可以看出高并发处理的经验，在面试中占据着举足轻重的地位，关于高并发相关的面试题，一直都是面试热题，因为这类面试题能够更加直观地体现候选人的技术水平与深度。如何解决高并发场景下的问题，永远都不会过时。
 
@@ -76,7 +76,7 @@ author: 张乘辉
 
 我的做法是通过在网关平台中做一个用于收集日志的异步日志收集系统，通过采集商品请求的日志，处理后发送到热点分析平台，热点分析平台通过一些列的分析计算将这些热点商品进行热点数据处理，后端通过订阅这些热点数据就可以识别哪些商品是热点数据了。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210516212939.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210516212939.png)
 
 
 
@@ -88,7 +88,7 @@ author: 张乘辉
 
 消息队列除了在解耦、异步场景之外，最大的作用场景是用于流量削峰，面对海量流量请求，可以将这些请求数据用异步的方式先存放在消息队列中，而消息队列一般都能够存储大量消息，消息会被消费端订阅消费，这样就有效地将峰值均摊到其他时间进行处理了。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210518004928.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210518004928.png)
 
 如上，消息队列就像我们平常见到的水库一样，当洪水来临时，拦住并对其进行储蓄，以减少对下游的冲击，避免了洪水的灾害。
 

@@ -62,7 +62,7 @@ ZCache 是中通下一代缓存服务平台，实现多种缓存类型自动部�
 
 ZCache 整体架构如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210309112105.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210309112105.png)
 
 
 
@@ -128,7 +128,7 @@ Operator 就是一个自定义的控制器，用户可以随意编写自己想�
 
 在讲 Zcache Operator 的实现之前，我先让大家了解下 ZCache Redis 缓存实例的部署架构，ZCache 参考了 Codis 的架构思想，ZCache 的 Redis 底层缓存实例是一组组的 Redis 主从架构，理论上可无限扩展主从的数量，对于用户来说，可以认为 ZCache 是一个无限容量的缓存服务。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210311143200.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210311143200.png)
 
 我们部署一个 Redis 哨兵集群，通常是先部署 Sentinel 节点，再部署一个主从加入 Sentinel，一个 Sentinel 集群可添加多个主从，我们后续可以继续往 Sentinel 添加主从。
 
@@ -136,7 +136,7 @@ ZCache 的 Operator 也需要满足这个部署顺序，当 ZCache 需要扩容�
 
 下面表示 ZCache 创建一组名为 group-1 主从redis 的定制资源到控制器监听资源状态的处理过程：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210311135306.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210311135306.png)
 
 提前在 K8s 中自定义了名为 ZcacheCluster 的 CRD 资源，用户编写 ZcacheCluster 的资源，从以上流程图可知，用户目的是为了创建两个 Redis Pod 实例，并且将其维护为一组名为 group-1 的主从，K8s 不断 Watch 该组资源的状态。
 

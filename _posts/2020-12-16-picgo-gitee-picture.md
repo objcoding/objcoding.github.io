@@ -24,17 +24,17 @@ author: 张乘辉
 
 PicGo 本身支持很多图床，比如阿里云、七牛等等，但这些都需要钱，使用 GitHub 虽然免费但是访问速度太慢。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215221059.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215221059.png)
 
 这时我们又想到了 Gitee，但 PicGo 本身不支持，需要安装第三方图床插件，于是我们打开插件设置，搜索 gitee，安装 gitee 插件：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215220920.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215220920.png)
 
 PicGo 更多插件可以在这里找到：https://github.com/PicGo/Awesome-PicGo
 
 登录 Gitee，然后创建一个仓库，接着在个人设置中生成一个私人令牌，紧接着我们回到 PicGo，在 Gitee 图床设置栏中找到 Gitee 图床，进行相关设置：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215171502.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215171502.png)
 
 - owner：你的 Gitee ID；
 - repo：你刚刚创建的那个用于保存图片的仓库名称；
@@ -44,16 +44,16 @@ PicGo 更多插件可以在这里找到：https://github.com/PicGo/Awesome-PicGo
 
 设置好之后保存，并且设置为默认图床。这时我们就可以使用 PicGo 将图片上传到 Gitee 仓库中并且返回图片链接了：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215223720.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215223720.png)
 
 但是每次都要在这个页面进行上传操作，不是很方便，我们可以设置一个上传快捷键：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215171636.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215171636.png)
 
 这样，你截图之后，再通过快捷键即可将图片上传到 Gitee 了，然后你就可以通过粘贴快捷键，快速地将图片以 md 图片链接的形式粘贴到你的文中：
 
 ```
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201215220920.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201215220920.png)
 ```
 
 可以作一下对比：
@@ -66,7 +66,7 @@ PicGo 更多插件可以在这里找到：https://github.com/PicGo/Awesome-PicGo
 
 如果此时你使用的 md 编辑器是 typora，还在 typora 中设置 PicGo 自动上传图片：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/image-20201215233937471.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/image-20201215233937471.png)
 
 如上图的设置，截图之后，直接在 typora 编辑器中粘贴即可自动将图片上传至 Gitee，并且自动包装成 md 图片链接的形式。通过这个设置，与我们平时复制粘贴图片的方式就没有任何区别了！
 

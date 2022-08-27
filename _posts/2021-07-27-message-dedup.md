@@ -171,7 +171,7 @@ update t_order set status = 'SUCCESS' where order_no= 'order123';
 例如，我们依旧使用消息表，但是不依赖事务，而是针对消息表增加消费状态，是否可以解决问题呢？
 
 ### 基于消息幂等表的非事务方案
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210727232537.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210727232537.png)
 
 以上是去事务化后的消息幂等方案的流程，可以看到，此方案是无事务的，而是针对消息表本身做了状态的区分：消费中、消费完成。只有消费完成的消息才会被幂等处理掉。而对于已有消费中的消息，后面重复的消息会触发延迟消费（在RocketMQ的场景下即发送到RETRY TOPIC），之所以触发延迟消费是为了控制并发场景下，第二条消息在第一条消息没完成的过程中，去控制消息不丢（如果直接幂等，那么会丢失消息（同一个消息id的话），因为上一条消息如果没有消费完成的时候，第二条消息你已经告诉broker成功了，那么第一条消息这时候失败broker也不会重新投递了）
 
@@ -193,7 +193,7 @@ update t_order set status = 'SUCCESS' where order_no= 'order123';
 
 有这种顾虑是正确的！对于此，我们解决的方法是，插入的消息表必须要带一个最长消费过期时间，例如10分钟，意思是如果一个消息处于消费中超过10分钟，就需要从消息表中删除（需要程序自行实现）。所以最后这个消息的流程会是这样的：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210727232650.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210727232650.png)
 
 ## 更灵活的消息表存储媒介
 

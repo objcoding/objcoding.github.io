@@ -28,7 +28,7 @@ ZMS 脱胎于中通内部对消息引擎的实践经验总结，它屏蔽底层�
 
 ZMS 整体架构如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210303140927.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210303140927.png)
 
 ZMS-SDK 模块从技术的角度是 ZMS 核心技术实现，封装消息引擎内核，ZMS 核心功能都围绕着 ZMS-SDK 展开；从用户的角度上可以让用户与消息集群解耦，屏蔽各消息集群差异，用户无需关心消息引擎底层技术细节。
 
@@ -36,7 +36,7 @@ ZMS-SDK 模块具体实现是将用户在控制台申请的主题消费组元数
 
 如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210116224447.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210116224447.png)
 
 基于 ZMS-SDK 核心逻辑，再结合 ZMS 的主题迁移功能，ZMS 就可以解决消息集群的主题分区数过多带来性能下降的问题，通过 ZMS 可以将它管理下的主题分散在各个小集群当中，用户只需申请主题消费组即可，审批到哪个集群并不需要关心，这完全由运维根据集群负载情况决定主题消费组被审批到相对应的集群中，而用户待主题消费组审批通过后，就可以通过 ZMS-SDK 进行发送和消费消息，如果主题消费组由变更，ZMS-SDK 就会感知对应 ZK 节点的变化，更新本地 Producer 和 Consumer 缓存。用户感知不到扩容迁移动作，真正实现无感知生产和消费。
 
@@ -46,7 +46,7 @@ ZMS-SDK 模块具体实现是将用户在控制台申请的主题消费组元数
 
 我想归根结底是 ZMS-SDK 并没有对消息内核进行改造，仅仅是对其客户端进行了一些改造与封装，在 ZMS-SDK 内部缓存了多个集群的客户端实例，如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210303144446.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210303144446.png)
 
 这可也许会带来另外一个问题：
 
@@ -56,7 +56,7 @@ ZMS-SDK 模块具体实现是将用户在控制台申请的主题消费组元数
 
 对这方面我也有过一些探索，我在腾讯云中间件看到一篇关于 Kafka 集群突破百万 partition 的技术探索文章，对我的启发非常大，它对 Kafka 内部进行了一系列的改造，使用小集群组建逻辑集群的思想，实现单客户端对应一个逻辑集群：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210116234036.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210116234036.png)
 
 想要了解腾讯云 CKafka 在这方面的探索，可点击以下文章：
 

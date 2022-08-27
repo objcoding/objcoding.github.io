@@ -36,7 +36,7 @@ author: 张乘辉
 
 针对以上问题，Kafka 的提供了独立消费者模式，可以消费者可以指定分区进行消费，如果只用一个 topic，每个消息源启动一个生产者，分别发往不同的分区，消费者指定消费相关的分区即可，用如下图所示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200919125216.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200919125216.png)
 
 但是 Kafka 独立消费者也有它的限定场景：
 

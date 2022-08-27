@@ -62,7 +62,7 @@ public static void write(Compressor compressor, long crc, byte attributes, byte[
 
 再结合 `org.apache.kafka.common.record.Record` 类中常量定义的字段大小，我用以下图表示 V0 版本消息格式的样子：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210107200418.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210107200418.png)
 
 从上图可以看出，V0 版本的消息最小为 14 字节，小于 14 字节的消息会被 Kafka 视为非法消息。
 
@@ -120,7 +120,7 @@ public static void write(Compressor compressor, long crc, byte attributes, long 
 
 我用以下图表示 V1 版本消息格式的样子：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210107200435.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210107200435.png)
 
 从上图可以看出，V1 版本的消息最小为 22 字节，小于 22 字节的消息会被 Kafka 视为非法消息。
 
@@ -170,7 +170,7 @@ public interface Records extends Iterable<LogEntry> {
 
 那么我们就可以画出 V0、V1 消息集合格式的样子：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210107200452.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210107200452.png)
 
 以上，message 字段也被 Kafka 称作浅层消息（shallow message），如果消息未进行压缩，那么该字段保存的消息即是它本身，如果消息进行压缩，Kafka 会将多条消息压缩在一起放入到该字段中。
 
@@ -197,7 +197,7 @@ public interface Records extends Iterable<LogEntry> {
 
 org.apache.kafka.common.record.DefaultRecord
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210107202007.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210107202007.png)
 
 - sizeInBytes：消息总长度字段；
 - attributes：消息属性字段
@@ -277,7 +277,7 @@ public static int writeTo(DataOutputStream out,
 
 根据以上代码逻辑，我用以下图表示 V2 版本消息格式的样子：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210107203738.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210107203738.png)
 
 Kafka 可变长度的具体做法借鉴了 Google ProtoBuffer 中的 Zig-zag 编码方式，这个我也没研究过，感兴趣的小伙伴可以研究下。但根据 Kafka 官方的描述，使用 Zig-zag 编码之后，例如一般的 key 只需要 1 字节保存即可，相比 V0、V1 版本需要 4 字节保存节省了 3 字节。
 
@@ -322,7 +322,7 @@ RecordBatch =>
 
 我们可以清除地看到 V2 版本中消息格式的具体字段与大小，我用以下图表示 V2 版本消息批次的样子：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20210109224320.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20210109224320.png)
 
 从以上图可看出，V2 版本的消息批次，相比 V0、V1 版本主要有以下变动：
 

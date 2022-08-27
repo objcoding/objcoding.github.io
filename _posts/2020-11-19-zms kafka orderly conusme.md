@@ -26,13 +26,13 @@ author: 张乘辉
 
 1、消息没有堆积时：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201113101050.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201113101050.png)
 
 可以发现，在消息没有堆积时，消费者拉取时，如果某个分区没有的消息不足 500 条，会从其他分区凑够 500 条后再返回。
 
 2、多个分区都有堆积时：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201113101033.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201113101033.png)
 
 在消息有堆积时，可以发现每次返回的都是同一个分区的消息，但经过不断 debug，消费者在拉取过程中并不是等某个分区消费完没有堆积了，再拉取下一个分区的消息，而是不断循环的拉取各个分区的消息，但是这个循环并不是说分区 p0 拉取完 500 条，后面一定会拉取分区 p1 的消息，很有可能后面还会拉取 p0 分区的消息，为了弄明白这种现象，我仔细阅读了相关源码。
 
@@ -171,7 +171,7 @@ public synchronized int sendFetches() {
 
 以上代码逻辑很好理解，在发送拉取请求前，先检查哪些分区可拉取，接着为每个分区构建一个 FetchRequest 对象，FetchRequest 中的 minBytes 和 maxBytes，分别可通过 fetch.min.bytes 和 fetch.max.bytes 参数设置。这也是每次从 Broker 中拉取的消息不一定等于 max.poll.records 的原因。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201115195634.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201115195634.png)
 
 prepareFetchRequests 方法会调用 Fetcher#fetchablePartitions 筛选可拉取的分区，我们来看下 Kafka 消费者是如何进行筛选的：
 
@@ -202,7 +202,7 @@ nextInLineRecords 即我们上面提到的根据某个分区缓存 CompletedFetc
 
 假设某消费者监听三个分区，每个分区每次从 Broker 中拉取 4 条消息，用户每次从本地缓存中获取 2 条消息：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201115015151.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201115015151.png)
 
 从以上流程可看出，Kafka 消费者自身已经实现了拉取限流的机制。
 
@@ -214,7 +214,7 @@ kafka 的消费类 KafkaConsumer 是非线程安全的，因此用户无法在�
 
 1、每个线程维护一个 KafkaConsumer
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426193745.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426193745.png)
 
 这种消费模型创建多个 KafkaConsumer 对象，每个线程维护一个 KafkaConsumer，从而实现线程隔离消费，由于每个分区同一时刻只能有一个消费者消费，所以这种消费模型天然支持顺序消费。
 
@@ -222,7 +222,7 @@ kafka 的消费类 KafkaConsumer 是非线程安全的，因此用户无法在�
 
 2、单 KafkaConsumer 实例 + 多 worker 线程
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200426195213.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200426195213.png)
 
 这种消费模型奖 KafkaConsumer 实例与消息消费逻辑解耦，我们不需要创建多个 KafkaConsumer 实例就可进行多线程消费，还可根据消费的负载情况动态调整 worker 线程，具有很强的独立扩展性，在公司内部使用的多线程消费模型就是用的单 KafkaConsumer 实例 + 多 worker 线程模型。但是通常情况下，这种消费模型无法保证消费的顺序性。
 
@@ -232,13 +232,13 @@ kafka 的消费类 KafkaConsumer 是非线程安全的，因此用户无法在�
 
 com.zto.consumer.KafkaConsumerProxy#addUserDefinedProperties
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201112111427.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201112111427.png)
 
 首先在初始化的时候，会对消费线程池进行初始化，具体是根据 threadsNumMax 的数量创建若干个单个线程的线程池，单个线程的线程池就是为了保证每个分区取模后拿到线程池是串行消费的，但这里创建 threadsNumMax 个线程池是不合理的，后面我会说到。
 
 com.zto.consumer.KafkaConsumerProxy#submitRecords
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20200705201146.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20200705201146.png)
 
 ZMS 会对消息分区进行取模，根据取模后的序号从线程池列表缓存中获取一个线程池，从而使得相同分区的消息会被分配到相同线程池中执行，对于顺序消费来说至关重要，前面我也说了，当用户配置了顺序消费时，每个线程池只会分配一个线程，如果相同分区的消息分配到同一个线程池中执行，也就意味着相同分区的消息会串行执行，实现消息消费的顺序性。
 
@@ -252,17 +252,17 @@ final CountDownLatch countDownLatch = new CountDownLatch(records.count());
 
 com.zto.consumer.KafkaConsumerProxy#submitRecords
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201112131227.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201112131227.png)
 
 以上就是目前 ZMS 顺序消费的线程模型，用图表示以上代码逻辑：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201112145220.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201112145220.png)
 
 以上，由于某些分区的消息堆积量少于 500 条（Kafka 默认每次从 Broker 拉取 500 条消息），因此会继续从其它分区凑够 500 条消息，此时拉取的 500 条消息会包含 3 个分区的消息，ZMS 根据利用分区取模将同一个分区的消息放到指定的线程池中（线程池只有一条线程）进行消费，以上图来看，总共有 3 条线程在消费本次拉取的 500 条消息。
 
 那如果每个分区的积压都超过了 500 条消息呢？这种实际的情况会更加多，因为消息中间件其中一个重要功能就是用于流量削峰，流量洪峰那段时间积压几百上千万条消息还是经常能够遇到的，那么此时每次拉取的消息中，很大概率就只剩下一个分区了，我用如下图表示：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201112151152.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201112151152.png)
 
 在消息流量大的时候，顺序消息消费时却退化成单线程消费了。
 
@@ -313,7 +313,7 @@ KafkaConsumer is not safe for multi-threaded access
 
 因此我们只需要利用好这个特性，就可以实现拉取限流，消费者主线程的 Comsumer#poll 方法依然是异步不断地从缓存中获取消息，同时不会造成两次 poll 之间的时间过大导致消费者被踢出消费组。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20201119154814.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20201119154814.png)
 
 以上优化改造的核心是在不打乱消息顺序的前提下利用消息 Key 尽可能地并发消费，但如果遇到分区中的消息都是相同 Key，并且在有一定的积压下每次拉取都是同一个分区的消息时，以上模型可能没有理想情况下的那么好。这时是否可以将 fetch.max.bytes 与 max.partition.fetch.bytes 参数设置小一点，让每个分区的本地缓存都不足 500 条，这样每次 poll 的消息列表都可以包含多个分区的消息了，但这样又会导致 RPC 请求增多，这就需要针对业务消息大小，对这些参数进行调优。
 
